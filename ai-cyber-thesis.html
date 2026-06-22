@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI × Cybersecurity — Thesis Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBFAF7; --ink:#16181D; --ink-soft:#4A4E57; --line:#E3DFD6;
+    --steel:#2E5E8C; --steel-soft:#6E94B4;
+    --benefit:#1C7A5A; --benefit-bg:#E6F1EC;
+    --threat:#B23A48; --threat-bg:#F6E7E8;
+    --warn:#B5852A; --warn-bg:#F6EEDD;
+    --chip:#F1EEE7;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+    --disp:'Space Grotesk',system-ui,sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+
+  /* ---------- header ---------- */
+  header.top{border-bottom:2px solid var(--ink);padding:34px 0 22px}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--steel);font-weight:600}
+  h1{font-family:var(--disp);font-weight:700;font-size:clamp(30px,5vw,52px);line-height:1.02;letter-spacing:-.02em;margin:10px 0 0}
+  h1 .em{color:var(--steel)}
+  .sub{max-width:760px;margin:16px 0 0;font-size:16px;color:var(--ink-soft)}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px;font-family:var(--mono);font-size:11.5px;color:var(--ink-soft)}
+  .meta b{color:var(--ink);font-weight:600}
+
+  /* ---------- backdrop band ---------- */
+  .backdrop{background:var(--ink);color:#EDEAE2;margin-top:0;padding:26px 0}
+  .backdrop h2{font-family:var(--disp);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#9FB6CB;margin:0 0 14px;font-weight:600}
+  .backdrop p{margin:0 0 12px;font-size:14.5px;color:#D7D3C9;max-width:880px}
+  .backdrop p:last-child{margin-bottom:0}
+  .tl{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:18px 0 6px;border-top:1px solid #33373F}
+  .tl div{padding:12px 14px 12px 0;border-right:1px solid #33373F}
+  .tl div:last-child{border-right:none}
+  .tl .d{font-family:var(--mono);font-size:11px;color:#7FA8C6}
+  .tl .e{font-size:13px;color:#EDEAE2;margin-top:4px;font-weight:500;line-height:1.35}
+
+  section{padding:40px 0}
+  .lede{font-family:var(--disp);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin:0 0 6px}
+  h2.sec{font-family:var(--disp);font-weight:700;font-size:clamp(22px,3vw,30px);letter-spacing:-.015em;margin:0 0 8px}
+  .secnote{color:var(--ink-soft);max-width:820px;font-size:15px;margin:0 0 24px}
+
+  /* ---------- positioning map ---------- */
+  .mapcard{border:1px solid var(--line);border-radius:4px;background:#fff;padding:18px 18px 8px}
+  .maplegend{display:flex;flex-wrap:wrap;gap:14px;font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-top:6px}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;vertical-align:middle;margin-right:5px}
+
+  /* ---------- niche groups & table ---------- */
+  .group{margin-top:30px}
+  .ghead{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:7px;margin-bottom:0}
+  .gnum{font-family:var(--mono);font-size:12px;color:var(--steel);font-weight:600}
+  .gname{font-family:var(--disp);font-weight:700;font-size:18px;letter-spacing:-.01em}
+  .gtag{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-left:auto}
+
+  .row{border-bottom:1px solid var(--line);padding:16px 0}
+  .rtop{display:grid;grid-template-columns:minmax(150px,1.1fr) repeat(4,minmax(56px,.7fr));gap:10px;align-items:center}
+  .co{display:flex;flex-direction:column;gap:2px}
+  .co .nm{font-family:var(--disp);font-weight:600;font-size:15.5px;letter-spacing:-.01em}
+  .co .tk{font-family:var(--mono);font-size:11.5px;color:var(--steel);font-weight:600}
+  .qt{display:flex;flex-direction:column;gap:2px}
+  .qt .lab{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+  .qt .val{font-family:var(--mono);font-size:14px;font-weight:600}
+  .rankchip{display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700;font-size:14px;width:34px;height:30px;border-radius:4px;background:var(--steel);color:#fff}
+  .band{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;padding:4px 8px;border-radius:3px;white-space:nowrap}
+  .b-low{background:var(--benefit-bg);color:var(--benefit)}
+  .b-med{background:var(--warn-bg);color:var(--warn)}
+  .b-high{background:var(--threat-bg);color:var(--threat)}
+
+  .prose{display:grid;grid-template-columns:1fr 1fr;gap:6px 26px;margin-top:13px}
+  @media(max-width:720px){.prose{grid-template-columns:1fr}}
+  .pcell .ph{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);font-weight:600;margin-bottom:3px}
+  .pcell p{margin:0 0 10px;font-size:13.6px;color:var(--ink);line-height:1.5}
+  .pcell.threat .ph{color:var(--threat)}
+  .net{grid-column:1/-1;border-top:1px dashed var(--line);padding-top:9px;margin-top:2px}
+  .net .ph{color:var(--ink)}
+  .net p{font-weight:500}
+  .tagline{font-family:var(--mono);font-size:10.5px;font-weight:600;padding:2px 7px;border-radius:3px;margin-left:7px;vertical-align:middle}
+  .t-win{background:var(--benefit-bg);color:var(--benefit)}
+  .t-asym{background:#E7EEF5;color:var(--steel)}
+  .t-trap{background:var(--threat-bg);color:var(--threat)}
+  .t-priced{background:var(--chip);color:var(--ink-soft)}
+
+  /* ---------- ranked strip ---------- */
+  .ranked{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:6px}
+  .ranked div{background:#fff;padding:9px 11px;font-size:12.5px}
+  .ranked .r{font-family:var(--mono);color:var(--steel);font-weight:700;font-size:11px}
+  .ranked .c{font-family:var(--disp);font-weight:600;margin-top:1px}
+  .ranked .x{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);margin-top:1px}
+
+  /* ---------- asymmetric cards ---------- */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:8px}
+  .card{border:1px solid var(--line);border-top:3px solid var(--steel);border-radius:4px;background:#fff;padding:18px}
+  .card.alt{border-top-color:var(--benefit)}
+  .card h3{font-family:var(--disp);font-size:18px;margin:0;letter-spacing:-.01em}
+  .card .tk{font-family:var(--mono);font-size:11.5px;color:var(--steel);font-weight:600}
+  .card .stat{display:flex;gap:16px;margin:11px 0;font-family:var(--mono);font-size:11px;color:var(--ink-soft)}
+  .card .stat b{display:block;font-size:15px;color:var(--ink);font-weight:600}
+  .card p{font-size:13.4px;margin:0;color:var(--ink)}
+
+  /* ---------- private / context ---------- */
+  .ctx{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:8px}
+  .ctx .it{border-left:3px solid var(--steel-soft);padding:4px 0 4px 13px}
+  .ctx .it .h{font-family:var(--disp);font-weight:600;font-size:14.5px}
+  .ctx .it .b{font-size:13px;color:var(--ink-soft);margin-top:3px}
+
+  /* ---------- methodology / caveats ---------- */
+  .panel{background:#fff;border:1px solid var(--line);border-radius:4px;padding:22px 24px}
+  .panel h3{font-family:var(--disp);font-size:16px;margin:0 0 10px;letter-spacing:-.01em}
+  .panel ol,.panel ul{margin:0;padding-left:20px}
+  .panel li{font-size:13.8px;margin-bottom:8px;color:var(--ink)}
+  .panel li b{font-weight:600}
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:720px){.twocol{grid-template-columns:1fr}}
+  .disclaim{border:1px solid var(--threat);background:var(--threat-bg);border-radius:4px;padding:16px 18px;margin-top:18px;font-size:13px;color:#6E2630}
+  .disclaim b{color:var(--threat)}
+  footer{border-top:2px solid var(--ink);padding:26px 0 60px;font-family:var(--mono);font-size:11px;color:var(--ink-soft)}
+  a{color:var(--steel)}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <div class="eyebrow">Equity Thesis Map · Self-directed research</div>
+  <h1>When the models get smarter,<br>the <span class="em">attack surface</span> explodes.</h1>
+  <p class="sub">Mapping public cyber names against a single dynamic: every capability jump in frontier LLMs simultaneously (a) arms attackers — automated exploit discovery, vuln research at scale, AI-written malware, volume social-engineering — and (b) creates brand-new surfaces to defend — prompt injection, model exfiltration, agentic misuse, data poisoning, an explosion of non-human identities. The same force is a tailwind for spend <em>and</em> a solvent for moats. This note scores both sides for each name and flags where the market has already agreed versus where it hasn't.</p>
+  <div class="meta">
+    <span>Market data: <b>FMP, intraday 22 Jun 2026</b></span>
+    <span>Multiples: <b>EV/Sales TTM (FMP)</b></span>
+    <span>Growth: <b>latest reported FY, date per row</b></span>
+    <span>Status: <b>qualitative framework — not advice</b></span>
+  </div>
+</div></header>
+
+<!-- ===== BACKDROP ===== -->
+<div class="backdrop"><div class="wrap">
+  <h2>The backdrop you can't ignore: 2026's "AI eats software" re-rating</h2>
+  <p>You're not looking at this group in a vacuum. Across Feb–Apr 2026 the market started pricing the <b>threat</b> half of this exact thesis — hard. The trigger was AI labs shipping the offensive capability directly: autonomous code-scanning-and-patching tools and frontier vuln-discovery models that found hundreds of unknown high-severity bugs in widely-used software. Investors read it as "if a general model can find and fix the holes, what am I paying the security vendor for?"</p>
+  <div class="tl">
+    <div><div class="d">FEB 2026</div><div class="e">Anthropic ships Claude Code Security (autonomous scan + patch). Cyber names fall ~10% over two sessions.</div></div>
+    <div><div class="d">FEB 11, 2026</div><div class="e">Palo Alto <b>closes CyberArk (~$25B)</b> — "secure human, machine & agentic identity."</div></div>
+    <div><div class="d">MAR 11, 2026</div><div class="e">Google <b>closes Wiz ($32B, ~32× ARR)</b> — cloud security pulled inside a hyperscaler.</div></div>
+    <div><div class="d">APR 9, 2026</div><div class="e">Frontier vuln-discovery model news triggers a ~$1T software/services drawdown.</div></div>
+  </div>
+  <p style="margin-top:14px">The result: multiples compressed violently and unevenly. Zscaler trades ~63% below its 52-wk high while ARR still grows 25%; Rapid7 sits near a $0.45B market cap on ~2% growth. The bull rebuttal (Dan Ives' "AI ghost trade"; Arora calling the selloff "paranoid"; Kurtz: "an AI that scans code does not replace a battle-tested platform") is that <b>more AI-written code = more vulnerabilities = more to secure and monitor</b> — but only for vendors that pivot from watching humans to governing agents. That tension is the whole game, and it makes the <em>priced-in vs. under-recognized</em> distinction matter far more than the raw benefit score.</p>
+</div></div>
+
+<!-- ===== POSITIONING MAP ===== -->
+<section><div class="wrap">
+  <div class="lede">The one chart</div>
+  <h2 class="sec">Benefit rank vs. what you pay for it</h2>
+  <p class="secnote">Horizontal: my AI-benefit rank (right = better positioned). Vertical: EV/Sales TTM (higher = market already paying up). <b>Bottom-right is the asymmetric zone</b> — strong positioning the tape hasn't re-rated. Top-right is "great, and everyone knows it." Bottom-left is cheap for a reason.</p>
+  <div class="mapcard">
+    <svg viewBox="0 0 920 470" width="100%" role="img" aria-label="Scatter of AI-benefit rank versus EV/Sales multiple">
+      <!-- axes -->
+      <line x1="70" y1="20" x2="70" y2="410" stroke="#16181D" stroke-width="1.5"/>
+      <line x1="70" y1="410" x2="890" y2="410" stroke="#16181D" stroke-width="1.5"/>
+      <!-- quadrant shading bottom-right (asymmetric) -->
+      <rect x="480" y="250" width="410" height="160" fill="#E7EEF5" opacity="0.6"/>
+      <text x="486" y="270" font-family="IBM Plex Mono" font-size="12" fill="#2E5E8C" font-weight="600">ASYMMETRIC ZONE — strong position, not yet re-rated</text>
+      <!-- y gridlines -->
+      <g font-family="IBM Plex Mono" font-size="11" fill="#4A4E57">
+        <line x1="70" y1="410" x2="890" y2="410" stroke="#E3DFD6"/>
+        <line x1="70" y1="330" x2="890" y2="330" stroke="#E3DFD6"/><text x="40" y="334">10×</text>
+        <line x1="70" y1="250" x2="890" y2="250" stroke="#E3DFD6"/><text x="40" y="254">20×</text>
+        <line x1="70" y1="170" x2="890" y2="170" stroke="#E3DFD6"/><text x="40" y="174">30×</text>
+        <line x1="70" y1="90"  x2="890" y2="90"  stroke="#E3DFD6"/><text x="40" y="94">40×</text>
+        <text x="40" y="414">0×</text>
+      </g>
+      <text x="30" y="220" font-family="IBM Plex Mono" font-size="11" fill="#4A4E57" transform="rotate(-90 30 220)">EV / Sales (TTM)</text>
+      <text x="480" y="445" font-family="IBM Plex Mono" font-size="11" fill="#4A4E57" text-anchor="middle">AI-benefit rank  →  stronger</text>
+      <!-- helper: x = 70 + (19-rank)/18*800 ; y = 410 - evs/40*320 -->
+      <!-- priced-in (grey/steel), asymmetric (steel filled), trap (red) -->
+      <g font-family="Space Grotesk" font-size="12" font-weight="600">
+        <!-- PANW rank1 18.5 --><circle cx="870" cy="262" r="6" fill="#16181D"/><text x="858" y="252" text-anchor="end" fill="#16181D">PANW</text>
+        <!-- CRWD rank2 33.5 --><circle cx="826" cy="142" r="6" fill="#16181D"/><text x="838" y="138" fill="#16181D">CRWD</text>
+        <!-- NET rank3 35.3 --><circle cx="781" cy="128" r="6" fill="#16181D"/><text x="793" y="124" fill="#16181D">NET</text>
+        <!-- ZS rank4 6.6 --><circle cx="737" cy="357" r="7" fill="#2E5E8C"/><text x="725" y="361" text-anchor="end" fill="#2E5E8C">ZS</text>
+        <!-- SAIL rank5 6.4 --><circle cx="692" cy="359" r="7" fill="#2E5E8C"/><text x="704" y="375" fill="#2E5E8C">SAIL</text>
+        <!-- OKTA rank6 6.4 --><circle cx="648" cy="359" r="6" fill="#6E94B4"/><text x="636" y="349" text-anchor="end" fill="#6E94B4">OKTA</text>
+        <!-- DDOG rank7 21.9 --><circle cx="603" cy="235" r="6" fill="#16181D"/><text x="591" y="231" text-anchor="end" fill="#16181D">DDOG</text>
+        <!-- RBRK rank8 10.6 --><circle cx="559" cy="325" r="7" fill="#2E5E8C"/><text x="571" y="321" fill="#2E5E8C">RBRK</text>
+        <!-- FTNT rank9 14.7 --><circle cx="514" cy="292" r="6" fill="#6E94B4"/><text x="502" y="288" text-anchor="end" fill="#6E94B4">FTNT</text>
+        <!-- S rank10 4.7 --><circle cx="470" cy="372" r="6" fill="#B23A48"/><text x="458" y="376" text-anchor="end" fill="#B23A48">S</text>
+        <!-- VRNS rank11 6.5 --><circle cx="426" cy="358" r="5" fill="#6E94B4"/><text x="414" y="354" text-anchor="end" fill="#6E94B4">VRNS</text>
+        <!-- CVLT rank12 4.5 --><circle cx="381" cy="374" r="5" fill="#6E94B4"/><text x="393" y="370" fill="#6E94B4">CVLT</text>
+        <!-- QLYS rank13 5.4 --><circle cx="337" cy="367" r="5" fill="#B23A48"/><text x="325" y="363" text-anchor="end" fill="#B23A48">QLYS</text>
+        <!-- GEN rank14 4.5 --><circle cx="292" cy="374" r="5" fill="#6E94B4"/><text x="280" y="370" text-anchor="end" fill="#6E94B4">GEN</text>
+        <!-- NTSK rank15 5.6 --><circle cx="248" cy="365" r="5" fill="#B23A48"/><text x="236" y="361" text-anchor="end" fill="#B23A48">NTSK</text>
+        <!-- CHKP rank16 5.0 --><circle cx="203" cy="370" r="5" fill="#B23A48"/><text x="191" y="366" text-anchor="end" fill="#B23A48">CHKP</text>
+        <!-- TENB rank17 3.2 --><circle cx="159" cy="384" r="5" fill="#B23A48"/><text x="171" y="380" fill="#B23A48">TENB</text>
+        <!-- RPD rank18 1.25 --><circle cx="114" cy="400" r="5" fill="#B23A48"/><text x="126" y="396" fill="#B23A48">RPD</text>
+      </g>
+    </svg>
+    <div class="maplegend">
+      <span><span class="dot" style="background:#16181D"></span>Priced-in (high multiple, market agrees)</span>
+      <span><span class="dot" style="background:#2E5E8C"></span>Asymmetric (good rank, compressed multiple)</span>
+      <span><span class="dot" style="background:#6E94B4"></span>Mixed / option value</span>
+      <span><span class="dot" style="background:#B23A48"></span>High self-threat (cheap for a reason)</span>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== RANKED STRIP ===== -->
+<section style="padding-top:0"><div class="wrap">
+  <div class="lede">Sorted by AI-benefit rank</div>
+  <h2 class="sec">The full order, 1 → 18</h2>
+  <p class="secnote">Most-strategically-positioned first. The detailed table below is grouped by niche (alphabetical within group) as requested; this strip is the pure benefit ranking.</p>
+  <div class="ranked">
+    <div><div class="r">01</div><div class="c">Palo Alto</div><div class="x">PANW · win</div></div>
+    <div><div class="r">02</div><div class="c">CrowdStrike</div><div class="x">CRWD · priced</div></div>
+    <div><div class="r">03</div><div class="c">Cloudflare</div><div class="x">NET · priced</div></div>
+    <div><div class="r">04</div><div class="c">Zscaler</div><div class="x">ZS · asymmetric</div></div>
+    <div><div class="r">05</div><div class="c">SailPoint</div><div class="x">SAIL · asymmetric</div></div>
+    <div><div class="r">06</div><div class="c">Okta</div><div class="x">OKTA · option</div></div>
+    <div><div class="r">07</div><div class="c">Datadog</div><div class="x">DDOG · priced</div></div>
+    <div><div class="r">08</div><div class="c">Rubrik</div><div class="x">RBRK · win</div></div>
+    <div><div class="r">09</div><div class="c">Fortinet</div><div class="x">FTNT · mixed</div></div>
+    <div><div class="r">10</div><div class="c">SentinelOne</div><div class="x">S · threatened</div></div>
+    <div><div class="r">11</div><div class="c">Varonis</div><div class="x">VRNS · mixed</div></div>
+    <div><div class="r">12</div><div class="c">Commvault</div><div class="x">CVLT · mixed</div></div>
+    <div><div class="r">13</div><div class="c">Qualys</div><div class="x">QLYS · threatened</div></div>
+    <div><div class="r">14</div><div class="c">Gen Digital</div><div class="x">GEN · mixed</div></div>
+    <div><div class="r">15</div><div class="c">Netskope</div><div class="x">NTSK · threatened</div></div>
+    <div><div class="r">16</div><div class="c">Check Point</div><div class="x">CHKP · threatened</div></div>
+    <div><div class="r">17</div><div class="c">Tenable</div><div class="x">TENB · threatened</div></div>
+    <div><div class="r">18</div><div class="c">Rapid7</div><div class="x">RPD · trap risk</div></div>
+  </div>
+</div></section>
+
+<!-- ===== THE TABLE (grouped by niche) ===== -->
+<section style="padding-top:6px"><div class="wrap">
+  <div class="lede">The landscape</div>
+  <h2 class="sec">Grouped by niche</h2>
+  <p class="secnote">Each row: the quant strip (cap / EV-Sales / growth / benefit rank / threat band) then the prose — what they do, the benefit thesis with hard evidence, the threat to their own model, and a net read. Tag key: <span class="tagline t-win">structural winner</span> <span class="tagline t-asym">asymmetric</span> <span class="tagline t-priced">priced-in</span> <span class="tagline t-trap">threatened</span></p>
+
+  <!-- GROUP: ENDPOINT / XDR -->
+  <div class="group">
+    <div class="ghead"><span class="gnum">A</span><span class="gname">Endpoint / XDR / SOC platform</span><span class="gtag">consolidators of the security stack</span></div>
+
+    <!-- CRWD -->
+    <div class="row">
+      <div class="rtop">
+        <div class="co"><span class="nm">CrowdStrike <span class="tagline t-priced">priced-in</span></span><span class="tk">CRWD · NASDAQ</span></div>
+        <div class="qt"><span class="lab">Mkt cap</span><span class="val">$174.3B</span></div>
+        <div class="qt"><span class="lab">EV/Sales</span><span class="val">33.5×</span></div>
+        <div class="qt"><span class="lab">Rev YoY</span><span class="val">21.7%</span></div>
+        <div class="qt"><span class="lab">Benefit</span><span class="rankchip">2</span></div>
+      </div>
+      <div style="margin-top:8px"><span class="band b-med">Threat: Medium</span> <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)">growth = FY ended 31 Jan 2026 · ARR $5.25B (+24%)</span></div>
+      <div class="prose">
+        <div class="pcell"><div class="ph">What it does</div><p>Endpoint-born (Falcon) platform that has metastasized into XDR, next-gen SIEM, cloud (CNAPP), identity protection, exposure management and data security — sold as a single agent with aggressive module cross-sell (Falcon Flex). The textbook "consolidate the SOC onto us" play.</p></div>
+        <div class="pcell"><div class="ph">AI-benefit thesis (evidence)</div><p>This is product, not narrative: Charlotte AI <em>Agentic</em> Response/Workflows and the AgentWorks no-code agent ecosystem (RSA 2026) plug Anthropic/OpenAI/NVIDIA models into the SOC; Falcon Data Security monetizes AI-governance/DLP; AI Model Scanning + Shadow-AI detection. Management explicitly frames Falcon as the platform "for the agentic AI era" on the path to $10B ARR.</p></div>
+        <div class="pcell threat"><div class="ph">Threat to its own model</div><p>If frontier models absorb tier-1/2 analyst triage, the value of an "AI SOC analyst" deflates toward the model price. Detection-logic commoditization is real. Offset: runtime telemetry + distribution + 97% gross retention is a genuine moat Kurtz can credibly defend — you can't patch your way out of a live breach.</p></div>
+        <div class="net"><div class="ph">Net read</div><p>Best-in-class operator and a true platform winner — but at 33.5× sales the benefit is fully in the price. You're paying for flawless execution of the agentic-SOC pivot, with little margin for the commoditization risk. Own the franchise, not the entry point.</p></div>
+      </div>
+    </div>
+
+    <!-- S -->
+    <div class="row">
+      <div class="rtop">
+        <div class="co"><span class="nm">SentinelOne <span class="tagline t-trap">threatened</span></span><span class="tk">S · NYSE</span></div>
+        <div class="qt"><span class="lab">Mkt cap</span><span class="val">$5.06B</span></div>
+        <div class="qt"><span class="lab">EV/Sales</span><span class="val">4.7×</span></div>
+        <div class="qt"><span class="lab">Rev YoY</span><span class="val">21.9%</span></div>
+        <div class="qt"><span class="lab">Benefit</span><span class="rankchip">10</span></div>
+      </div>
+      <div style="margin-top:8px"><span class="band b-high">Threat: High</span> <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)">growth = FY ended 31 Jan 2026</span></div>
+      <div class="prose">
+        <div class="pcell"><div class="ph">What it does</div><p>Endpoint/XDR challenger built on an autonomous-agent architecture; Purple AI markets a genuinely AI-native SOC analyst. Singularity platform spans endpoint, cloud and identity.</p></div>
+        <div class="pcell"><div class="ph">AI-benefit thesis (evidence)</div><p>Purple AI is a credible early "agentic SOC" product and the architecture story is real. But evidence of <em>monetized</em> AI uplift is thinner than CRWD's, and net-new ARR is decelerating.</p></div>
+        <div class="pcell threat"><div class="ph">Threat to its own model</div><p>Squeezed on both sides: out-scaled by CRWD/Microsoft on distribution and R&D, and exposed to the same detection-commoditization wave with a smaller buffer. The 4.7× multiple is cheap, but cheap reflects the squeeze.</p></div>
+        <div class="net"><div class="ph">Net read</div><p>Right thesis, wrong scale. Looks like a cheap way to play agentic endpoint; reads more like a structurally pressured #2 unless it finds a defensible wedge. Cheap ≠ asymmetric.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GROUP: NETWORK / FIREWALL -->
+  <div class="group">
+    <div class="ghead"><span class="gnum">B</span><span class="gname">Network / firewall / broad platform</span><span class="gtag">incumbents platformizing</span></div>
+
+    <!-- CHKP -->
+    <div class="row">
+      <div class="rtop">
+        <div class="co"><span class="nm">Check Point <span class="tagline t-trap">threatened</span></span><span class="tk">CHKP · NASDAQ</span></div>
+        <div class="qt"><span class="lab">Mkt cap</span><span class="val">$12.8B</span></div>
+        <div class="qt"><span class="lab">EV/Sales</span><span class="val">5.0×</span></div>
+        <div class="qt"><span class="lab">Rev YoY</span><span class="val">6.3%</span></div>
+        <div class="qt"><span class="lab">Benefit</span><span class="rankchip">16</span></div>
+      </div>
+      <div style="margin-top:8px"><span class="band b-high">Threat: High</span> <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)">growth = FY ended 31 Dec 2025</span></div>
+      <div class="prose">
+        <div class="pcell"><div class="ph">What it does</div><p>Veteran network-security vendor (firewall/gateway, Infinity platform, email/endpoint via tuck-ins). Highly profitable, slow-growing, cash-generative.</p></div>
+        <div class="pcell"><div class="ph">AI-benefit thesis (evidence)</div><p>Infinity AI Copilot and AI threat-prevention exist, but Check Point is a follower here. The benefit accrues mostly as a rising tide on overall spend, not as a category it owns.</p></div>
+        <div class="pcell threat"><div class="ph">Threat to its own model</div><p>6% growth in a 20%+ threat-environment means share loss. Most exposed of the incumbents to both native-LLM commoditization of basic functionality and platform consolidation by larger rivals.</p></div>
+        <div class="net"><div class="ph">Net read</div><p>A profitable melting ice cube in this frame. Defensive/value characteristics, not an AI-thesis vehicle.</p></div>
+      </div>
+    </div>
+
+    <!-- FTNT -->
+    <div class="row">
+      <div class="rtop">
+        <div class="co"><span class="nm">Fortinet <span class="tagline t-priced">mixed</span></span><span class="tk">FTNT · NASDAQ</span></div>
+        <div class="qt"><span class="lab">Mkt cap</span><span class="val">$106.0B</span></div>
+        <div class="qt"><span class="lab">EV/Sales</span><span class="val">14.7×</span></div>
+        <div class="qt"><span class="lab">Rev YoY</span><span class="val">14.2%</span></div>
+        <div class="qt"><span class="lab">Benefit</span><span class="rankchip">9</span></div>
+      </div>
+      <div style="margin-top:8px"><span class="band b-med">Threat: Med-High</span> <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)">growth = FY ended 31 Dec 2025</span></div>
+      <div class="prose">
+        <div class="pcell"><div class="ph">What it does</div><p>Broad network-security franchise: FortiGate firewalls (custom ASIC = a real cost moat), SASE, and a genuine lead in OT/IoT security — a niche that grows as AI-driven attacks hit industrial/edge surfaces.</p></div>
+        <div class="pcell"><div class="ph">AI-benefit thesis (evidence)</div><p>FortiAI across SecOps; the OT/IoT and SASE franchises benefit as the defended surface expands. Profitable, self-funding the pivot. The unglamorous edge/OT exposure is underrated in an agentic world where physical and edge systems get targeted.</p></div>
+        <div class="pcell threat"><div class="ph">Threat to its own model</div><p>Hardware-anchored revenue is more commoditizable; basic firewalling and signature detection are exactly where "free native LLM capability" nibbles. SASE is a crowded knife-fight with ZS and PANW.</p></div>
+        <div class="net"><div class="ph">Net read</div><p>A solid, profitable beneficiary with a differentiated OT/edge angle — but 14.7× already credits much of that, and the commoditization tail is fatter than for the identity/data names. Quality, partially priced.</p></div>
+      </div>
+    </div>
+
+    <!-- PANW -->
+    <div class="row">
+      <div class="rtop">
+        <div class="co"><span class="nm">Palo Alto Networks <span class="tagline t-win">structural winner</span></span><span class="tk">PANW · NASDAQ</span></div>
+        <div class="qt"><span class="lab">Mkt cap</span><span class="val">$196.1B</span></div>
+        <div class="qt"><span class="lab">EV/Sales</span><span class="val">18.5×</span></div>
+        <div class="qt"><span class="lab">Rev YoY</span><span class="val">14.9%</span></div>
+        <div class="qt"><span class="lab">Benefit</span><span class="rankchip">1</span></div>
+      </div>
+      <div style="margin-top:8px"><span class="band b-low">Threat: Med-Low</span> <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)">growth = FY ended 31 Jul 2025; NGS ARR grows faster</span></div>
+      <div class="prose">
+        <div class="pcell"><div class="ph">What it does</div><p>The broadest platform: network, Prisma cloud/SASE, Cortex XSIAM (AI-driven SOC), plus — uniquely — a full AI-security and identity stack assembled by M&A.</p></div>
+        <div class="pcell"><div class="ph">AI-benefit thesis (evidence)</div><p>The most complete build in the group, all shipped: <b>Prisma AIRS 3.0</b> (AI runtime security + AI Agent Gateway, from Protect AI); <b>Koi</b> acquisition (closed Apr 2026) created "Agentic Endpoint Security" for coding-agent surfaces; <b>CyberArk</b> ($25B, closed Feb 2026) makes identity — human, machine <em>and</em> agentic — a core pillar; Cortex XSIAM + NVIDIA DOCA Argus for silicon-level SOC. Arora is spending real money to <em>own</em> the AI-security categories rather than narrate them.</p></div>
+        <div class="pcell threat"><div class="ph">Threat to its own model</div><p>Arora himself concedes some functionality will commoditize against free native LLM capability; Google-Wiz pressures Prisma Cloud. But scale, platformization lock-in and now end-to-end agentic coverage make PANW a consolidation <em>beneficiary</em>, not victim.</p></div>
+        <div class="net"><div class="ph">Net read</div><p>My #1 on positioning and the clearest structural winner. At 18.5× it's not cheap, but it's the most reasonably-priced of the mega-platforms relative to how completely it now owns the AI-security categories. The integration risk of three big deals is the thing to watch, not the thesis.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GROUP: SSE / SASE / ZERO TRUST -->
+  <div class="group">
+    <div class="ghead"><span class="gnum">C</span><span class="gname">SSE / SASE / Zero-Trust & edge</span><span class="gtag">the enforcement layer for agent traffic</span></div>
+
+    <!-- NET -->
+    <div class="row">
+      <div class="rtop">
+        <div class="co"><span class="nm">Cloudflare <span class="tagline t-priced">priced-in</span></span><span class="tk">NET · NYSE</span></div>
+        <div class="qt"><span class="lab">Mkt cap</span><span class="val">$79.5B</span></div>
+        <div class="qt"><span class="lab">EV/Sales</span><span class="val">35.3×</span></div>
+        <div class="qt"><span class="lab">Rev YoY</span><span class="val">29.8%</span></div>
+        <div class="qt"><span class="lab">Benefit</span><span class="rankchip">3</span></div>
+      </div>
+      <div style="margin-top:8px"><span class="band b-med">Threat: Medium</span> <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)">growth = FY Dec 2025; Q1'26 rev +34%</span></div>
+      <div class="prose">
+        <div class="pcell"><div class="ph">What it does</div><p>Network/CDN + zero-trust (Cloudflare One) + developer compute (Workers). Sits in front of a huge share of the web — which is exactly why agentic AI is structurally <em>its</em> tailwind.</p></div>
+        <div class="pcell"><div class="ph">AI-benefit thesis (evidence)</div><p>The only name here with an AI-native <em>monetization</em> wedge, not just AI defense: bots now generate ~57.5% of web requests (Cloudflare Radar, Jun 2026), and Cloudflare turned that into <b>pay-per-crawl</b> (HTTP 402, Cloudflare as merchant of record) plus bot management, AI Gateway and Firewall-for-AI. More agents = more traffic across its network = more to meter and protect.</p></div>
+        <div class="pcell threat"><div class="ph">Threat to its own model</div><p>Workers/AI-gateway overlap with hyperscalers; pay-per-crawl economics are still unproven at scale and depend on publisher/AI-lab cooperation. The dominant risk is simply the 35.3× multiple — the richest in the group.</p></div>
+        <div class="net"><div class="ph">Net read</div><p>The most elegant structural beneficiary of agentic AI, and the market knows it — it held up best in the selloff. Benefit is real and largely priced. Great business; entry point does the work.</p></div>
+      </div>
+    </div>
+
+    <!-- NTSK -->
+    <div class="row">
+      <div class="rtop">
+        <div class="co"><span class="nm">Netskope <span class="tagline t-trap">threatened</span></span><span class="tk">NTSK · NASDAQ</span></div>
+        <div class="qt"><span class="lab">Mkt cap</span><span class="val">$3.66B</span></div>
+        <div class="qt"><span class="lab">EV/Sales</span><span class="val">5.6×</span></div>
+        <div class="qt"><span class="lab">Rev YoY</span><span class="val">31.7%</span></div>
+        <div class="qt"><span class="lab">Benefit</span><span class="rankchip">15</span></div>
+      </div>
+      <div style="margin-top:8px"><span class="band b-high">Threat: High</span> <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)">growth = FY ended 31 Jan 2026 · IPO'd Sep 2025</span></div>
+      <div class="prose">
+        <div class="pcell"><div class="ph">What it does</div><p>SSE/SASE pure-play (secure web gateway, CASB, ZTNA) with a strong data-in-motion / DLP story — directly relevant to stopping data exfiltration through GenAI apps.</p></div>
+        <div class="pcell"><div class="ph">AI-benefit thesis (evidence)</div><p>Fastest reported grower in the table (31.7%) and well-placed on "what data leaves the building via AI." Genuinely good product fit for the data-exfiltration surface.</p></div>
+        <div class="pcell threat"><div class="ph">Threat to its own model</div><p>Newly public, deeply unprofitable (SBC ~66% of revenue, negative FCF), in a category being squeezed by ZS and PANW, and down ~68% from its post-IPO high as the AI-disruption tape hit unprofitable SaaS hardest. Financing/dilution risk is live.</p></div>
+        <div class="net"><div class="ph">Net read</div><p>Best top-line growth, worst quality. The growth makes it tempting; the cash burn + crowded category + macro tape make it the high-beta lottery ticket, not the asymmetric value.</p></div>
+      </div>
+    </div>
+
+    <!-- ZS -->
+    <div class="row">
+      <div class="rtop">
+        <div class="co"><span class="nm">Zscaler <span class="tagline t-asym">asymmetric</span></span><span class="tk">ZS · NASDAQ</span></div>
+        <div class="qt"><span class="lab">Mkt cap</span><span class="val">$20.2B</span></div>
+        <div class="qt"><span class="lab">EV/Sales</span><span class="val">6.6×</span></div>
+        <div class="qt"><span class="lab">Rev YoY</span><span class="val">23.3%</span></div>
+        <div class="qt"><span class="lab">Benefit</span><span class="rankchip">4</span></div>
+      </div>
+      <div style="margin-top:8px"><span class="band b-low">Threat: Med-Low</span> <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)">growth = FY Jul 2025; Q2'26 ARR +25% to $3.36B</span></div>
+      <div class="prose">
+        <div class="pcell"><div class="ph">What it does</div><p>The largest pure SSE / zero-trust platform — an inline proxy that brokers every connection between user (or agent) and app. Three stated pillars: AI Security, Zero Trust Everywhere, Data Security. Bought Red Canary to add MDR.</p></div>
+        <div class="pcell"><div class="ph">AI-benefit thesis (evidence)</div><p>The architecture <em>is</em> the thesis: agentic workflows multiply machine-to-app connections, and an inline zero-trust broker is the natural place to authorize and inspect them. ARR +25% (≈21% organic) with Rule-of-62 profitability — operationally this is not a broken business.</p></div>
+        <div class="pcell threat"><div class="ph">Threat to its own model</div><p>Lower than detection-based peers: an <em>enforcement</em> layer is far harder for a general model to commoditize than detection logic — you still need something in the path that says yes/no. Risks are competitive (PANW/Cloudflare) and architectural (service-mesh-native alternatives), not "the LLM replaces me."</p></div>
+        <div class="net"><div class="ph">Net read</div><p><b>Top asymmetric pick.</b> Rank-4 positioning, ~25% ARR growth, durable enforcement moat — yet the multiple compressed to 6.6× (≈63% below its high) in a selloff that punished the sector for a threat ZS is relatively insulated from. Benefit real; recognition lagging.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GROUP: IDENTITY -->
+  <div class="group">
+    <div class="ghead"><span class="gnum">D</span><span class="gname">Identity / IAM / agentic identity</span><span class="gtag">the control plane for non-human identities</span></div>
+
+    <!-- OKTA -->
+    <div class="row">
+      <div class="rtop">
+        <div class="co"><span class="nm">Okta <span class="tagline t-asym">option value</span></span><span class="tk">OKTA · NASDAQ</span></div>
+        <div class="qt"><span class="lab">Mkt cap</span><span class="val">$19.6B</span></div>
+        <div class="qt"><span class="lab">EV/Sales</span><span class="val">6.4×</span></div>
+        <div class="qt"><span class="lab">Rev YoY</span><span class="val">11.8%</span></div>
+        <div class="qt"><span class="lab">Benefit</span><span class="rankchip">6</span></div>
+      </div>
+      <div style="margin-top:8px"><span class="band b-med">Threat: Medium</span> <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)">growth = FY ended 31 Jan 2026</span></div>
+      <div class="prose">
+        <div class="pcell"><div class="ph">What it does</div><p>Neutral identity platform — workforce (Okta) + developer/customer (Auth0). Pushing hard into agentic identity: an "identity security fabric" for human + machine + AI-agent identities.</p></div>
+        <div class="pcell"><div class="ph">AI-benefit thesis (evidence)</div><p>Concrete and early: <b>Cross App Access (XAA)</b> — an OAuth extension co-developed with AWS/Google/Salesforce/Box to govern agent-to-app access and the recommended way to connect MCP servers; <b>Auth0 for AI Agents</b>; <b>Okta for AI Agents</b> (GA 30 Apr 2026) for discovering/registering/governing agents. Gartner: 40% of enterprise apps will embed task-specific agents — every one needs an identity Okta wants to issue and govern.</p></div>
+        <div class="pcell threat"><div class="ph">Threat to its own model</div><p>Current growth is only ~12% and agent-identity monetization is nascent. Microsoft Entra bundles aggressively and PANW now owns CyberArk — Okta's neutrality is a moat but also leaves it fighting on two fronts.</p></div>
+        <div class="net"><div class="ph">Net read</div><p>A real call option on agentic identity at 6.4× — but with execution/competition risk SailPoint has less of. Lower-conviction asymmetric: the platform is right, the growth needs to inflect to prove the option is in-the-money.</p></div>
+      </div>
+    </div>
+
+    <!-- SAIL -->
+    <div class="row">
+      <div class="rtop">
+        <div class="co"><span class="nm">SailPoint <span class="tagline t-asym">asymmetric</span></span><span class="tk">SAIL · NASDAQ</span></div>
+        <div class="qt"><span class="lab">Mkt cap</span><span class="val">$7.56B</span></div>
+        <div class="qt"><span class="lab">EV/Sales</span><span class="val">6.4×</span></div>
+        <div class="qt"><span class="lab">Rev YoY</span><span class="val">24.4%</span></div>
+        <div class="qt"><span class="lab">Benefit</span><span class="rankchip">5</span></div>
+      </div>
+      <div style="margin-top:8px"><span class="band b-low">Threat: Low-Med</span> <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)">growth = FY Jan 2026 · ARR +28%, SaaS ARR +38% to $746M</span></div>
+      <div class="prose">
+        <div class="pcell"><div class="ph">What it does</div><p>The leader in identity governance (IGA) — who should have access to what, enforced and audited. Re-IPO'd Feb 2025 out of Thoma Bravo (note: high intangibles/goodwill on the balance sheet from that deal).</p></div>
+        <div class="pcell"><div class="ph">AI-benefit thesis (evidence)</div><p>The purest public play on the cleanest sub-thesis. As enterprises field armies of agents, the governance control plane — discover every agent, scope least-privilege, govern the lifecycle — becomes <em>more</em> essential, not less. Evidence is in the numbers: ARR +28% and SaaS ARR +38%, with management explicitly positioning as "the security backbone for AI-powered enterprises."</p></div>
+        <div class="pcell threat"><div class="ph">Threat to its own model</div><p>Among the lowest in the table: governance is a policy/audit control plane that AI makes harder to live without, and is awkward to replicate with a general model. Real risk is competitive — PANW/CyberArk, Microsoft, SaaS-transition optics — not commoditization.</p></div>
+        <div class="net"><div class="ph">Net read</div><p><b>Second asymmetric pick.</b> Strongest growth-to-multiple in the identity group, the lowest self-threat, and a sub-thesis (agentic identity) the rest of the industry is validating with $25B checks. The IGA control plane is exactly what an agent-saturated enterprise can't run without.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GROUP: DATA SECURITY / RESILIENCE -->
+  <div class="group">
+    <div class="ghead"><span class="gnum">E</span><span class="gname">Data security / DSPM / cyber-resilience</span><span class="gtag">securing the fuel and the blast radius</span></div>
+
+    <!-- CVLT -->
+    <div class="row">
+      <div class="rtop">
+        <div class="co"><span class="nm">Commvault <span class="tagline t-priced">mixed</span></span><span class="tk">CVLT · NASDAQ</span></div>
+        <div class="qt"><span class="lab">Mkt cap</span><span class="val">$5.36B</span></div>
+        <div class="qt"><span class="lab">EV/Sales</span><span class="val">4.5×</span></div>
+        <div class="qt"><span class="lab">Rev YoY</span><span class="val">18.9%</span></div>
+        <div class="qt"><span class="lab">Benefit</span><span class="rankchip">12</span></div>
+      </div>
+      <div style="margin-top:8px"><span class="band b-med">Threat: Medium</span> <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)">growth = FY ended 31 Mar 2026</span></div>
+      <div class="prose">
+        <div class="pcell"><div class="ph">What it does</div><p>Data protection + cyber-resilience (backup/recovery, Metallic SaaS, clean-room recovery). The "get back up after the breach" layer.</p></div>
+        <div class="pcell"><div class="ph">AI-benefit thesis (evidence)</div><p>AI-accelerated attacks raise the premium on rapid, clean recovery; SaaS mix shift (Metallic) reaccelerated growth to ~19% and the business is profitable — a quality-buffer most mid-caps here lack.</p></div>
+        <div class="pcell threat"><div class="ph">Threat to its own model</div><p>Backup/recovery is somewhat commoditizable and hyperscalers offer native resilience; competes directly with the faster-growing Rubrik.</p></div>
+        <div class="net"><div class="ph">Net read</div><p>A profitable, fairly-priced second-order beneficiary. Sensible quality exposure to the "blast radius" side of the thesis; not a category owner.</p></div>
+      </div>
+    </div>
+
+    <!-- RBRK -->
+    <div class="row">
+      <div class="rtop">
+        <div class="co"><span class="nm">Rubrik <span class="tagline t-win">structural winner</span></span><span class="tk">RBRK · NYSE</span></div>
+        <div class="qt"><span class="lab">Mkt cap</span><span class="val">$14.5B</span></div>
+        <div class="qt"><span class="lab">EV/Sales</span><span class="val">10.6×</span></div>
+        <div class="qt"><span class="lab">Rev YoY</span><span class="val">48.5%</span></div>
+        <div class="qt"><span class="lab">Benefit</span><span class="rankchip">8</span></div>
+      </div>
+      <div style="margin-top:8px"><span class="band b-med">Threat: Medium</span> <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)">growth = FY Jan 2026 (incl. model transition)</span></div>
+      <div class="prose">
+        <div class="pcell"><div class="ph">What it does</div><p>Data security + cyber-resilience born cloud-native: backup/recovery, ransomware recovery, and DSPM ("what sensitive data do we have, where, who/what can touch it").</p></div>
+        <div class="pcell"><div class="ph">AI-benefit thesis (evidence)</div><p>Fastest grower here (48.5%; flattered by the IPO-era transition, but subscription ARR growth is genuinely strong). DSPM is squarely in the thesis — you can't govern what an AI agent accesses without knowing where the sensitive data is. Building data-for-AI and security-data tooling on top.</p></div>
+        <div class="pcell threat"><div class="ph">Threat to its own model</div><p>Resilience/backup commoditization and hyperscaler-native offerings; still GAAP-unprofitable. But the DSPM + recovery combination is defensible.</p></div>
+        <div class="net"><div class="ph">Net read</div><p>The reasonably-valued growth winner of the group: 48% growth for 10.6× sales is the most attractive growth-to-multiple among the higher-benefit names. A credible honorable-mention to the asymmetric trio.</p></div>
+      </div>
+    </div>
+
+    <!-- VRNS -->
+    <div class="row">
+      <div class="rtop">
+        <div class="co"><span class="nm">Varonis <span class="tagline t-priced">mixed</span></span><span class="tk">VRNS · NASDAQ</span></div>
+        <div class="qt"><span class="lab">Mkt cap</span><span class="val">$3.92B</span></div>
+        <div class="qt"><span class="lab">EV/Sales</span><span class="val">6.5×</span></div>
+        <div class="qt"><span class="lab">Rev YoY</span><span class="val">13.2%</span></div>
+        <div class="qt"><span class="lab">Benefit</span><span class="rankchip">11</span></div>
+      </div>
+      <div style="margin-top:8px"><span class="band b-med">Threat: Medium</span> <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)">growth = FY Dec 2025; reported optics depressed by SaaS shift</span></div>
+      <div class="prose">
+        <div class="pcell"><div class="ph">What it does</div><p>Data-security specialist: discovers sensitive data, maps who/what can access it, and watches for abnormal access — data access governance + DSPM + DDR.</p></div>
+        <div class="pcell"><div class="ph">AI-benefit thesis (evidence)</div><p>Arguably the most thesis-relevant question in the building — "what can this agent actually reach?" Mid-teens ARR growth understated by the ongoing SaaS transition. Genuinely sits on the prompt-injection/over-permissioned-agent risk.</p></div>
+        <div class="pcell threat"><div class="ph">Threat to its own model</div><p>DSPM is now contested by Rubrik, Microsoft Purview and the cloud platforms; execution on the SaaS pivot has been choppy.</p></div>
+        <div class="net"><div class="ph">Net read</div><p>Right place (data + access for agents), crowded competitively. A thesis-relevant data-security name whose growth needs to convince through the transition. Watch, don't lead.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GROUP: VULN MGMT -->
+  <div class="group">
+    <div class="ghead"><span class="gnum">F</span><span class="gname">Vulnerability management / exposure</span><span class="gtag">most exposed to auto-discovery & consolidation</span></div>
+
+    <!-- QLYS -->
+    <div class="row">
+      <div class="rtop">
+        <div class="co"><span class="nm">Qualys <span class="tagline t-trap">threatened</span></span><span class="tk">QLYS · NASDAQ</span></div>
+        <div class="qt"><span class="lab">Mkt cap</span><span class="val">$3.92B</span></div>
+        <div class="qt"><span class="lab">EV/Sales</span><span class="val">5.4×</span></div>
+        <div class="qt"><span class="lab">Rev YoY</span><span class="val">10.1%</span></div>
+        <div class="qt"><span class="lab">Benefit</span><span class="rankchip">13</span></div>
+      </div>
+      <div style="margin-top:8px"><span class="band b-high">Threat: High</span> <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)">growth = FY ended 31 Dec 2025 · very high margins/ROIC</span></div>
+      <div class="prose">
+        <div class="pcell"><div class="ph">What it does</div><p>Cloud-based vulnerability management and compliance; pushing TruRisk AI for risk prioritization. Exceptionally profitable (ROIC ~29%).</p></div>
+        <div class="pcell"><div class="ph">AI-benefit thesis (evidence)</div><p>More AI-written code = more vulnerabilities to find and prioritize, and TruRisk aims to ride that. The cash generation is real.</p></div>
+        <div class="pcell threat"><div class="ph">Threat to its own model</div><p>Highest-irony exposure in the table: scanning-for-vulns is precisely the task the Feb 2026 autonomous code-scanners attack. If finding-and-prioritizing bugs trends toward a model feature, standalone VM compresses. Plus consolidation pressure from CNAPP/platform suites. 10% growth says share is already leaking.</p></div>
+        <div class="net"><div class="ph">Net read</div><p>Looks like a cheap, high-quality compounder; reads as the name whose core job AI is most directly automating. Quality melting-ice-cube — the low multiple is the market being approximately right.</p></div>
+      </div>
+    </div>
+
+    <!-- RPD -->
+    <div class="row">
+      <div class="rtop">
+        <div class="co"><span class="nm">Rapid7 <span class="tagline t-trap">trap risk</span></span><span class="tk">RPD · NASDAQ</span></div>
+        <div class="qt"><span class="lab">Mkt cap</span><span class="val">$0.45B</span></div>
+        <div class="qt"><span class="lab">EV/Sales</span><span class="val">1.25×</span></div>
+        <div class="qt"><span class="lab">Rev YoY</span><span class="val">1.9%</span></div>
+        <div class="qt"><span class="lab">Benefit</span><span class="rankchip">18</span></div>
+      </div>
+      <div style="margin-top:8px"><span class="band b-high">Threat: Very High</span> <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)">growth = FY Dec 2025 · EV ~$1.07B (net debt &gt; equity value)</span></div>
+      <div class="prose">
+        <div class="pcell"><div class="ph">What it does</div><p>VM (InsightVM), SIEM/MDR (InsightIDR), and managed detection — a sub-scale generalist spanning two pressured categories.</p></div>
+        <div class="pcell"><div class="ph">AI-benefit thesis (evidence)</div><p>Thin. The TAM is rising, but RPD isn't capturing it — growth has stalled to ~2% and net-new momentum has gone.</p></div>
+        <div class="pcell threat"><div class="ph">Threat to its own model</div><p>Hit from every direction: VM exposed to auto-discovery, SIEM/MDR being absorbed by CRWD/PANW/Microsoft, sub-scale R&D, and a balance sheet where net debt exceeds the equity value (EV &gt; 2× market cap). Strategic-review / take-out chatter is doing the heavy lifting in the stock.</p></div>
+        <div class="net"><div class="ph">Net read</div><p>The clearest value-trap-or-buyout binary. At 1.25× sales it's optically the cheapest thing here — but the cheapness encodes a structurally challenged, levered #3. Special-situation, not thesis.</p></div>
+      </div>
+    </div>
+
+    <!-- TENB -->
+    <div class="row">
+      <div class="rtop">
+        <div class="co"><span class="nm">Tenable <span class="tagline t-trap">threatened</span></span><span class="tk">TENB · NASDAQ</span></div>
+        <div class="qt"><span class="lab">Mkt cap</span><span class="val">$2.96B</span></div>
+        <div class="qt"><span class="lab">EV/Sales</span><span class="val">3.2×</span></div>
+        <div class="qt"><span class="lab">Rev YoY</span><span class="val">11.0%</span></div>
+        <div class="qt"><span class="lab">Benefit</span><span class="rankchip">17</span></div>
+      </div>
+      <div style="margin-top:8px"><span class="band b-high">Threat: High</span> <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)">growth = FY ended 31 Dec 2025</span></div>
+      <div class="prose">
+        <div class="pcell"><div class="ph">What it does</div><p>Vulnerability/exposure management (Nessus heritage) with a CNAPP push (Ermetic) and an OT/exposure-management story.</p></div>
+        <div class="pcell"><div class="ph">AI-benefit thesis (evidence)</div><p>Exposure management should benefit as surfaces multiply, and the OT angle has merit. But monetization of the AI angle is modest and growth has slowed to ~11%.</p></div>
+        <div class="pcell threat"><div class="ph">Threat to its own model</div><p>Double-squeezed: core VM exposed to AI auto-discovery, and its CNAPP ambition now faces a Google-backed Wiz plus the platform suites. Cloud-security adoption as a standalone suite has been slower than hoped.</p></div>
+        <div class="net"><div class="ph">Net read</div><p>Cheap, but in two categories AI and the hyperscalers are actively compressing. The 3.2× multiple is a fair reflection of the squeeze, not a hidden bargain.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GROUP: ADJACENT -->
+  <div class="group">
+    <div class="ghead"><span class="gnum">G</span><span class="gname">Adjacent infrastructure & consumer</span><span class="gtag">spend beneficiaries one step removed</span></div>
+
+    <!-- DDOG -->
+    <div class="row">
+      <div class="rtop">
+        <div class="co"><span class="nm">Datadog <span class="tagline t-priced">priced-in</span></span><span class="tk">DDOG · NASDAQ</span></div>
+        <div class="qt"><span class="lab">Mkt cap</span><span class="val">$79.4B</span></div>
+        <div class="qt"><span class="lab">EV/Sales</span><span class="val">21.9×</span></div>
+        <div class="qt"><span class="lab">Rev YoY</span><span class="val">27.7%</span></div>
+        <div class="qt"><span class="lab">Benefit</span><span class="rankchip">7</span></div>
+      </div>
+      <div style="margin-top:8px"><span class="band b-med">Threat: Med-High</span> <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)">growth = FY ended 31 Dec 2025</span></div>
+      <div class="prose">
+        <div class="pcell"><div class="ph">What it does</div><p>Observability platform expanding into security (Cloud SIEM, Cloud Security Management, App & API Protection). Adjacent, but converging on the SOC.</p></div>
+        <div class="pcell"><div class="ph">AI-benefit thesis (evidence)</div><p>"More systems to monitor" is the Ives "second act": LLM Observability and Bits AI agents target the new problem of watching fleets of AI agents and AI apps. Genuine usage tailwind from AI workloads on customers' infra.</p></div>
+        <div class="pcell threat"><div class="ph">Threat to its own model</div><p>The sharpest "AI eats software" target in this set — if agents self-instrument and models analyze telemetry natively, usage-based observability faces deflation. It fell ~11% in the Feb selloff <em>despite</em> record bookings, which tells you how the tape views it. 21.9× leaves little cushion.</p></div>
+        <div class="net"><div class="ph">Net read</div><p>Real beneficiary of agent sprawl, but both the multiple and the disruption narrative cut against it. Looks like a winner; carries more model-displacement risk than its price admits.</p></div>
+      </div>
+    </div>
+
+    <!-- AKAM -->
+    <div class="row">
+      <div class="rtop">
+        <div class="co"><span class="nm">Akamai <span class="tagline t-priced">mixed</span></span><span class="tk">AKAM · NASDAQ</span></div>
+        <div class="qt"><span class="lab">Mkt cap</span><span class="val">$18.2B</span></div>
+        <div class="qt"><span class="lab">EV/Sales</span><span class="val">~3–4× <span style="font-size:9px">est.</span></span></div>
+        <div class="qt"><span class="lab">Rev YoY</span><span class="val">~mid-1d</span></div>
+        <div class="qt"><span class="lab">Benefit</span><span class="rankchip" style="background:var(--steel-soft)">—</span></div>
+      </div>
+      <div style="margin-top:8px"><span class="band b-med">Threat: Med-High</span> <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)">multiple/growth estimated — verify; not formally ranked</span></div>
+      <div class="prose">
+        <div class="pcell"><div class="ph">What it does</div><p>Legacy CDN transitioning to security (bot management, API security, app/WAF) and edge compute — a slower-growth Cloudflare analog.</p></div>
+        <div class="pcell"><div class="ph">AI-benefit thesis (evidence)</div><p>Security + compute now the growth engine; an entrant in the AI-bot-traffic / pay-per-crawl theme alongside Cloudflare and AWS. Cheaper, but the AI-traffic tailwind is more diluted by the declining CDN base.</p></div>
+        <div class="pcell threat"><div class="ph">Threat to its own model</div><p>CDN secular decline drags the blended story; out-positioned by Cloudflare on the AI-native narrative.</p></div>
+        <div class="net"><div class="ph">Net read</div><p>A cheaper, lower-octane way to touch the AI-traffic theme. Included as adjacent context — left unranked because cyber is only part of the story and I didn't lock its EV/Sales; verify before using.</p></div>
+      </div>
+    </div>
+
+    <!-- GEN -->
+    <div class="row">
+      <div class="rtop">
+        <div class="co"><span class="nm">Gen Digital <span class="tagline t-priced">mixed</span></span><span class="tk">GEN · NASDAQ</span></div>
+        <div class="qt"><span class="lab">Mkt cap</span><span class="val">$14.6B</span></div>
+        <div class="qt"><span class="lab">EV/Sales</span><span class="val">4.5×</span></div>
+        <div class="qt"><span class="lab">Rev YoY</span><span class="val">27.1%*</span></div>
+        <div class="qt"><span class="lab">Benefit</span><span class="rankchip">14</span></div>
+      </div>
+      <div style="margin-top:8px"><span class="band b-med">Threat: Medium</span> <span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-soft)">*FY Apr 2026; growth M&A-driven (MoneyLion) — organic cyber low-single-digit · EV ~$22.4B w/ debt</span></div>
+      <div class="prose">
+        <div class="pcell"><div class="ph">What it does</div><p>Consumer cyber-safety (Norton, Avast, LifeLock, Avira) plus a new fintech leg (MoneyLion). The only consumer-facing name here.</p></div>
+        <div class="pcell"><div class="ph">AI-benefit thesis (evidence)</div><p>AI supercharges consumer-facing attacks — deepfake scams, voice cloning, phishing at volume — and Gen sells exactly that defense (Norton Genie / scam protection) to a billion-user base. Genuine, under-discussed exposure to the social-engineering vector.</p></div>
+        <div class="pcell threat"><div class="ph">Threat to its own model</div><p>The headline 27% is acquisition-driven; organic cyber growth is low-single-digit, and OS/browser makers increasingly bundle AI scam protection for free. Levered balance sheet (EV ≈ $22B).</p></div>
+        <div class="net"><div class="ph">Net read</div><p>The contrarian consumer angle on the social-engineering surge, but the M&A-flattered optics and free-bundling threat keep it a "mixed," not a clean winner. Read the organic number, not the headline.</p></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== ASYMMETRIC ===== -->
+<section style="padding-top:8px"><div class="wrap">
+  <div class="lede">What you actually asked for</div>
+  <h2 class="sec">The most asymmetric names</h2>
+  <p class="secnote">High AI-benefit, the market hasn't re-rated it after the 2026 selloff, <em>and</em> the threat to their own model is lower than peers because they sit on enforcement/governance/recovery layers rather than commoditizable detection logic. Note what's deliberately excluded: CRWD, NET and DDOG are best-in-class but already priced; S, QLYS, TENB, RPD are cheap because they're threatened — the opposite of asymmetric.</p>
+  <div class="cards">
+    <div class="card">
+      <h3>Zscaler</h3><div class="tk">ZS · rank 4 · threat Med-Low</div>
+      <div class="stat"><span>EV/Sales<b>6.6×</b></span><span>Rev YoY<b>23.3%</b></span><span>ARR<b>+25%</b></span></div>
+      <p>An inline zero-trust broker is the natural place to authorize agent-to-app traffic — an enforcement moat a general model can't easily commoditize. ~25% ARR growth and Rule-of-62 profitability, yet ~63% off its high. The selloff punished it for a threat it's relatively insulated from. Top conviction.</p>
+    </div>
+    <div class="card">
+      <h3>SailPoint</h3><div class="tk">SAIL · rank 5 · threat Low-Med</div>
+      <div class="stat"><span>EV/Sales<b>6.4×</b></span><span>Rev YoY<b>24.4%</b></span><span>SaaS ARR<b>+38%</b></span></div>
+      <p>The purest public play on agentic-identity governance — the one sub-thesis the whole industry just validated (PANW paid $25B for CyberArk to own it). An audit/policy control plane gets <em>more</em> indispensable as agents multiply, and is hard to replicate with an LLM. Lowest self-threat of the higher-benefit names.</p>
+    </div>
+    <div class="card alt">
+      <h3>Rubrik</h3><div class="tk">RBRK · rank 8 · threat Medium — honorable mention</div>
+      <div class="stat"><span>EV/Sales<b>10.6×</b></span><span>Rev YoY<b>48.5%</b></span><span>Theme<b>DSPM</b></span></div>
+      <p>48% growth for 10.6× sales is the best growth-to-multiple among higher-benefit names. DSPM ("where's the sensitive data agents could reach") + clean recovery is squarely in the thesis. A notch more self-threat (resilience commoditization, still unprofitable) keeps it honorable-mention rather than core.</p>
+    </div>
+    <div class="card alt">
+      <h3>Okta</h3><div class="tk">OKTA · rank 6 · threat Medium — watch</div>
+      <div class="stat"><span>EV/Sales<b>6.4×</b></span><span>Rev YoY<b>11.8%</b></span><span>Catalyst<b>Agent ID GA</b></span></div>
+      <p>A cheap call option on agentic identity (XAA, Okta for AI Agents) — but ~12% current growth and a two-front fight with Microsoft and PANW/CyberArk mean the option needs a growth inflection to pay. Lower conviction than SAIL; the watch-item if it re-accelerates.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== PRICED-IN VS UNDER-RECOGNIZED ===== -->
+<section style="padding-top:8px"><div class="wrap">
+  <div class="lede">The distinction that matters to you</div>
+  <h2 class="sec">Where the thesis is already in the price</h2>
+  <div class="twocol">
+    <div class="panel">
+      <h3 style="color:var(--ink-soft)">Priced-in — the market already agrees</h3>
+      <ul>
+        <li><b>Cloudflare (35.3×)</b> — the cleanest AI-traffic beneficiary; held up best in the selloff. Benefit fully recognized.</li>
+        <li><b>CrowdStrike (33.5×)</b> — agentic-SOC leadership is consensus; you're paying for perfect execution.</li>
+        <li><b>Datadog (21.9×)</b> — "more to monitor" is priced, and it carries the most "AI-eats-software" risk of the three.</li>
+        <li><b>Palo Alto (18.5×)</b> — the platform-winner narrative is well-known, but it's the most reasonably-priced mega-platform vs. how completely it owns the AI-security categories.</li>
+      </ul>
+    </div>
+    <div class="panel" style="border-top:3px solid var(--steel)">
+      <h3 style="color:var(--steel)">Under-recognized — benefit real, multiple compressed</h3>
+      <ul>
+        <li><b>Zscaler (6.6×)</b> — 25% ARR growth + enforcement moat at a multiple the selloff cut indiscriminately.</li>
+        <li><b>SailPoint (6.4×)</b> — agentic-identity leader growing ARR 28% / SaaS 38%, valued like a slow IAM vendor.</li>
+        <li><b>Rubrik (10.6×)</b> — 48% growth for a DSPM/resilience play that's directly in-thesis.</li>
+        <li><b>Okta (6.4×)</b> — real agent-identity optionality, discounted for ~12% current growth (the catch).</li>
+      </ul>
+      <p style="font-size:12.5px;color:var(--ink-soft);margin:12px 0 0">Don't confuse <b>under-recognized</b> with merely <b>cheap</b>: RPD (1.25×), TENB (3.2×), CHKP (5.0×), QLYS (5.4×) and S (4.7×) are low-multiple because the market has correctly identified their core jobs as the ones AI and the hyperscalers are compressing.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== PRIVATE CONTEXT ===== -->
+<section style="padding-top:8px"><div class="wrap">
+  <div class="lede">Not investable — but they define the board</div>
+  <h2 class="sec">Private leaders & disappeared pure-plays</h2>
+  <p class="secnote">These aren't tickers you can buy, but they're why several public names are repriced — they show where the value and the consolidation are heading. Private valuations below are last-known/approximate and stale; treat as directional only.</p>
+  <div class="ctx">
+    <div class="it"><div class="h">Wiz → Google Cloud</div><div class="b">Closed 11 Mar 2026, $32B (~32× ARR). Cloud security (CNAPP) pulled inside a hyperscaler — the single biggest threat marker for standalone cloud-security (TENB) and for Prisma Cloud / Falcon Cloud.</div></div>
+    <div class="it"><div class="h">CyberArk → Palo Alto</div><div class="b">Closed 11 Feb 2026, ~$25B. The privileged-access / machine + agentic-identity leader is now PANW's identity pillar. Removes the purest identity-security pure-play and supercharges PANW.</div></div>
+    <div class="it"><div class="h">Snyk (private)</div><div class="b">Developer/AppSec & code security — directly in the "AI writes more (vulnerable) code" path. A frequently-cited IPO candidate; an obvious AWS/Microsoft acquisition target post-Wiz.</div></div>
+    <div class="it"><div class="h">Abnormal AI (private)</div><div class="b">AI-native email/behavioral security — the model-vs-model answer to volume AI social-engineering and BEC. The clearest "AI-security-native" leader with no clean public equivalent.</div></div>
+    <div class="it"><div class="h">Protect AI → Palo Alto · Koi → Palo Alto</div><div class="b">AI-security-native startups (model/ML security; agentic-endpoint) now inside Prisma AIRS / AES. The AI-security category is being acquired into the platforms, not IPO'd.</div></div>
+    <div class="it"><div class="h">Hyperscalers (MSFT, GOOGL, CSCO, NVDA)</div><div class="b">Not table rows — they're the consolidation force. Microsoft Security (&gt;$20B rev: Entra, Defender, Sentinel, Security Copilot), Google (Wiz + Mandiant), Cisco (Splunk + Hypershield), NVIDIA (DOCA Argus). The platform-consolidation threat embodied.</div></div>
+  </div>
+</div></section>
+
+<!-- ===== METHODOLOGY & CAVEATS ===== -->
+<section style="padding-top:8px"><div class="wrap">
+  <div class="lede">How I scored it & what I left out</div>
+  <h2 class="sec">Methodology, judgment calls & caveats</h2>
+  <div class="twocol">
+    <div class="panel">
+      <h3>AI-benefit rank (1 = most strategic)</h3>
+      <p style="font-size:13.5px;color:var(--ink-soft);margin:0 0 10px">A qualitative composite — not a formula — weighing five factors:</p>
+      <ol>
+        <li><b>Structural TAM exposure</b> — does AI escalation directly grow what they sell, vs. a passing tailwind?</li>
+        <li><b>Shipped, monetizable AI-security product</b> — design wins / ARR / bookings, not slideware.</li>
+        <li><b>Category ownership</b> — do they <em>own</em> a new AI-security category (agentic identity, AI runtime, AI traffic)?</li>
+        <li><b>Consolidation position</b> — winner-take-more platform, or share-donor?</li>
+        <li><b>Moat durability vs. commoditization</b> — enforcement/governance/recovery layers score higher than detection logic a model can absorb.</li>
+      </ol>
+      <p style="font-size:12.5px;color:var(--ink-soft);margin:10px 0 0">Threat band (Low / Med / High) is the mirror image: commoditization of their core job, hyperscaler consolidation, becoming an AI attack surface themselves, or attackers simply outpacing their model.</p>
+    </div>
+    <div class="panel">
+      <h3>Judgment calls & exclusions</h3>
+      <ul>
+        <li><b>CyberArk removed as a row</b> — acquired by PANW (closed 11 Feb 2026); its quote is frozen. Its thesis now lives inside PANW.</li>
+        <li><b>Mega-caps not ranked as rows</b> — MSFT/GOOGL/CSCO/NVDA are diversified consolidators, not clean expressions; flagged as the consolidation threat instead.</li>
+        <li><b>Gov-services MSSPs (BAH, LDOS) dropped</b> — cyber is a slice of a federal-services P&L and both de-rated on budget/DOGE-era concerns; not clean thesis vehicles.</li>
+        <li><b>Akamai left unranked</b> — included as adjacent context; EV/Sales shown as an estimate, not locked.</li>
+        <li><b>Growth = latest <em>reported</em> FY</b> (date per row), not forward estimates; fiscal years differ (Jan/Mar/Jul/Dec), so YoY figures aren't perfectly contemporaneous.</li>
+        <li><b>Gen Digital's 27% is M&A-driven</b> (MoneyLion); organic cyber growth is low-single-digit.</li>
+        <li>I did <b>not</b> simply echo management framing — every "winner" is scored against its own commoditization risk, and several management darlings land as "priced-in" or "threatened."</li>
+      </ul>
+    </div>
+  </div>
+  <div class="disclaim">
+    <b>Qualitative framework, not investment advice.</b> I'm not a financial adviser and this is not a recommendation to buy or sell anything. Rankings and threat bands are my own subjective judgments. Market caps are FMP intraday quotes for 22 Jun 2026 and EV/Sales are FMP TTM figures — both move constantly, especially in the current high-volatility re-rating; <b>verify every market cap, multiple and corporate-status fact independently before acting</b>. This sector is mid-re-rating on fast-moving AI-disruption news, so prices may be materially different by the time you read this. Private valuations are last-known and likely stale. Do your own work.
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  AI × CYBERSECURITY THESIS MAP · self-directed research · sources: FMP (market data, multiples, growth), SEC filings &amp; company press releases (CRWD, ZS, SAIL, PANW, OKTA, NET, Google, CyberArk), and financial press (CNBC, Stocktwits, TechCrunch) for the 2026 re-rating context · 18 ranked names + adjacents · not investment advice.
+</div></footer>
+
+</body>
+</html>
