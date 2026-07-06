@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BBU Supply Chain Map &amp; Equity Exposure</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --surface: #171a21;
+    --surface2: #1e222b;
+    --border: #2a2f3a;
+    --text: #e6e8ec;
+    --muted: #9aa3b2;
+    --accent: #4fc3f7;
+    --accent2: #ffb74d;
+    --red: #ef5350;
+    --green: #66bb6a;
+    --mono: "SF Mono", "Cascadia Code", Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 40px 28px 80px; }
+  header { border-bottom: 2px solid var(--accent); padding-bottom: 18px; margin-bottom: 30px; }
+  h1 { font-size: 1.9rem; margin: 0 0 6px; }
+  .subtitle { color: var(--muted); font-size: .9rem; max-width: 900px; }
+  h2 { font-size: 1.35rem; margin: 44px 0 14px; color: var(--accent); }
+  h3 { font-size: 1.05rem; margin: 24px 0 10px; }
+  p { max-width: 950px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 18px 0;
+  }
+
+  /* Supply chain flow */
+  .flow { display: flex; flex-wrap: wrap; gap: 10px; align-items: stretch; margin: 20px 0 8px; }
+  .stage {
+    flex: 1 1 180px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 14px;
+    position: relative;
+  }
+  .stage h4 { margin: 0 0 6px; font-size: .95rem; }
+  .stage p { font-size: .8rem; color: var(--muted); margin: 0; }
+  .stage .names { font-size: .78rem; color: var(--text); margin-top: 8px; }
+  .arrow { align-self: center; color: var(--accent); font-size: 1.4rem; flex: 0 0 auto; }
+  .bottleneck-tag {
+    display: inline-block;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-top: 10px;
+  }
+  .bn1 { background: rgba(255,183,77,.15); color: var(--accent2); border: 1px solid var(--accent2); }
+  .bn2 { background: rgba(239,83,80,.15); color: var(--red); border: 1px solid var(--red); }
+  .support { font-size: .85rem; color: var(--muted); margin-top: 14px; }
+  .support strong { color: var(--text); }
+
+  /* Table */
+  .table-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; }
+  table { border-collapse: collapse; width: 100%; font-size: .84rem; min-width: 1050px; }
+  thead th {
+    background: var(--surface2);
+    color: var(--accent);
+    text-align: left;
+    padding: 10px 12px;
+    position: sticky; top: 0;
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody tr:hover { background: rgba(79,195,247,.06); }
+  td.num { font-family: var(--mono); white-space: nowrap; }
+  td.tick { font-family: var(--mono); font-weight: 600; white-space: nowrap; }
+  .cvx { font-weight: 700; white-space: nowrap; }
+  .cvx-5 { color: var(--green); }
+  .cvx-4 { color: #9ccc65; }
+  .cvx-3 { color: var(--accent2); }
+  .cvx-2 { color: #ff8a65; }
+  .cvx-1 { color: var(--red); }
+  .note { font-size: .78rem; color: var(--muted); }
+
+  ul { max-width: 950px; }
+  li { margin: 6px 0; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .disclaimer {
+    margin-top: 40px; padding: 14px 18px;
+    border-left: 3px solid var(--accent2);
+    background: var(--surface);
+    font-size: .82rem; color: var(--muted);
+    border-radius: 0 8px 8px 0;
+  }
+  .sources { font-size: .82rem; columns: 2; column-gap: 40px; }
+  @media (max-width: 800px) { .sources { columns: 1; } .flow { flex-direction: column; } .arrow { transform: rotate(90deg); align-self: flex-start; margin-left: 20px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>BBU (Battery Backup Unit) Supply Chain Map &amp; Equity Exposure</h1>
+  <div class="subtitle">As of July 5, 2026. Market caps converted to USD at approximate spot FX; EV/Sales is trailing twelve months (Financial Modeling Prep). Exposure percentages are rough estimates from public disclosures and press — most companies do not break out BBU revenue.</div>
+</header>
+
+<h2>1. What a BBU is and why demand is exploding</h2>
+<p>A BBU is a lithium-ion battery module that sits inside the server rack (on the power shelf, typically 48–50V DC, moving to 800V DC architectures), providing seconds-to-minutes of ride-through power directly to IT load — replacing or supplementing room-level UPS. Nvidia's GB300 generation effectively standardized BBUs in AI racks to buffer the massive, spiky power draw of GPU clusters. The AI-server BBU market is estimated at ~$2.8B in 2026, growing ~28% CAGR, and hyperscalers (Amazon, Meta, Google, Microsoft) are procuring on 2-year contracts with volume escalators.</p>
+
+<h2>2. Supply chain map</h2>
+<div class="flow">
+  <div class="stage">
+    <h4>Raw materials</h4>
+    <p>Li hydroxide, high-purity graphite, cathode/anode, separators</p>
+    <span class="bottleneck-tag bn1">BOTTLENECK #1 — China-concentrated refining; export-control tail risk</span>
+  </div>
+  <div class="arrow">➔</div>
+  <div class="stage">
+    <h4>High-rate cells</h4>
+    <p>21700/18650 high-power cylindrical; LFP 26650</p>
+    <div class="names">Molicel (TCC), Samsung SDI, LGES, EVE, CBAK</div>
+    <span class="bottleneck-tag bn2">BOTTLENECK #2 — THE BINDING CONSTRAINT: power cells ≠ energy cells; few qualified lines</span>
+  </div>
+  <div class="arrow">➔</div>
+  <div class="stage">
+    <h4>BBU modules / packs</h4>
+    <p>Pack assembly, BMS, enclosure, firmware</p>
+    <div class="names">AES-KY, Delta, LiteOn, Dynapack, Simplo, Celxpert, AcBel</div>
+    <span class="bottleneck-tag bn1">BOTTLENECK #3 — 12–18 mo. hyperscaler qualification moat</span>
+  </div>
+  <div class="arrow">➔</div>
+  <div class="stage">
+    <h4>Power shelf / rack integration</h4>
+    <p>PSU + BBU + busbar</p>
+    <div class="names">Delta, LiteOn, AcBel, Chicony Power, Vertiv</div>
+  </div>
+  <div class="arrow">➔</div>
+  <div class="stage">
+    <h4>Server OEM / Hyperscaler</h4>
+    <p>Quanta, Wiwynn, Foxconn, Dell, SMCI → AWS, Meta, Google, MSFT; Nvidia reference designs</p>
+  </div>
+</div>
+<div class="card support">
+  <strong>Supporting layers:</strong> Power semis &amp; BMS ICs — Infineon (SiC BBU reference designs), MPS, ADI, TI &nbsp;•&nbsp;
+  Alternative chemistries — supercapacitors (Skeleton–AcBel, private), Ni-Zn (ZincFive, private) &nbsp;•&nbsp;
+  System/facility level (BBU-adjacent) — Vertiv, Eaton, Schneider (UPS, busway, switchgear)
+</div>
+
+<h2>3. Where the bottlenecks lie</h2>
+<div class="card">
+  <h3 style="color:var(--red); margin-top:0;">Bottleneck #2 — high-rate cylindrical cells (binding constraint)</h3>
+  <p>BBUs need <em>power</em> cells (ultra-low impedance, 100A+ discharge, 200W+ per 21700 cell, stable at 35–45°C), not commodity energy cells. Only a handful of qualified suppliers exist: Molicel (E-One Moli, subsidiary of TCC 1101.TW) is the incumbent shipping its S Series to major CSPs; Samsung SDI only started mass production of its 40V3 BBU cell in Malaysia in July 2026; LG Energy Solution launched a 2170 BBU line; EVE Energy serves Chinese hyperscalers; CBAK is previewing high-rate LFP 26650s. EV/ESS cell capacity cannot simply be repurposed — qualification, chemistry, and line configuration differ. This is why pack makers like Dynapack and AES cite cell allocation as the gating factor while tripling pack capacity.</p>
+</div>
+<div class="card">
+  <h3 style="color:var(--accent2); margin-top:0;">Bottleneck #3 — qualified pack/module makers</h3>
+  <p>Hyperscaler and Nvidia-reference qualification takes 12–18 months, giving incumbents (AES-KY, Delta, LiteOn, Dynapack, Simplo, Celxpert, AcBel) a 1–2 generation moat and pricing power during the GB300+ ramp.</p>
+</div>
+<div class="card">
+  <h3 style="color:var(--accent2); margin-top:0;">Bottleneck #1 — upstream refining</h3>
+  <p>Lithium hydroxide and high-purity graphite are China-concentrated; a tail risk (export controls) rather than a current constraint. Least constrained: power semis, enclosures, and system integration — broad supplier bases.</p>
+</div>
+
+<h2>4. Stock exposure table</h2>
+<div class="table-scroll">
+<table>
+  <thead>
+    <tr>
+      <th>Ticker</th><th>Company</th><th>Mkt Cap (US$)</th><th>EV/Sales (TTM)</th><th>Role in BBU chain</th><th>~% Exposure</th><th>Convexity (1–5)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="tick">6781.TW</td><td>AES-KY (Advanced Energy Solution)</td><td class="num">~$3.7B</td><td class="num">5.8x</td><td>#1 pure-play BBU pack maker; Nvidia-chain; BBU now profit engine (2025 rev +60%)</td><td class="num">50–65%</td><td class="cvx cvx-5">5 — highest-purity play at scale</td></tr>
+    <tr><td class="tick">3211.TWO</td><td>Dynapack International</td><td class="num">~$2.2B</td><td class="num">4.5x</td><td>BBU packs; tripling capacity (Taiwan + Thailand) for AI DC demand</td><td class="num">25–40%</td><td class="cvx cvx-5">5</td></tr>
+    <tr><td class="tick">3323.TWO</td><td>Celxpert Energy</td><td class="num">~$0.12B</td><td class="num">0.7x</td><td>Micro-cap Li battery pack maker moving into BBU; currently loss-making</td><td class="num">10–20%</td><td class="cvx cvx-4">4 — micro-cap optionality, weak financials</td></tr>
+    <tr><td class="tick">6121.TWO</td><td>Simplo Technology</td><td class="num">~$2.9B</td><td class="num">0.8x</td><td>Notebook battery leader; ships finished BBUs to Amazon &amp; Meta</td><td class="num">10–20%</td><td class="cvx cvx-4">4 — cheap, exposure rising</td></tr>
+    <tr><td class="tick">1101.TW</td><td>TCC Group (Molicel parent)</td><td class="num">~$6.0B</td><td class="num">2.0x</td><td>Owns E-One Moli — the incumbent high-rate BBU cell maker (bottleneck asset)</td><td class="num">10–15% of rev; higher % of value</td><td class="cvx cvx-4">4 — bottleneck asset inside a cement conglomerate</td></tr>
+    <tr><td class="tick">CBAT</td><td>CBAK Energy</td><td class="num">~$0.05B</td><td class="num">0.4x</td><td>US-listed China micro-cap; high-rate LFP 26650 BBU/UPS cells previewed 6/26</td><td class="num">10–30% potential</td><td class="cvx cvx-4">4 — speculative; distressed valuation, execution risk</td></tr>
+    <tr><td class="tick">6282.TW</td><td>AcBel Polytech</td><td class="num">~$1.8B</td><td class="num">1.8x</td><td>Server PSU/power shelf; supercap BBU with Skeleton; HVDC partnerships</td><td class="num">5–15%</td><td class="cvx cvx-3">3</td></tr>
+    <tr><td class="tick">6412.TW</td><td>Chicony Power</td><td class="num">~$1.3B</td><td class="num">1.1x</td><td>Server/rack power supplies incl. BBU-integrated shelves</td><td class="num">5–10%</td><td class="cvx cvx-3">3</td></tr>
+    <tr><td class="tick">2301.TW</td><td>Lite-On Technology</td><td class="num">~$17B</td><td class="num">2.7x</td><td>Rack power + 1U/7kW Battery Backup System for hyperscalers</td><td class="num">5–10% (BBU/BBS)</td><td class="cvx cvx-3">3</td></tr>
+    <tr><td class="tick">006400.KS</td><td>Samsung SDI</td><td class="num">~$25B</td><td class="num">3.3x</td><td>BBU cell mass production (Malaysia, from 7/2026); talks w/ AWS, Meta, Google</td><td class="num">1–5%, rising</td><td class="cvx cvx-3">3 — BBU is the bright spot vs weak EV</td></tr>
+    <tr><td class="tick">300014.SZ</td><td>EVE Energy</td><td class="num">~$18B</td><td class="num">2.3x</td><td>High-rate cells for Chinese hyperscaler BBUs; huge capacity expansion</td><td class="num">~5%</td><td class="cvx cvx-2">2–3</td></tr>
+    <tr><td class="tick">2308.TW</td><td>Delta Electronics</td><td class="num">~$179B</td><td class="num">8.7x</td><td>BBU + power shelf + 800VDC architecture leader; co-leads BBU market share</td><td class="num">2–5% (BBU); higher for AI power overall</td><td class="cvx cvx-2">2 — great company, theme diluted</td></tr>
+    <tr><td class="tick">DELTA.BK</td><td>Delta Electronics (Thailand)</td><td class="num">~$122B</td><td class="num">18.0x</td><td>Delta's manufacturing/listed arm for DC power</td><td class="num">2–5%</td><td class="cvx cvx-1">1 — extreme valuation already</td></tr>
+    <tr><td class="tick">373220.KS</td><td>LG Energy Solution</td><td class="num">~$60B</td><td class="num">4.3x</td><td>2170 BBU cell + JP6 UPS rack; 140GWh NA ESS backlog</td><td class="num">1–3%</td><td class="cvx cvx-2">2</td></tr>
+    <tr><td class="tick">VRT</td><td>Vertiv</td><td class="num">~$115B</td><td class="num">10.7x</td><td>Rack power/UPS/busbar; BBU-adjacent system integration</td><td class="num">&lt;5% BBU-specific; high AI DC overall</td><td class="cvx cvx-2">2 — AI power proxy, not a BBU play</td></tr>
+    <tr><td class="tick">ETN</td><td>Eaton</td><td class="num">~$155B</td><td class="num">6.2x</td><td>Facility-level power, UPS, switchgear</td><td class="num">&lt;2%</td><td class="cvx cvx-1">1</td></tr>
+    <tr><td class="tick">IFX.DE</td><td>Infineon</td><td class="num">~$118B</td><td class="num">7.2x</td><td>SiC/GaN power semis; 24kW BBU reference design for 800VDC</td><td class="num">1–2%</td><td class="cvx cvx-2">2</td></tr>
+    <tr><td class="tick">MPWR</td><td>Monolithic Power</td><td class="num">~$63B</td><td class="num">21.0x</td><td>Power management ICs in power shelves/BBUs</td><td class="num">2–5%</td><td class="cvx cvx-2">2</td></tr>
+    <tr><td class="tick">ADI</td><td>Analog Devices</td><td class="num">~$184B</td><td class="num">14.9x</td><td>BMS and monitoring ICs</td><td class="num">&lt;1%</td><td class="cvx cvx-1">1</td></tr>
+    <tr><td class="tick">6752.T</td><td>Panasonic Holdings</td><td class="num">~$71B</td><td class="num">1.4x</td><td>Cylindrical cell capability; DC energy storage solutions</td><td class="num">&lt;1%</td><td class="cvx cvx-1">1</td></tr>
+    <tr><td class="tick">NVTS</td><td>Navitas</td><td class="num">~$3.5B</td><td class="num">81.7x</td><td>GaN/SiC for 800VDC &amp; BBU power conversion</td><td class="num">5–10%</td><td class="cvx cvx-2">2 — theme-adjacent, valuation extreme</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="note" style="margin-top:10px;"><strong>Not investable directly (private):</strong> ZincFive (Ni-Zn BBU), Skeleton Technologies (supercap BBU, partnered with AcBel), XING Mobility (immersion-cooled 800V BBU), Shenzhen VAPEL, STL Technology.</p>
+
+<h2>5. How to think about convexity</h2>
+<p>The highest convexity sits where the bottleneck meets small revenue bases: <strong>AES-KY</strong> (purest at scale), <strong>Dynapack</strong> (capacity tripling on a $2.2B cap), and the two lottery-ticket micro-caps (<strong>Celxpert</strong>, <strong>CBAK</strong>). <strong>Simplo</strong> stands out on valuation (0.8x EV/S) with real Amazon/Meta BBU shipments. <strong>TCC</strong> is the contrarian way to own the actual bottleneck (Molicel cells) at a cement-conglomerate multiple — sum-of-parts story. The cell makers (SDI, LGES) get a narrative boost but BBU is small vs their EV business; the big integrators (Delta, Vertiv, Eaton) are AI-power plays where BBU per se moves the needle little — and Delta Thailand at 18x EV/S already prices in a lot.</p>
+<p><strong>Key risks:</strong> BBU content per rack could fall if 800VDC + facility-level ESS (grid-scale batteries) absorb the buffering role; supercap/Ni-Zn substitution; hyperscaler in-sourcing; Taiwan concentration risk (most of the pack ecosystem); FX; and rough exposure estimates — companies don't disclose BBU revenue cleanly.</p>
+
+<h2>Sources</h2>
+<div class="sources">
+  <p><a href="https://www.gate.com/news/detail/aes-ky-6781-daily-limit-locked-benefiting-from-ai-computing-power-demand-19624539">Gate News — AES-KY (6781): BBU becomes profit engine</a><br>
+  <a href="https://www.digitimes.com/news/a20260305PD219/demand-data-2026-2025-capacity.html">DigiTimes — Dynapack plans triple BBU capacity expansion</a><br>
+  <a href="https://www.digitimes.com/news/a20251110PD205/dynapack-aesc-battery-component-taiwan.html">DigiTimes — Dynapack and AES double down on BBU production</a><br>
+  <a href="https://www.thelec.net/news/articleView.html?idxno=6792">The Elec — Samsung SDI BBU cell mass production in Malaysia</a><br>
+  <a href="https://www.thelec.net/news/articleView.html?idxno=11535">The Elec — LG Energy Solution AI data center power solutions</a><br>
+  <a href="https://www.molicel.com/newsroom/molicel-s-series-engineered-for-ultimate-safety-in-bbus-data-centers-and-ai-computing/">Molicel — S Series for BBUs, data centers, AI computing</a><br>
+  <a href="https://www.globenewswire.com/news-release/2026/06/25/3317513/0/en/CBAK-Energy-Previews-Next-Generation-High-Rate-LFP-Cells-for-AI-Data-Center-Backup-Power.html">CBAK Energy — next-gen high-rate LFP cells</a></p>
+  <p><a href="https://www.semiconductor-today.com/news_items/2026/jun/infineon2-290626.shtml">Infineon — 24kW SiC BBU reference design (800VDC)</a><br>
+  <a href="https://www.intelmarketresearch.com/battery-backup-unit-power-supply-market-21844">IntelMarketResearch — BBU Power Supply Market 2026–2032</a><br>
+  <a href="https://note.com/qy_research/n/nd69270edcfb3?hl=en">QYResearch — AI Server BBU Market Analysis</a><br>
+  <a href="https://liteon-cips.com/products/battery-backup/battery-backup-system/">Lite-On CIPS — Battery Backup System</a><br>
+  <a href="https://www.graphene-info.com/skeleton-technologies-and-acbel-polytech-unveil-bbu-solution-data-centers">Graphene-Info — Skeleton &amp; AcBel BBU solution</a><br>
+  <a href="https://newsletter.semianalysis.com/p/datacenter-anatomy-part-1-electrical">SemiAnalysis — Datacenter Anatomy Part 1: Electrical Systems</a><br>
+  <a href="https://www.adlertechlabs.com/market/ai-server-bbu-market/">Adler Tech Labs — AI Server BBU market dynamics</a><br>
+  Market caps &amp; EV/Sales: Financial Modeling Prep, July 5, 2026</p>
+</div>
+
+<div class="disclaimer">Not investment advice — I'm not a financial advisor. Exposure and convexity assessments are judgment-based estimates. Market caps converted at approximate FX rates; figures as of July 5, 2026.</div>
+
+</div>
+</body>
+</html>
