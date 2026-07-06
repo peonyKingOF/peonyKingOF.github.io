@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RoboSense (2498.HK) — Customer &amp; Supply Relationship Map</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 24px auto; max-width: 1400px; color: #1a1a1a; line-height: 1.45; padding: 0 16px; }
+  h1 { font-size: 1.7em; margin-bottom: 4px; }
+  h2 { font-size: 1.3em; margin-top: 40px; border-bottom: 3px solid #0a4d8c; padding-bottom: 6px; }
+  h3 { font-size: 1.05em; margin-top: 24px; }
+  .subtitle { color: #555; margin-bottom: 16px; }
+  .note { background: #fff8e1; border-left: 4px solid #f0a500; padding: 10px 14px; margin: 14px 0; font-size: 0.92em; }
+  table { border-collapse: collapse; width: 100%; margin: 14px 0 28px; font-size: 0.86em; }
+  th { background: #0a4d8c; color: #fff; text-align: left; padding: 8px 10px; vertical-align: top; }
+  td { border: 1px solid #c9d4e0; padding: 8px 10px; vertical-align: top; }
+  tr:nth-child(even) td { background: #f4f7fb; }
+  ul { margin: 0; padding-left: 18px; }
+  li { margin-bottom: 6px; }
+  a { color: #0a4d8c; }
+  .tag { display: inline-block; background: #e3edf7; color: #0a4d8c; border-radius: 4px; padding: 1px 7px; font-size: 0.85em; font-weight: 600; margin: 1px 2px 1px 0; white-space: nowrap; }
+  .tag.humanoid { background: #ede3f7; color: #5b2d8c; }
+  .tag.robot { background: #e3f7ea; color: #1c7a44; }
+  .tag.ev { background: #fdeaea; color: #a32020; }
+  .caveat { color: #a35b00; font-size: 0.95em; }
+  .co { font-weight: 700; font-size: 1.05em; }
+  .sumtable td, .sumtable th { text-align: right; }
+  .sumtable td:first-child, .sumtable th:first-child { text-align: left; }
+</style>
+</head>
+<body>
+
+<h1>RoboSense Technology (2498.HK): Who Buys Its Sensors and Robot Components</h1>
+<p class="subtitle">Customer and supply-relationship map, 2021 – mid-2026 · Compiled July 5, 2026 · Sources: HKEX filings (IPO prospectus, annual/interim/quarterly results), company press releases, and third-party trade press and analyst commentary. Links inline in every cell.</p>
+
+<div class="note"><strong>Note on filings:</strong> RoboSense is listed in Hong Kong, not the US, so it has no SEC filings. The primary-source equivalents used here are its HKEX disclosures: the <a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1227/2023122700027.pdf">IPO prospectus (Dec 2023)</a>, <a href="https://www.hkexnews.hk/listedco/listconews/sehk/2024/0426/2024042600628.pdf">FY2023 annual report</a>, <a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0424/2026042400954.pdf">FY2025 annual report (with FY2024 comparatives)</a>, <a href="https://www.hkexnews.hk/listedco/listconews/sehk/2025/0821/2025082101017.pdf">H1 2025 interim results</a>, and the <a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1125/2025112501075.pdf">Q3 2025 unaudited announcement</a>. Filings anonymize most customers ("a leading Chinese NEV maker"); names below come from company press releases and credible trade press, with confidence flagged.</div>
+
+<h2>Executive summary</h2>
+<p>RoboSense sells LiDAR and, increasingly, other robot components into three buckets. <strong>(1) Automotive ADAS</strong> is still the largest by revenue (RMB 1.11B of RMB 1.94B in FY2025): 167+ vehicle-model design wins from 35 automakers, anchored by an effectively exclusive BYD relationship, Geely/Zeekr, and a 2025–26 sweep of Sino-foreign JV brands (FAW Toyota &gt;1.5M cumulative units ordered, Dongfeng Nissan ~1M), with a &gt;9M-unit ADAS backlog entering 2026. <strong>(2) Robotics</strong> is the growth engine — shipments rose from 24,400 units (FY2024) to ~303,000 (FY2025, +1,142%) to 185,500 in Q1 2026 alone, when robotics passed ADAS in units for the first time. The volume driver is robotic lawnmowers (Mammotion's record 1.2M-unit order, Segway Navimow, Roborock), plus unmanned delivery (&gt;90% of leading Chinese players plus Coco Robotics in the US) and robotaxis (exclusive win for Baidu's next-gen Apollo Go; WeRide GXR). <strong>(3) Humanoids</strong> are small in units but strategically central: ~50 humanoid/quadruped partners including Unitree, Agibot, Galbot and EngineAI, the "Qinglong" open-source humanoid (recipient of RoboSense's 1-millionth LiDAR), and a first large-scale Active Camera order from an unnamed leading European humanoid maker (2026). Beyond LiDAR, RoboSense now sells "incremental components": the Active Camera (AC1/AC2) fused sensor, Papert dexterous hands, force sensors, linear actuators and robot domain controllers.</p>
+
+<h2>Table 1 — Humanoid robotics customers &amp; partners</h2>
+<table>
+<thead><tr>
+  <th style="width:24%">Product the RoboSense component is used in</th>
+  <th style="width:16%">Company making that product</th>
+  <th style="width:12%">Technology type</th>
+  <th style="width:48%">Nature of relationship (scale, units, value)</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><ul>
+<li><strong>H1 full-size humanoid</strong> — head-mounted RoboSense <em>Helios</em> mechanical LiDAR; confirmed when H1 units danced at the CCTV 2025 Spring Festival Gala (<a href="https://www.hstong.com/news/detail/25020310302004337">HSTong</a>, <a href="https://finance.sina.com.cn/stock/hkstock/marketalerts/2025-02-03/doc-ineiemnf0524107.shtml">Sina Finance</a>)</li>
+<li><strong>B2 quadruped</strong> — shown with RoboSense high-performance LiDAR at WAIC 2025 (<a href="https://www.robosense.ai/en/news-show-1907">RoboSense WAIC PR</a>)</li>
+<li>Caveat: the smaller G1 humanoid's standard head LiDAR is a Livox Mid-360, not RoboSense — Unitree sources selectively (<a href="https://docs.quadruped.de/projects/g1/html/g1_overview.html">Unitree G1 docs</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">Unitree Robotics (宇树)</span> — Hangzhou; the world's highest-volume humanoid/quadruped maker</li>
+<li>Named by RoboSense as a strategic humanoid partner in both <a href="https://www.robosense.ai/en/news-show-1886">FY2024</a> and <a href="https://www.robosense.ai/en/news-show-1976">FY2025</a> results</li>
+</ul></td>
+<td><span class="tag humanoid">Humanoid robotics</span> <span class="tag robot">Quadruped</span></td>
+<td><ul>
+<li>Strategic partnership; one of the "over 10 humanoid robotics companies globally" named at FY2024 results (Apr 2025), and among the "nearly 50 top-tier humanoid and quadruped robot companies" at FY2025 results (<a href="https://www.robosense.ai/en/news-show-1886">FY2024 PR</a>, <a href="https://www.robosense.ai/en/news-show-1976">FY2025 PR</a>)</li>
+<li>Unit volumes not disclosed. Helios unit price ~RMB 10,000; RoboSense stock jumped &gt;15% on the H1/Gala disclosure (Feb 3, 2025) (<a href="https://finance.sina.com.cn/stock/hkstock/marketalerts/2025-02-03/doc-ineiemnf0524107.shtml">Sina</a>)</li>
+<li>Relationship dates back to RoboSense's IPO-era robotics customer list (RS-LiDAR-16 on early quadrupeds) (<a href="https://finance.sina.com.cn/stock/relnews/hk/2025-03-12/doc-inepkzuz8572275.shtml">CMS deep report</a>)</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li><strong>"Qinglong" (青龙) open-source full-size humanoid</strong> — RoboSense <em>E1R</em> solid-state LiDAR adopted for the public version; RoboSense's 1-millionth LiDAR ever produced was ceremonially delivered to Qinglong, Feb 24, 2025 (<a href="https://www.prnewswire.com/news-releases/robosense-achieves-milestone-with-production-and-delivery-of-its-1-millionth-lidar-302384669.html">PRNewswire</a>, <a href="https://technode.com/2025/02/25/robosense-delivers-one-millionth-lidar-sensor-for-humanoid-robot-qinglong/">TechNode</a>)</li>
+<li><strong>Qinglong Pro</strong> (185 cm, 85 kg) debuted at WAIC 2025 with the <em>AC1 Active Camera</em> — first public AC1 deployment (<a href="https://www.robosense.ai/en/news-show-1907">RoboSense WAIC PR</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">Humanoid Robot (Shanghai) Co.</span> / National-Local Co-built Humanoid Robotics Innovation Center</li>
+<li>Named a strategic partner in <a href="https://www.robosense.ai/en/news-show-1886">FY2024 results</a>; also an AC1 beta partner alongside Singapore's ARC Lab, CASBOT, HUST and BIT (<a href="https://finance.sina.com.cn/tech/csj/2025-03-28/doc-inerexcp7161795.shtml">Sina Tech</a>)</li>
+</ul></td>
+<td><span class="tag humanoid">Humanoid robotics</span></td>
+<td><ul>
+<li>Joint development support plus component supply (E1R LiDAR + AC1); the highest-profile symbolic relationship in the humanoid line (1-millionth-unit delivery) (<a href="https://www.prnewswire.com/news-releases/robosense-achieves-milestone-with-production-and-delivery-of-its-1-millionth-lidar-302384669.html">PRNewswire</a>)</li>
+<li>Qinglong is an open-source platform, so design-in here seeds RoboSense sensors across derivative robots; unit volumes/contract value not disclosed</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li><strong>T800 full-size humanoid</strong> (unveiled Dec 2025; priced from RMB 180,000; mass production planned 2026) — uses RoboSense <em>AC1 Active Camera</em> as its core perception component (<a href="https://botinfo.ai/articles/engineai-t800-humanoid-robot">BotInfo</a>, <a href="https://mikekalil.com/blog/engineai-t800-mass-production/">Kalil</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">EngineAI / Zhongqing (众擎)</span> — Shenzhen humanoid startup; factory is walking distance from RoboSense HQ</li>
+<li>Named partner in <a href="https://www.robosense.ai/en/news-show-1976">FY2025 results</a> and in CEO Qiu's list of humanoid customers (<a href="https://eu.36kr.com/en/p/3739712915816457">36kr</a>)</li>
+</ul></td>
+<td><span class="tag humanoid">Humanoid robotics</span></td>
+<td><ul>
+<li>Design win: AC1 designed into T800 for 2026 mass production; volumes not disclosed (<a href="https://botinfo.ai/articles/engineai-t800-humanoid-robot">BotInfo</a>)</li>
+<li>One of the four humanoid names (Agibot, Unitree, EngineAI, Galbot) called out in the FY2025 results announcement (<a href="https://www.robosense.ai/en/news-show-1976">RoboSense FY2025 PR</a>)</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li>Humanoid robots (specific models not disclosed by RoboSense); Agibot's <strong>Yuanzheng A2</strong> carries a 360° LiDAR consistent with RoboSense supply (<a href="https://eu.36kr.com/en/p/3739712915816457">36kr</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">Agibot / Zhiyuan Robotics (智元)</span> — Shanghai; among China's top-2 humanoid makers by funding</li>
+<li>Repeatedly first-named in RoboSense partner rosters (<a href="https://www.robosense.ai/en/news-show-1976">FY2025 PR</a>, <a href="https://www.robosense.ai/en/tech-show-208">RoboSense blog</a>)</li>
+</ul></td>
+<td><span class="tag humanoid">Humanoid robotics</span></td>
+<td><ul>
+<li>Named top humanoid LiDAR customer/partner in FY2025 results and CEO commentary; no model-level or volume disclosure (<a href="https://www.robosense.ai/en/news-show-1976">FY2025 PR</a>, <a href="https://eu.36kr.com/en/p/3739712915816457">36kr</a>)</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li>Wheeled/bipedal humanoids for retail &amp; logistics (e.g., Galbot G1); model-level component fit not disclosed</li>
+</ul></td>
+<td><ul>
+<li><span class="co">Galbot (银河通用)</span> — Beijing embodied-AI startup backed by CATL and state funds</li>
+</ul></td>
+<td><span class="tag humanoid">Humanoid robotics</span></td>
+<td><ul>
+<li>Named humanoid partner in <a href="https://www.robosense.ai/en/news-show-1976">FY2025 results</a> and RoboSense's 2026 embodied-AI partner roster (<a href="https://www.robosense.ai/en/tech-show-208">RoboSense blog</a>); no volumes disclosed</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li><strong>CASBOT 02</strong> full-size biped — RoboSense <em>Airy</em> 192-beam hemispherical LiDAR embedded in its abdomen, debuted WAIC 2025 (<a href="https://www.robosense.ai/en/news-show-1907">RoboSense WAIC PR</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">CASBOT (灵宝)</span> — Chinese Academy of Sciences-linked humanoid startup; also an AC1 beta partner (<a href="https://finance.sina.com.cn/tech/csj/2025-03-28/doc-inerexcp7161795.shtml">Sina Tech</a>)</li>
+</ul></td>
+<td><span class="tag humanoid">Humanoid robotics</span></td>
+<td><ul>
+<li>Design win (Airy) plus AC1 beta program participation; volumes not disclosed (<a href="https://www.robosense.ai/en/news-show-1907">RoboSense WAIC PR</a>)</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li>Next-generation humanoid robot — large-scale order for the <em>Active Camera (AC1/AC2)</em> series, with mass production and delivery in 2026 (<a href="https://autonews.gasgoo.com/articles/icv/robosenses-active-camera-series-secures-order-from-leading-humanoid-robotics-firm-2043940954359115776">Gasgoo</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">Unnamed "leading European humanoid robot manufacturer"</span></li>
+<li class="caveat">Inference (not confirmed): NEURA Robotics (Germany) is the only European humanoid maker on RoboSense's published partner list ("Agibot, Unitree, UniOne, Galbot, DOBOT, NEURA, Pudu Robotics, and China Mobile") (<a href="https://www.robosense.ai/en/tech-show-208">RoboSense blog</a>)</li>
+</ul></td>
+<td><span class="tag humanoid">Humanoid robotics</span></td>
+<td><ul>
+<li>Announced Apr 2026: first <strong>large-scale commercial order</strong> for the AC series from a humanoid maker — RoboSense calls it the shift "from market validation to commercial-scale deployment"; value/units not disclosed (<a href="https://autonews.gasgoo.com/articles/icv/robosenses-active-camera-series-secures-order-from-leading-humanoid-robotics-firm-2043940954359115776">Gasgoo</a>, <a href="https://www.prnewswire.com/news-releases/robosense-asserts-global-dominance-in-lidar-for-robotics-with-1-458-8-yoy-shipment-surge-in-q1-2026--302783148.html">Q1 2026 PR</a>)</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li>Humanoids, quadrupeds and embodied-AI robots across ~50 companies; other named partners include <strong>Langyi Robot</strong> (Airy in its navigation module), <strong>UniOne</strong>, <strong>DOBOT</strong>, and <strong>China Mobile's Lingxi quadruped</strong> (<a href="https://www.robosense.ai/en/news-show-1907">WAIC PR</a>, <a href="https://www.robosense.ai/en/tech-show-208">partner roster</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">~50 humanoid/quadruped makers</span> (aggregate)</li>
+<li>RoboSense served &gt;3,400 robotics customers overall by Q3 2025 (<a href="https://stockn.xueqiu.com/02498/20251125890038.pdf">HKEX Q3 2025 filing</a>)</li>
+</ul></td>
+<td><span class="tag humanoid">Humanoid robotics</span> <span class="tag robot">Embodied AI</span></td>
+<td><ul>
+<li>FY2025 results: partnered with "nearly 50 top-tier humanoid and quadruped robot companies"; RoboSense claims top-selling LiDAR provider for humanoid robots and is the only LiDAR-focused firm in Morgan Stanley's "Humanoid 100" map (<a href="https://www.robosense.ai/en/news-show-1976">FY2025 PR</a>, <a href="https://www.robosense.ai/en/news-show-1872">MS Humanoid 100</a>)</li>
+<li>AC1 drew engagement from 400+ developers/robot companies per the Q3 2025 filing (<a href="https://stockn.xueqiu.com/02498/20251125890038.pdf">HKEX PDF</a>)</li>
+<li class="caveat">Checked but NO supply relationship found: UBTech, Kepler, Fourier, LimX, Booster, Stardust/Astribot, GAC GoMate; Xiaomi CyberOne and XPeng Iron are vision-only (<a href="https://www.woshipm.com/ai/6288824.html">woshipm survey</a>)</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+<h2>Table 2 — Non-humanoid robotics &amp; other (non-automotive) customers</h2>
+<table>
+<thead><tr>
+  <th style="width:24%">Product the RoboSense component is used in</th>
+  <th style="width:16%">Company making that product</th>
+  <th style="width:12%">Technology type</th>
+  <th style="width:48%">Nature of relationship (scale, units, value)</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><ul>
+<li><strong>LUBA / YUKA robotic lawnmowers</strong> — RoboSense Flash solid-state E-platform (<em>E1R</em>-class) LiDAR for perimeter-wire-free navigation (<a href="https://www.21jingji.com/article/20250603/herald/a881c1495114f7373d8ba8857e44db99.html">21jingji</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">Mammotion (库犸科技)</span> — Shenzhen consumer yard-robot maker (<a href="https://interestingengineering.com/innovation/china-robotic-mower-lidar">Interesting Engineering</a>)</li>
+</ul></td>
+<td><span class="tag robot">Robotic lawnmower</span></td>
+<td><ul>
+<li><strong>Largest disclosed robotics order in company history: 1.2 million units over three years</strong>, agreed May 16, 2025 — "刷新行业订单纪录" (industry order record) (<a href="https://www.21jingji.com/article/20250603/herald/a881c1495114f7373d8ba8857e44db99.html">21jingji</a>, <a href="https://finance.sina.cn/2025-05-30/detail-ineykkku2490073.d.html">Sina</a>)</li>
+<li>Deliveries ramped from Q3 2025, peaking Q4 2025–Q1 2026 — the main driver of robotics shipments jumping to 221,200 units in Q4 2025 (+2,565% YoY) (<a href="https://www.prnewswire.com/apac/news-releases/robosense-beat-expectations-achieved-first-ever-quarterly-profit-on-strong-robotics-growth-302725012.html">FY2025 PR</a>)</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li><strong>Navimow robotic lawnmowers (multiple product lines)</strong> — fully solid-state digital LiDAR (<a href="https://www.robosense.ai/en/tech-show-209">RoboSense</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">Segway Navimow (Willand / Segway-Ninebot)</span> — passed 1 million cumulative mowers in Apr 2026 (<a href="https://www.ledinside.com/news/2026/5/2026_05_08_04">LEDinside</a>)</li>
+</ul></td>
+<td><span class="tag robot">Robotic lawnmower</span></td>
+<td><ul>
+<li>Exclusive design win per FY2025 annual report; named Navimow's <strong>"2026–2027 Strategic Partner"</strong> and 2025–2026 Outstanding Supplier at the millionth-mower ceremony (<a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0424/2026042400954.pdf">FY2025 AR</a>, <a href="https://www.ledinside.com/news/2026/5/2026_05_08_04">LEDinside</a>)</li>
+<li>Part of a segment where RoboSense claims exclusive supply to "several manufacturers among the global Top 5, with the order scale reaching seven figures" (H1 2025 earnings) (<a href="https://eu.36kr.com/en/p/3433425177267592">36kr</a>); ranked No.1 in 2025 global mower 3D-LiDAR sales (<a href="https://www.prnewswire.com/news-releases/robosense-ranked-no1-in-global-3d-lidar-sales-volume-for-robotic-lawn-mowers-302663392.html">PRNewswire</a>)</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li>Robotic lawnmowers (global commercialization push), May 2026 partnership (<a href="https://www.prnewswire.com/news-releases/robosense-asserts-global-dominance-in-lidar-for-robotics-with-1-458-8-yoy-shipment-surge-in-q1-2026--302783148.html">Q1 2026 PR</a>)</li>
+<li>Separately, an unnamed "leading cleaning robot brand" entering mowers gave RoboSense an <strong>exclusive design win</strong> with 2026 deliveries (<a href="https://www.prnewswire.com/apac/news-releases/robosense-beat-expectations-achieved-first-ever-quarterly-profit-on-strong-robotics-growth-302725012.html">FY2025 PR</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">Roborock (石头科技)</span> — plus one unnamed cleaning-robot brand (widely speculated but not confirmed)</li>
+</ul></td>
+<td><span class="tag robot">Robotic lawnmower</span></td>
+<td><ul>
+<li>"Deepened partnership… to jointly accelerate large-scale global commercialization of robotic mowers" (May 2026); no units/value disclosed (<a href="https://www.prnewswire.com/news-releases/robosense-asserts-global-dominance-in-lidar-for-robotics-with-1-458-8-yoy-shipment-surge-in-q1-2026--302783148.html">Q1 2026 PR</a>)</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li><strong>Last-mile sidewalk delivery robots</strong> — next-gen Coco robot uses RoboSense <em>E1R</em> (<a href="https://www.prnewswire.com/news-releases/robosense-and-coco-robotics-forge-strategic-partnership-to-revolutionize-autonomous-last-mile-delivery-302348621.html">PRNewswire</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">Coco Robotics (US)</span> — LA-based, 500k+ deliveries completed; world's largest urban robot-delivery platform (<a href="https://www.engineering.com/robosense-partners-with-coco-robotics/">Engineering.com</a>)</li>
+</ul></td>
+<td><span class="tag robot">Delivery robot</span></td>
+<td><ul>
+<li>Strategic partnership announced at CES 2025 (Jan 2025); units/value undisclosed. H1 2025 disclosures also cite "two leading North American delivery platforms" (<a href="https://eu.36kr.com/en/p/3433425177267592">36kr</a>)</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li><strong>Unmanned delivery vans (RoboVans)</strong> — E-platform (E1/E1R) as "a critical perception component"; E-platform cumulative deliveries passed 300,000 units (<a href="https://autonews.gasgoo.com/articles/icv/robosense-e-platform-cumulative-deliveries-exceed-300000-units-2044740235961745408">Gasgoo</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">Neolix (新石器), Zelos/Jiushi (九识), White Rhino/Rino.ai (白犀牛), JD.com, Meituan</span> — plus Cainiao historically (<a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1227/2023122700027.pdf">prospectus-era customer</a>)</li>
+</ul></td>
+<td><span class="tag robot">Unmanned delivery vehicle</span></td>
+<td><ul>
+<li>Company claims its digital LiDAR is "adopted by over 90% of leading unmanned delivery vehicle companies" (<a href="https://www.prnewswire.com/news-releases/robosense-asserts-global-dominance-in-lidar-for-robotics-with-1-458-8-yoy-shipment-surge-in-q1-2026--302783148.html">Q1 2026 PR</a>)</li>
+<li>Per-customer volumes not disclosed; this vertical plus mowers explains robotics units of ~303,000 in FY2025 (<a href="https://www.robosense.ai/en/news-show-1976">FY2025 PR</a>)</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li><strong>Next-generation Apollo Go robotaxi</strong> — factory-installed digital LiDAR suite: <em>EM4</em> (1,080-beam main) + <em>E1</em> (blind-spot) (<a href="https://www.prnewswire.com/news-releases/robosense-secures-exclusive-design-win-for-baidus-next-gen-apollo-go-robotaxi-302711831.html">PRNewswire</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">Baidu Apollo Go (萝卜快跑)</span> — world's largest robotaxi operator by rides</li>
+</ul></td>
+<td><span class="tag robot">Robotaxi</span></td>
+<td><ul>
+<li><strong>Exclusive design win</strong> announced Mar 12, 2026 for the full factory-installed LiDAR suite of the next-gen vehicle; units/value undisclosed (<a href="https://autonews.gasgoo.com/articles/icv/robosense-wins-exclusive-lidar-supply-deal-for-baidu-apollo-gos-next-generation-robotaxi-2032012779391660032">Gasgoo</a>)</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li><strong>Robotaxi GXR</strong> (co-developed with Geely's Farizon) — <em>EM4 + E1</em>; production from Q3 2026 (<a href="https://www.prnewswire.com/news-releases/robosense-empowers-werides-next-gen-robotaxi-gxr-with-thousand-beam-level-digital-lidar-2-000-factory-installed-units-slated-for-global-deployment-302708293.html">PRNewswire</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">WeRide (文远知行)</span></li>
+</ul></td>
+<td><span class="tag robot">Robotaxi</span></td>
+<td><ul>
+<li><strong>2,000 factory-installed units</strong> slated for global deployment; fleet to exceed 2,600 vehicles (announced Mar 9, 2026) (<a href="https://www.automotiveworld.com/news/robosense-to-supply-lidar-for-2000-weride-robotaxis/">Automotive World</a>)</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li><strong>Robotaxis and robotrucks</strong> — 7th-gen Pony robotaxi carries 4 RoboSense LiDARs; DiDi's GAC-built L4 vehicle carries 6 (<a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0424/2026042400954.pdf">FY2025 AR</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">Pony.ai, DiDi Autonomous Driving</span> (also historical: TuSimple trucks since 2017/2021, since exited trucking; SAIC Mobility, Momenta, AutoX, DeepRoute L4 fleets used mechanical Ruby/Helios) (<a href="https://robosense-pr.medium.com/robosense-reaches-strategic-partnership-with-pony-ai-on-full-business-chain-5365e6f1a0d2">Pony PR</a>, <a href="https://www.robosense.ai/en/news-show-1593">TuSimple PR</a>)</li>
+</ul></td>
+<td><span class="tag robot">Robotaxi / Robotruck</span></td>
+<td><ul>
+<li>Company claims EM4+E1 adopted by "over 90% of global core Robotaxi and Robotruck players, including Didi, Baidu Apollo Go, WeRide, Pony.ai" (<a href="https://www.prnewswire.com/apac/news-releases/robosense-beat-expectations-achieved-first-ever-quarterly-profit-on-strong-robotics-growth-302725012.html">FY2025 PR</a>)</li>
+<li>Robotaxis use 6–10 LiDARs per vehicle, making this high-ASP volume (<a href="https://autonews.gasgoo.com/articles/news/digital-lidar-becomes-the-go-to-choice-for-tens-of-thousands-of-mass-produced-robotaxis-70039222">Gasgoo</a>)</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li><strong>Commercial cleaning robots</strong> — world's first AI-native large scrubber-dryer uses RoboSense <em>Airy</em> hemispherical LiDAR (Mar 2026); Pudu D5 quadruped also uses RoboSense (<a href="https://www.prnewswire.com/news-releases/robosense-asserts-global-dominance-in-lidar-for-robotics-with-1-458-8-yoy-shipment-surge-in-q1-2026--302783148.html">Q1 2026 PR</a>)</li>
+<li>LionsBot R12 REX uses Helios-32</li>
+</ul></td>
+<td><ul>
+<li><span class="co">Pudu Robotics (普渡), LionsBot (Singapore)</span> + ~60 key cleaning-robot customers</li>
+</ul></td>
+<td><span class="tag robot">Cleaning robot</span></td>
+<td><ul>
+<li>Claimed <strong>71% market share</strong> in commercial cleaning-robot LiDAR with 60+ key customers (YanZhi Robot research, cited in <a href="https://www.prnewswire.com/news-releases/robosense-asserts-global-dominance-in-lidar-for-robotics-with-1-458-8-yoy-shipment-surge-in-q1-2026--302783148.html">Q1 2026 PR</a>)</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li><strong>AGVs / AMRs / autonomous forklifts</strong> — Agilox ONE uses RS-Bpearl; BOWE TugBot uses Helios-16 (<a href="https://www.robosense.ai/en/tech-show-144">RoboSense MODEX</a>, <a href="https://www.robosense.ai/en/tech-show-93">RoboSense AGV page</a>)</li>
+<li><strong>V2X roadside sensing units</strong> deployed in 50+ cities/regions (Beijing, Shanghai, Xiong'an; California, Germany, Singapore) (<a href="https://www.robosense.ai/rslidar/RS-V2X">RS-V2X page</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">Agilox (Austria), SEER, Seegrid (US), BOWE, Mooe Robot</span>; IPO-era robotics customers included Alibaba and Brain Corp (<a href="https://finance.sina.com.cn/stock/relnews/hk/2025-03-12/doc-inepkzuz8572275.shtml">CMS report</a>)</li>
+</ul></td>
+<td><span class="tag robot">AGV/AMR</span> <span class="tag robot">Smart infrastructure</span></td>
+<td><ul>
+<li>Catalog/design-win sales of mechanical and solid-state LiDAR; no per-customer volumes disclosed</li>
+<li>V2X supports 7 national IoV demonstration zones and 13 national ICV test zones in China (<a href="https://www.xchuxing.com/article/37266">Xchuxing</a>)</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+<h2>Table 3 — Automotive (EV / ADAS) customers</h2>
+<p>Aggregate scale: as of Q1 2026 RoboSense had <strong>177 vehicle-model design wins from 36 OEMs/Tier-1s</strong> with an <strong>ADAS order backlog exceeding 9 million units</strong> (<a href="https://eletric-vehicles.com/robosense/byds-lidar-supplier-robosense-lifts-pipeline-to-180-models/">eletric-vehicles.com</a>, <a href="https://cnevpost.com/2026/06/03/robosense-wins-another-lidar-order-faw-toyota/">CnEVPost</a>). FY2025: 167 models / 35 automakers, 69 models in SOP, 33 overseas design wins with 14 JV/overseas brands, and &gt;70% share of the JV-brand LiDAR market in China (<a href="https://www.prnewswire.com/apac/news-releases/robosense-beat-expectations-achieved-first-ever-quarterly-profit-on-strong-robotics-growth-302725012.html">FY2025 PR</a>).</p>
+<table>
+<thead><tr>
+  <th style="width:24%">Product the RoboSense component is used in</th>
+  <th style="width:16%">Company making that product</th>
+  <th style="width:12%">Technology type</th>
+  <th style="width:48%">Nature of relationship (scale, units, value)</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><ul>
+<li><strong>"God's Eye" A/B ADAS configurations</strong> across Han, Seal, Sea Lion, Song L, Denza D9, Denza Z9 GT, Yangwang U8/U7 and more (<a href="https://finance.sina.com.cn/cj/2025-02-14/doc-inekmitk7506648.shtml">Sina/华兴</a>)</li>
+<li><strong>11 new 2026 models as exclusive digital-LiDAR partner</strong>: Song Ultra EV, 2026 Sealion 06 EV, 2026 Seal 07 EV, Seal 08, Da Tang, 2026 Denza Z9 GT, 2026 Yangwang U7/U8/U8L, Fangchengbao Ti7 &amp; Ti3 (<a href="https://insidechinaauto.com/2026/03/05/byd-unveils-11-new-models-with-robosense-lidar-technology/">Inside China Auto</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">BYD</span> — world's largest NEV maker; also a <strong>pre-IPO strategic investor</strong> in RoboSense since 2021 (<a href="https://finance.sina.com.cn/stock/relnews/us/2025-02-14/doc-inekmitc9832526.shtml">Sina</a>)</li>
+</ul></td>
+<td><span class="tag ev">EV / ADAS</span></td>
+<td><ul>
+<li>RoboSense's largest relationship: reported <strong>~80% of LiDARs in BYD's mid/high-tier God's Eye configurations</strong> (<a href="https://finance.sina.com.cn/cj/2025-02-14/doc-inekmitk7506648.shtml">Sina</a>); China Renaissance/CMS called RoboSense the biggest winner of BYD's "intelligent driving for all" push (<a href="https://finance.sina.com.cn/stock/relnews/hk/2025-03-12/doc-inepkzuz8572275.shtml">CMS deep report</a>)</li>
+<li>Aug 2025: <strong>32 exclusive EMX design wins from "a leading Chinese NEV maker"</strong> — universally read as BYD (<a href="https://view.inews.qq.com/a/20250822A07PY700">Tencent/STCN</a>, <a href="https://auto.cctv.com/2025/08/31/ARTIhKnfQHn5hx273Nag6Czl250831.shtml">CCTV Auto</a>)</li>
+<li>FY2025 AR names BYD (with Geely) as the deepened long-term partnerships (<a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0424/2026042400954.pdf">FY2025 AR</a>); customer concentration peaked FY2024 (top customer 34.7%, top-5 83.4%) — see financial table below</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li><strong>Zeekr 007</strong> (Nov 2023), all-new 001, 009 / 009 Grand — M-platform (<a href="https://www.robosense.ai/en/news-show-1832">RoboSense PR</a>)</li>
+<li><strong>Zeekr 9X</strong> — <em>EM4</em> 520-beam digital LiDAR (from late Sep 2025) (<a href="https://www.robosense.cn/en/news-show-1927">RoboSense PR</a>)</li>
+<li>Geely Galaxy E8 (<a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0424/2026042400954.pdf">FY2025 AR</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">Geely / Zeekr</span> — strategic cooperation since Dec 1, 2021 (<a href="https://autonews.gasgoo.com/icv/70019263.html">Gasgoo</a>, <a href="https://www.marklines.com/en/news/262225">MarkLines</a>)</li>
+</ul></td>
+<td><span class="tag ev">EV / ADAS</span></td>
+<td><ul>
+<li>Long-term strategic partner and EM-platform design-win customer (<a href="https://www.prnewswire.com/news-releases/robosense-em-digital-platform-achieves-mass-production-across-entire-product-line-and-scaled-up-delivery-302554989.html">EM platform PR</a>); volumes not disclosed but Geely was reportedly among top-5 customers in FY2024 (<a href="https://xueqiu.com/6426710521/318689163">Xueqiu — unverified</a>)</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li><strong>G9</strong> (Sep 2022, dual RS-LiDAR-M1 — first XPeng model with RoboSense), <strong>P7i</strong> (Mar 2023), <strong>G6</strong> (2023), <strong>X9</strong> (Jan 2024) — core sensors for XNGP (<a href="https://www.businesswire.com/news/home/20220923005230/en/XPENG-G9-Equipped-with-Dual-Automotive-Grade-LiDAR-Sensors-from-RoboSense">BusinessWire</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">XPeng (小鹏)</span> — former anchor customer, won from Livox (P5) starting with G9</li>
+</ul></td>
+<td><span class="tag ev">EV / ADAS</span></td>
+<td><ul>
+<li>Was among RoboSense's largest customers 2022–2024; Apr 2024 partnership to adopt next-gen <em>MX</em> (<a href="https://autonews.gasgoo.com/articles/icv/70032736">Gasgoo</a>)</li>
+<li><strong>Churned:</strong> XPeng pivoted to vision-only from P7+ (Nov 2024); 2025 G6/G9/X9 refreshes and G7 dropped LiDAR; XPeng denied returning to LiDAR (Jul 2025) (<a href="https://cnevpost.com/2025/07/28/xpeng-exec-denies-resume-use-lidar/">CnEVPost</a>). Likely the "one major OEM" whose cooperation the FY2025 AR says was suspended from Q1 2025 (<a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0424/2026042400954.pdf">FY2025 AR</a>)</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li><strong>Hyper GT</strong> (2023) — 3× M-series "golden triangle" LiDAR array; 2nd-gen <strong>AION V</strong> (global) and <strong>AION RT</strong>; Trumpchi S7 (<a href="https://www.robosense.cn/en/news-show-1835">RoboSense PR</a>, <a href="https://www.jiemian.com/article/12057072.html">Jiemian</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">GAC Aion / Hyptec (昊铂)</span> — partnership since Jul 2021 (<a href="https://www.businesswire.com/news/home/20210729005558/en/RoboSense-Partners-with-GAC-Aion-to-Deliver-Mass-produced-Advanced-Autonomous-Vehicles-with-LiDAR">BusinessWire</a>)</li>
+</ul></td>
+<td><span class="tag ev">EV / ADAS</span></td>
+<td><ul>
+<li>Expanded strategic cooperation with new design wins Oct 2024 (<a href="https://selfdrivenews.com/robosense-gac-aion-expand-lidar-partnership/">Self Drive News</a>); MX had 7 OEM design wins with first SOP in H1 2025 (<a href="https://www.jiemian.com/article/12057072.html">Jiemian</a>)</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li><strong>GAC Toyota bZ3X</strong> (Mar 2025, from RMB 109,800) — 126-line LiDAR in Momenta-based ADAS, consistent with RoboSense MX class (<a href="https://en.wikipedia.org/wiki/Toyota_bZ3X">Wikipedia</a>, <a href="https://www.xincheping.com/hangyefx/144562.html">xincheping</a>)</li>
+<li><strong>FAW Toyota</strong> best-selling and pure-electric models — digital LiDAR (<a href="https://cnevpost.com/2025/12/08/robosense-lidar-order-faw-toyota/">CnEVPost</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">Toyota (via FAW Toyota &amp; GAC Toyota JVs)</span> — RoboSense says it covers all three top Japanese automakers' China JVs (Toyota, Nissan, Honda) (<a href="https://www.robosense.ai/en/news-show-1886">FY2024 PR</a>)</li>
+</ul></td>
+<td><span class="tag ev">EV / ADAS</span></td>
+<td><ul>
+<li>Dec 2025: FAW Toyota design win with <strong>cumulative orders &gt;1 million LiDAR units</strong> (<a href="https://cnevpost.com/2025/12/08/robosense-lidar-order-faw-toyota/">CnEVPost</a>, <a href="https://www.guancha.cn/qiche/2025_12_10_800023.shtml">Guancha</a>)</li>
+<li>Jun 2026: <strong>additional 500,000+ unit</strong> digital-LiDAR production contract from FAW Toyota (<a href="https://cnevpost.com/2026/06/03/robosense-wins-another-lidar-order-faw-toyota/">CnEVPost</a>, <a href="https://autonews.gasgoo.com/articles/news/over-500000-units-robosense-secures-new-model-designation-from-faw-toyota-again-2062157724127940609">Gasgoo</a>)</li>
+<li>FAW Toyota selected RoboSense as early as Feb 2023 (<a href="https://beijingtimes.com/business/automotive/2023/02/12/robosense-to-supply-lidars-to-faw-toyota/">Beijing Times</a>)</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li><strong>N-series models</strong>: N7 BEV (Apr 2025), N6 PHEV (Dec 2025), NX8 SUV (filed) — pre-installed LiDAR from 2026 (<a href="https://cnevpost.com/2025/12/15/robosense-secures-order-1-million-lidars-dongfeng-nissan/">CnEVPost</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">Dongfeng Nissan</span></li>
+</ul></td>
+<td><span class="tag ev">EV / ADAS</span></td>
+<td><ul>
+<li>Dec 15, 2025: mass-production design win with <strong>order volume approaching 1 million units</strong>, deliveries from 2026 (<a href="https://cnevpost.com/2025/12/15/robosense-secures-order-1-million-lidars-dongfeng-nissan/">CnEVPost</a>, <a href="https://news.futunn.com/en/post/66172948/robosense-02498-has-secured-a-pre-installation-mass-production-from">Futu</a>)</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li><strong>IM LS9 and LS6</strong> — SOP with <em>EM4</em> 520-beam since late Sep 2025; IM was an early M-series brand and first to SOP &gt;500-beam LiDAR (<a href="https://www.robosense.cn/en/news-show-1927">RoboSense PR</a>, <a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0424/2026042400954.pdf">FY2025 AR</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">SAIC IM Motors (智己)</span></li>
+</ul></td>
+<td><span class="tag ev">EV / ADAS</span></td>
+<td><ul>
+<li>Early M-series customer (CES 2023 list) upgraded to digital EM4; volumes undisclosed (<a href="https://www.robosense.ai/en/news-show-1679">RoboSense CES 2023 PR</a>)</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li><strong>Exeed Sterra ES &amp; Sterra ET</strong> — M-series (<a href="https://www.robosense.ai/en/news-show-1679">RoboSense CES 2023</a>)</li>
+<li><strong>WEY Mocha DHT-PHEV LiDAR Edition</strong> (Aug 2022, dual M1) and WEY Lanshan smart-driving version (<a href="https://www.businesswire.com/news/home/20220826005302/en/">BusinessWire</a>, <a href="https://www.ithome.com/0/667/090.htm">ITHome</a>)</li>
+<li><strong>Hongqi</strong> E001/E202/EHS7 (<a href="https://m.xchuxing.com/article/44654">xchuxing</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">Chery/Exeed, Great Wall Motor (WEY), FAW Hongqi</span> — Chery strategic partnership 2023 (<a href="https://www.robosense.ai/en/news-show-1655">RoboSense PR</a>)</li>
+</ul></td>
+<td><span class="tag ev">EV / ADAS</span></td>
+<td><ul>
+<li>Multiple-model design wins; Hongqi also an EMX digital-platform customer (<a href="https://www.prnewswire.com/news-releases/robosense-em-digital-platform-achieves-mass-production-across-entire-product-line-and-scaled-up-delivery-302554989.html">EM PR</a>); volumes undisclosed</li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li><strong>Lotus Eletre</strong> (side LiDARs; 4-LiDAR car split between Hesai and RoboSense) and <strong>Emeya</strong> (<a href="https://www.marklines.com/en/news/267512">MarkLines</a>, <a href="https://www.robosense.ai/en/news-show-1780">RoboSense PR</a>)</li>
+<li><strong>Lucid</strong> — listed among 10+ brands with M1 series-production contracts (<a href="https://www.robosense.ai/en/news-show-1679">RoboSense CES 2023 PR</a>)</li>
+</ul></td>
+<td><ul>
+<li><span class="co">Lotus (UK/Geely), Lucid (US)</span></li>
+<li class="caveat"><span class="co">Rivian (US)</span> — trade press identifies RoboSense as Rivian's undisclosed autonomy LiDAR supplier; not officially confirmed (<a href="https://eletric-vehicles.com/rivian/rivians-undisclosed-self-driving-lidar-supplier-points-to-chinas-robosense/">eletric-vehicles.com</a>)</li>
+</ul></td>
+<td><span class="tag ev">EV / ADAS</span></td>
+<td><ul>
+<li>Overseas/premium design wins; FY2024 results cite 8 overseas/JV brand relationships incl. "a top-tier Sino-American JV automaker" and EMX selected by "a China-based JV brand of the largest Europe OEM" (read: VW Group JV) (<a href="https://www.robosense.ai/en/news-show-1886">FY2024 PR</a>, <a href="https://www.prnewswire.com/news-releases/robosense-em-digital-platform-achieves-mass-production-across-entire-product-line-and-scaled-up-delivery-302554989.html">EM PR</a>)</li>
+<li>EM digital platform: 45 model design wins across 8 global OEMs within ~6 months of launch (Aug 2025) (<a href="https://www.prnewswire.com/news-releases/robosense-em-digital-platform-achieves-mass-production-across-entire-product-line-and-scaled-up-delivery-302554989.html">EM PR</a>)</li>
+<li>Historical/defunct: WM Motor M7 (2021 M1 win, company collapsed); trucking customers Inceptio &amp; Zhito (<a href="https://www.businesswire.com/news/home/20220826005302/en/">BusinessWire 2022</a>)</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+<h2>Segment financials &amp; shipments (from HKEX filings)</h2>
+
+<h3>Revenue by segment (RMB millions)</h3>
+<table class="sumtable">
+<thead><tr><th>Segment</th><th>FY2021</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th></tr></thead>
+<tbody>
+<tr><td>ADAS LiDAR products</td><td>40.1</td><td>160.4</td><td>777.1</td><td>1,335.3</td><td>1,105.9</td></tr>
+<tr><td>Robotics &amp; other LiDAR products</td><td>189.0</td><td>239.1</td><td>186.5</td><td>198.5</td><td>709.8</td></tr>
+<tr><td>Solutions</td><td>84.7</td><td>122.3</td><td>110.1</td><td>98.0</td><td>77.6</td></tr>
+<tr><td>Services &amp; others</td><td>17.2</td><td>8.7</td><td>46.5</td><td>17.2</td><td>47.6</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>331.1</strong></td><td><strong>530.3</strong></td><td><strong>1,120.1</strong></td><td><strong>1,648.9</strong></td><td><strong>1,941.0</strong></td></tr>
+</tbody>
+</table>
+<p>Sources: <a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2023/1227/2023122700027.pdf">IPO prospectus</a> (2020–2022), <a href="https://www.hkexnews.hk/listedco/listconews/sehk/2024/0426/2024042600628.pdf">FY2023 AR</a>, <a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0424/2026042400954.pdf">FY2025 AR</a>. Net loss narrowed from RMB 4,331M (2023, inflated by preferred-share fair-value changes) to RMB 481.8M (2024) to RMB 145.0M (2025); Q4 2025 was the <strong>first-ever profitable quarter</strong> (net profit ~RMB 104M) (<a href="https://www.prnewswire.com/apac/news-releases/robosense-beat-expectations-achieved-first-ever-quarterly-profit-on-strong-robotics-growth-302725012.html">FY2025 PR</a>, <a href="https://technode.com/2026/03/26/robosense-posts-first-quarterly-profit-as-robotics-business-leads-2025-growth/">TechNode</a>).</p>
+
+<h3>LiDAR unit shipments</h3>
+<table class="sumtable">
+<thead><tr><th>Units</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>Q1 2026</th></tr></thead>
+<tbody>
+<tr><td>ADAS</td><td>4,000</td><td>36,900</td><td>243,000</td><td>519,800</td><td>~609,000</td><td>~144,800</td></tr>
+<tr><td>Robotics &amp; others</td><td>12,300</td><td>~20,000</td><td>~16,600</td><td>24,400</td><td>~303,000 (+1,142%)</td><td>185,500 (+1,459%)</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>16,300</strong></td><td><strong>~57,000</strong></td><td><strong>~259,600</strong></td><td><strong>~544,200</strong></td><td><strong>~912,000</strong></td><td><strong>330,300</strong></td></tr>
+</tbody>
+</table>
+<p>In Q1 2026 <strong>robotics surpassed ADAS in units for the first time</strong> (56% of shipments) (<a href="https://www.prnewswire.com/news-releases/robosense-asserts-global-dominance-in-lidar-for-robotics-with-1-458-8-yoy-shipment-surge-in-q1-2026--302783148.html">Q1 2026 PR</a>, <a href="https://cnevpost.com/2026/05/28/robosense-robotics-lidar-shipments-surpass-automotive/">CnEVPost</a>). ASPs collapsed with scale: ADAS RMB ~10,000 (2021) → ~1,800 (2025); robotics RMB ~15,400 (2021) → ~2,300 (2025, lawnmower mix) (<a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0424/2026042400954.pdf">FY2025 AR</a>). Robotics gross margin ~37–45% vs ADAS 13–19% (2024–25). Customer concentration: top-5 customers were 66.9% of revenue in FY2023 and <strong>83.4% in FY2024</strong>, de-risking to 59.7% in FY2025; largest customer 34.7% (FY2024) → 26.7% (FY2025) (<a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0424/2026042400954.pdf">FY2025 AR</a>). Cumulative production passed 1M units in Feb 2025; capacity of 4M units/year completed for 2026.</p>
+
+<h2>Beyond LiDAR — other RoboSense product lines</h2>
+<table>
+<thead><tr><th style="width:20%">Product</th><th style="width:20%">Status</th><th style="width:60%">Detail &amp; known customers</th></tr></thead>
+<tbody>
+<tr><td><strong>Active Camera AC1 / AC2</strong> (fused LiDAR + RGB + IMU "robot eyes")</td><td>AC1 shipping (Mar 2025, ~€2,599 retail); AC2 debuted IROS Oct 2025 / CES 2026</td><td><ul><li>Qinglong Pro, EngineAI T800, large-scale European humanoid order (2026); 400+ developer/robot-company engagements; beta partners incl. Humanoid Robot (Shanghai), CASBOT, Singapore ARC Lab, HUST, BIT (<a href="https://store.robosense.ai/products/ac1">AC1 store</a>, <a href="https://autonews.gasgoo.com/articles/news/robosense-launches-ac2-vision-system-at-iros-2025-70039516">Gasgoo AC2</a>, <a href="https://finance.sina.com.cn/tech/csj/2025-03-28/doc-inerexcp7161795.shtml">Sina beta list</a>)</li><li>Yole's 2026 humanoid report selected the AC series as its sole fused-perception case study (<a href="https://www.robosense.ai/en/news-show-1976">FY2025 PR</a>)</li></ul></td></tr>
+<tr><td><strong>Papert dexterous hands</strong> (1.0: 20 DOF (12 active); 2.0: 20 DOF, 5 kg load, 14 force sensors)</td><td>Pre-sale/sampling via distributors; no named OEM customer</td><td><ul><li>Launched Jan 2025 (Papert 2.0 at CES); pairs with AC series in RoboSense's own embodied-intelligence solution — first solution deployed end-2025 (<a href="https://www.therobotreport.com/robosense-unveils-ai-robotics-strategy-innovations-ces-2025/">Robot Report</a>, <a href="https://openelab.io/products/robosense-dexterous-hand-papert-1">OpenELAB</a>)</li><li>FY2024: ~RMB 250M (41% of R&amp;D spend) went to robotics/AI "innovative businesses" (<a href="https://www.robosense.ai/en/news-show-1886">FY2024 PR</a>)</li></ul></td></tr>
+<tr><td><strong>FS-3D force sensor, LA-8000 linear actuator, DC-G1 domain controller, Robo FSD kit</strong></td><td>Announced CES 2025; development-stage</td><td><ul><li>Actuators for robot hip/knee joints, force sensing for legged robots, and a robot domain controller running multimodal LLMs; no disclosed customers yet (<a href="https://www.therobotreport.com/robosense-unveils-ai-robotics-strategy-innovations-ces-2025/">Robot Report</a>)</li><li>CES 2026: delivery-assistant robot demo with 8-DOF hand + VTLA-3D manipulation foundation model (<a href="https://autonews.gasgoo.com/articles/news/ces-2026-robosense-exhibits-robot-delivery-assistant-on-site-demonstration-of-packing-and-unpacking-2009311925613993985">Gasgoo</a>)</li></ul></td></tr>
+<tr><td><strong>Ecosystem partnerships</strong></td><td>Ongoing</td><td><ul><li>NVIDIA: only LiDAR maker in all three NVIDIA ecosystems (Omniverse/DRIVE Sim, Jetson robotics, DRIVE AGX compatibility for E1/EMX/EM4) (<a href="https://www.prnewswire.com/news-releases/robosense-lidars-supported-on-nvidia-drive-platform-accelerates-the-advancement-of-autonomous-driving-technologies-302554988.html">PRNewswire</a>)</li><li>Horizon Robotics: strategic partnership since Dec 2021 (M1 + Journey chips) (<a href="https://www.businesswire.com/news/home/20211223005234/en/">BusinessWire</a>); Luxshare: E1 manufacturing partner and pre-IPO investor (<a href="https://www.stcn.com/article/detail/718359.html">STCN</a>)</li></ul></td></tr>
+</tbody>
+</table>
+
+<h2>Explicit negatives &amp; caveats (asked-about names that are NOT RoboSense customers)</h2>
+<ul>
+<li><strong>Xiaomi EV</strong>: Hesai is Xiaomi's exclusive LiDAR partner (SU7/YU7, AT128) (<a href="https://www.hesaitech.com/xiaomi-unveils-revolutionary-su7-electric-vehicle-equipped-with-hesai-high-performance-lidar/">Hesai PR</a>)</li>
+<li><strong>Li Auto</strong>: Hesai (AT128 on L-series) (<a href="https://www.yolegroup.com/strategy-insights/whats-in-the-box-hesai-at128-lidar-for-li-auto-l9-at-a-glance/">Yole</a>)</li>
+<li><strong>Zhuoyu Tech (ex-DJI Automotive)</strong>: no relationship found — Zhuoyu is a vision-first competitor narrative, not a partner (<a href="https://en.wikipedia.org/wiki/Zhuoyu_Technology">Wikipedia</a>)</li>
+<li><strong>Changan</strong> (went Hesai for SDA models), <strong>Smart brand</strong>, <strong>Yadea/two-wheelers</strong>, <strong>Yarbo, EcoFlow</strong>: no design wins found</li>
+<li>Claims flagged as lower confidence in the tables: NEURA as the European humanoid AC customer (inference from partner roster); Rivian as the "leading North American emerging automaker" (trade press only); the Xueqiu FY2024 top-5 customer list (Geely, BYD, Huawei, XPeng, IM) is a retail/broker note, unverified; Buick Zhijing L7's LiDAR supplier is not officially confirmed</li>
+<li>Filings disclose almost no RMB contract values — scale indicators are units (Mammotion 1.2M; FAW Toyota &gt;1M + 500k; Dongfeng Nissan ~1M; WeRide 2,000; &gt;9M ADAS backlog) rather than currency amounts</li>
+</ul>
+
+<h2>Third-party context</h2>
+<ul>
+<li><strong>Market share (Yole, Automotive LiDAR 2025)</strong>: Hesai #1 overall by revenue (33% in 2024), RoboSense #2 (24%); tied at 26% each in passenger cars; RoboSense claims Yole ranked it #1 in passenger-car LiDAR by 2024 annual and cumulative sales (<a href="https://optics.org/news/16/7/2">optics.org</a>, <a href="https://www.prnewswire.com/news-releases/robosense-ranked-no-1-in-global-passenger-car-lidar-market-share-annual-and-cumulative-sales-in-2024--yole-annual-report-302426396.html">RoboSense/Yole PR</a>)</li>
+<li><strong>Robotics LiDAR</strong>: #1 globally in 2025 shipments (GGII); claims #1 in five robotics segments (mowers, delivery, humanoids, embodied AI, cleaning) (<a href="https://www.prnewswire.com/news-releases/robosense-asserts-global-dominance-in-lidar-for-robotics-with-1-458-8-yoy-shipment-surge-in-q1-2026--302783148.html">Q1 2026 PR</a>)</li>
+<li><strong>Bull case</strong>: Morgan Stanley "Humanoid 100" (Feb 2025) and BofA humanoid supply-chain inclusion; CMS/China Renaissance called it the biggest winner of BYD's mass-market ADAS push (<a href="https://technode.com/2025/02/14/robosense-joins-morgan-stanleys-global-top-100-in-humanoid-robotics/">TechNode</a>, <a href="https://www.moomoo.com/news/post/50278441/the-latest-report-from-bank-of-america-siasun-robot-automation">Moomoo/BofA</a>)</li>
+<li><strong>Bear case</strong>: Q1 2026 swung back to a net loss (~RMB 63–64M); 4 of the last 6 quarters loss-making; ASP deflation is structural; rival Hesai reached full-year GAAP profit first (FY2025 revenue RMB 3.03B, 41.8% GM) (<a href="https://simplywall.st/stocks/hk/tech/hkg-2498/robosense-technology-shares/news/robosense-technology-q1-loss-revives-bearish-narrative-on-pr">Simply Wall St</a>)</li>
+<li>Added to the HKEX Tech 100 Index at launch, Dec 9, 2025 (<a href="https://news.futunn.com/en/post/65945888/the-hkex-tech-100-index-is-officially-launched-robosense-02498">Futu</a>)</li>
+</ul>
+
+<p style="color:#777; font-size:0.85em; margin-top:36px;">Compiled from public sources July 5, 2026. Figures in RMB unless noted. This is an information summary, not investment advice.</p>
+
+</body>
+</html>
