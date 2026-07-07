@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bio Data Acquisition Targets for Anthropic — Peptides & RNA</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@500;600;700;800&display=swap');
+  :root{
+    --ink:#3a1155; --muted:#9b4dca; --line:#ffb3e6;
+    --accent:#ff2d95; --accent2:#00c2d1;
+    /* candy score palette */
+    --s1:#ff5ea8; --s2:#ff8a3d; --s3:#ffd93d; --s4:#8be04e; --s5:#2fd4c9;
+    --tier1:#ff2d95; --tier2:#8a2be2; --tier3:#00b3c4;
+    --panelgrad:linear-gradient(135deg,#fff0fb 0%,#f3f0ff 50%,#eafffb 100%);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;color:var(--ink);
+    font-family:'Fredoka',-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    line-height:1.55;padding:32px 20px;
+    background:
+      radial-gradient(circle at 12% 15%,rgba(255,45,149,.5),transparent 42%),
+      radial-gradient(circle at 88% 12%,rgba(0,194,209,.5),transparent 40%),
+      radial-gradient(circle at 78% 85%,rgba(255,217,61,.45),transparent 42%),
+      radial-gradient(circle at 18% 88%,rgba(138,43,226,.5),transparent 45%),
+      linear-gradient(135deg,#8a2be2,#ff2d95 45%,#ff8a3d 70%,#00c2d1);
+    background-attachment:fixed;min-height:100vh}
+  .wrap{max-width:1180px;margin:0 auto}
+  h1{font-family:'Baloo 2',cursive;font-size:38px;margin:0 0 6px;letter-spacing:.3px;
+    color:#fff;text-align:center;font-weight:800;
+    text-shadow:0 2px 0 #ff2d95,0 4px 0 #8a2be2,0 6px 0 #00c2d1,0 8px 22px rgba(0,0,0,.35)}
+  .sub{color:#fff;font-size:15px;margin-bottom:26px;text-align:center;font-weight:500;
+    text-shadow:0 1px 6px rgba(0,0,0,.35)}
+  .sub b{color:#fff600}
+  .intro{background:var(--panelgrad);border:3px solid #fff;border-radius:22px;
+    padding:20px 24px;margin-bottom:22px;font-size:14.5px;
+    box-shadow:0 0 0 4px rgba(255,45,149,.35),0 14px 40px rgba(138,43,226,.35)}
+  .intro b{color:var(--accent);font-weight:700}
+  .grid-notes{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0 28px}
+  @media(max-width:760px){.grid-notes{grid-template-columns:1fr}}
+  .card{background:var(--panelgrad);border:3px solid #fff;border-radius:22px;padding:18px 20px;
+    box-shadow:0 0 0 4px rgba(0,194,209,.3),0 12px 34px rgba(138,43,226,.3)}
+  .card h3{margin:0 0 10px;font-family:'Baloo 2',cursive;font-size:15px;text-transform:uppercase;
+    letter-spacing:.8px;font-weight:800;
+    background:linear-gradient(90deg,#ff2d95,#8a2be2,#00c2d1);-webkit-background-clip:text;
+    background-clip:text;-webkit-text-fill-color:transparent}
+  .card p,.card li{font-size:13.5px;color:#5b2a7a;margin:5px 0}
+  .card p b[style]{color:var(--ink)!important}
+  table{width:100%;border-collapse:separate;border-spacing:0;background:var(--panelgrad);
+    border:4px solid #fff;border-radius:22px;overflow:hidden;font-size:13px;
+    box-shadow:0 0 0 4px rgba(255,45,149,.35),0 18px 46px rgba(138,43,226,.4)}
+  thead th{background:linear-gradient(90deg,#ff2d95,#8a2be2 50%,#00c2d1);text-align:left;
+    padding:13px 10px;font-family:'Baloo 2',cursive;font-size:11px;text-transform:uppercase;
+    letter-spacing:.6px;color:#fff;font-weight:700;position:sticky;top:0;
+    text-shadow:0 1px 3px rgba(0,0,0,.3)}
+  th.num,td.num{text-align:center}
+  tbody td{padding:12px 10px;border-bottom:2px dotted #ffb3e6;vertical-align:top}
+  tbody tr:nth-child(even){background:rgba(255,255,255,.45)}
+  tbody tr:hover{background:rgba(255,214,240,.7)}
+  .rank{font-family:'Baloo 2',cursive;font-weight:800;font-size:18px;
+    background:linear-gradient(135deg,#ff2d95,#8a2be2);-webkit-background-clip:text;
+    background-clip:text;-webkit-text-fill-color:transparent}
+  .co{font-weight:700;color:var(--ink);font-size:13.5px}
+  .tk{color:var(--accent2);font-size:11px;font-family:ui-monospace,Menlo,monospace;font-weight:600}
+  .mod{font-size:12px;color:#5b2a7a}
+  .data{color:#6b3a8a;font-size:12px}
+  .score{display:inline-block;min-width:28px;padding:3px 0;border-radius:50%;font-weight:700;
+    color:#fff;text-align:center;font-size:12.5px;width:28px;height:28px;line-height:22px;
+    box-shadow:0 3px 8px rgba(0,0,0,.2),inset 0 -2px 4px rgba(0,0,0,.15)}
+  .comp{font-family:'Baloo 2',cursive;font-weight:800;font-size:16px;
+    background:linear-gradient(135deg,#ff2d95,#8a2be2,#00c2d1);-webkit-background-clip:text;
+    background-clip:text;-webkit-text-fill-color:transparent}
+  .tier{display:inline-block;padding:4px 11px;border-radius:20px;font-size:10px;font-weight:800;
+    font-family:'Baloo 2',cursive;text-transform:uppercase;letter-spacing:.5px;color:#fff;
+    box-shadow:0 3px 8px rgba(0,0,0,.2)}
+  .t1{background:linear-gradient(135deg,#ff2d95,#ff5ea8)}
+  .t2{background:linear-gradient(135deg,#8a2be2,#b15cff)}
+  .t3{background:linear-gradient(135deg,#00b3c4,#2fd4c9)}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0 6px;font-size:12.5px;color:#fff;
+    justify-content:center;font-weight:600;text-shadow:0 1px 4px rgba(0,0,0,.3)}
+  .legend span{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);
+    padding:5px 12px;border-radius:20px;backdrop-filter:blur(4px)}
+  .dot{width:14px;height:14px;border-radius:50%;display:inline-block;
+    box-shadow:0 2px 5px rgba(0,0,0,.25)}
+  footer{margin-top:28px;font-size:12px;color:#fff;padding:18px 22px;
+    background:rgba(138,43,226,.35);border:2px solid rgba(255,255,255,.5);border-radius:20px;
+    backdrop-filter:blur(4px);text-shadow:0 1px 3px rgba(0,0,0,.2)}
+  footer b{color:#fff600}
+  a{color:#fff600;font-weight:600}
+  .flag{color:#ff8a3d;font-size:11px;font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Bio Data Acquisition Targets for Anthropic</h1>
+  <div class="sub">Public companies with rich proprietary <b>peptide</b> and <b>RNA</b> datasets, ranked by attractiveness as acquisition targets · Valuations live as of July 7, 2026</div>
+
+  <div class="intro">
+    <b>Why this matters.</b> Anthropic has moved decisively into biology: it launched <b>Claude for Life Sciences</b> (Oct 2025) and the <b>Claude Science</b> research workbench (July 2026, ~60 functions spanning genomics, proteomics, structural biology and cheminformatics), is running an <b>internal drug-discovery program</b> for neglected diseases, and has already <b>acquired Coefficient Bio</b> to bring wet-lab data generation in-house. The strategic gap is proprietary, ML-ready <b>sequence&rarr;function data</b> — exactly the kind of asset a foundation-model company cannot scrape from the public web. This screen ranks public peptide/RNA players on how valuable and acquirable their data would be for that purpose.
+  </div>
+
+  <div class="grid-notes">
+    <div class="card">
+      <h3>Scoring methodology</h3>
+      <p>Each company scored 1–5 on four dimensions, combined into a weighted composite:</p>
+      <p><b style="color:#e8eaed">Data Value &amp; relevance (35%)</b> — depth, scale and peptide/RNA specificity of proprietary sequence/structure–activity data.</p>
+      <p><b style="color:#e8eaed">AI-readiness (25%)</b> — how structured, labeled and model-training-ready the data already is (platform-native vs. clinical byproduct).</p>
+      <p><b style="color:#e8eaed">Acquisition feasibility (25%)</b> — inverse of size/complexity; a sub-$3B data platform is buyable, a $40B commercial pharma is not.</p>
+      <p><b style="color:#e8eaed">Strategic fit (15%)</b> — cleanliness of the data-first thesis vs. entanglement with clinical/commercial baggage or licensing encumbrances.</p>
+    </div>
+    <div class="card">
+      <h3>The central tension</h3>
+      <p>The <b>deepest</b> peptide/RNA datasets sit inside companies that are effectively <b>unacquirable</b> at Anthropic's scale — Alnylam ($43B RNAi), Moderna ($32B mRNA), Ionis ($14B antisense). Buying them would mean buying a commercial pharma, not a dataset.</p>
+      <p>The <b>most attractive</b> targets are therefore the AI-native discovery platforms — Absci, Recursion, PeptiDream, Schrödinger, AbCellera — whose entire reason for existing is generating structured, model-ready biological data, and whose valuations sit in a buyable $0.3–2.4B range.</p>
+      <p class="flag">Note: PeptiDream and Zealand are non-US listings (Tokyo / Copenhagen); cross-border acquisition adds regulatory and political friction.</p>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span><span class="dot" style="background:var(--s5)"></span>5 Excellent</span>
+    <span><span class="dot" style="background:var(--s4)"></span>4 Strong</span>
+    <span><span class="dot" style="background:var(--s3)"></span>3 Moderate</span>
+    <span><span class="dot" style="background:var(--s2)"></span>2 Weak</span>
+    <span><span class="dot" style="background:var(--s1)"></span>1 Poor</span>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="num">#</th>
+        <th>Company</th>
+        <th class="num">Mkt Cap</th>
+        <th>Modality / data focus</th>
+        <th>Key proprietary dataset</th>
+        <th class="num">Data</th>
+        <th class="num">AI-<br>ready</th>
+        <th class="num">Feas.</th>
+        <th class="num">Fit</th>
+        <th class="num">Score</th>
+        <th class="num">Tier</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- rows injected by script -->
+    </tbody>
+  </table>
+
+  <footer>
+    <b>Sources & notes.</b> Live valuations via Financial Modeling Prep market data (July 7, 2026 close/intraday). Foreign market caps converted to USD (PeptiDream ¥134.1B ≈ $0.86B; Zealand DKK 21.3B ≈ $3.3B). Dataset characterizations reflect each company's disclosed discovery platform. Scores are an analytical judgment for data-acquisition purposes, not investment advice — Claude is not a financial advisor, and any deal would require full diligence on data ownership, licensing encumbrances, and regulatory clearance (esp. cross-border CFIUS-style review for non-US targets). Anthropic context per its Claude Science / Claude for Life Sciences announcements and the Coefficient Bio acquisition.
+  </footer>
+</div>
+
+<script>
+const rows = [
+  {r:1, co:"Absci", tk:"NASDAQ: ABSI", mc:"$1.9B", mod:"Generative AI protein/antibody & peptide design",
+   data:"\"Integrated Drug Creation\" flywheel — in-house wet-lab data purpose-built to train generative sequence models; millions of designed-and-measured binders.",
+   d:5, a:5, f:4, fit:5, comp:4.75, tier:1},
+  {r:2, co:"PeptiDream", tk:"TSE: 4587", mc:"~$0.86B", mod:"Non-standard / macrocyclic peptides (PDPS)",
+   data:"Peptide Discovery Platform System — trillions of non-canonical/constrained peptides screened; arguably the world's richest macrocyclic peptide sequence–activity library.",
+   d:5, a:3.5, f:5, fit:4.5, comp:4.55, tier:1},
+  {r:3, co:"Recursion Pharma", tk:"NASDAQ: RXRX", mc:"$1.7B", mod:"Phenomics / multi-omics maps of biology",
+   data:"50+ petabytes of proprietary cellular imaging & multi-omics; the most AI-native dataset here, though broader than peptide/RNA specifically.",
+   d:4, a:5, f:4, fit:3.5, comp:4.18, tier:1},
+  {r:4, co:"AbCellera", tk:"NASDAQ: ABCL", mc:"$2.3B", mod:"Antibody discovery (microfluidics + ML)",
+   data:"Massive single-cell antibody sequence–function dataset from high-throughput screening; protein (not peptide/RNA) but deep sequence↔binding labels.",
+   d:4, a:4.5, f:4, fit:3.5, comp:4.05, tier:1},
+  {r:5, co:"Schrödinger", tk:"NASDAQ: SDGR", mc:"$1.2B", mod:"Physics-based + ML molecular platform",
+   data:"Large computed molecular property / FEP datasets and a mature ML stack; small-molecule-leaning but highly structured and training-ready.",
+   d:3.5, a:5, f:4, fit:3.5, comp:4.00, tier:1},
+  {r:6, co:"Wave Life Sciences", tk:"NASDAQ: WVE", mc:"$1.2B", mod:"RNA editing & stereopure oligonucleotides",
+   data:"Unique chirally-controlled (stereochemistry) oligo dataset + RNA-editing SAR — a rare RNA-focused data asset at a buyable size.",
+   d:4.5, a:3, f:4, fit:4, comp:3.93, tier:1},
+  {r:7, co:"Bicycle Therapeutics", tk:"NASDAQ: BCYC", mc:"$0.30B", mod:"Constrained bicyclic peptides",
+   data:"Phage-display bicyclic peptide platform — large constrained-peptide binding libraries; smallest/cheapest target, directly peptide-relevant.",
+   d:3.5, a:3, f:5, fit:4, comp:3.83, tier:2},
+  {r:8, co:"Ginkgo Bioworks", tk:"NYSE: DNA", mc:"$0.61B", mod:"Cell-programming foundry / biosecurity",
+   data:"Enormous foundry-generated biological engineering dataset now pivoting to data-as-a-service; broad but messy and off-target for peptide/RNA.",
+   d:3.5, a:3.5, f:5, fit:3, comp:3.80, tier:2},
+  {r:9, co:"Sarepta Therapeutics", tk:"NASDAQ: SRPT", mc:"$2.1B", mod:"RNA (PMO antisense / exon-skipping)",
+   data:"Deep phosphorodiamidate-morpholino antisense SAR dataset; price depressed by recent gene-therapy safety setbacks — potentially opportunistic entry.",
+   d:4, a:2.5, f:4, fit:3.5, comp:3.55, tier:2},
+  {r:10, co:"Ionis Pharmaceuticals", tk:"NASDAQ: IONS", mc:"$14.3B", mod:"Antisense oligonucleotides (ASO)",
+   data:"The single largest and deepest antisense oligo sequence–chemistry–activity dataset (30+ yrs) — but priced as a commercial pharma, not a data buy.",
+   d:5, a:3, f:2, fit:3, comp:3.45, tier:2},
+  {r:11, co:"Relay Therapeutics", tk:"NASDAQ: RLAY", mc:"$3.5B", mod:"Protein motion / structural dynamics",
+   data:"\"Dynamo\" motion-based structural dynamics dataset — unique protein-conformational data, though small-molecule oriented.",
+   d:3.5, a:4, f:3, fit:3, comp:3.43, tier:2},
+  {r:12, co:"Arrowhead Pharma", tk:"NASDAQ: ARWR", mc:"$12.3B", mod:"RNAi (TRiM targeting platform)",
+   data:"Rich RNAi trigger + tissue-targeting/conjugate dataset across many targets; strong data but $12B and clinical-asset heavy.",
+   d:4.5, a:3, f:2, fit:3.5, comp:3.35, tier:3},
+  {r:13, co:"Moderna", tk:"NASDAQ: MRNA", mc:"$31.7B", mod:"mRNA sequence & LNP design",
+   data:"Vast mRNA design, codon-optimization and LNP formulation data + clinical immunogenicity readouts — world-class, but effectively unacquirable.",
+   d:5, a:3.5, f:1, fit:3, comp:3.33, tier:3},
+  {r:14, co:"Twist Bioscience", tk:"NASDAQ: TWST", mc:"$5.7B", mod:"DNA synthesis + antibody libraries",
+   data:"Synthetic-biology infrastructure: DNA synthesis, large antibody libraries and NGS data storage; more picks-and-shovels than model-ready labels.",
+   d:3.5, a:3.5, f:3, fit:3, comp:3.30, tier:3},
+  {r:15, co:"Alnylam Pharma", tk:"NASDAQ: ALNY", mc:"$42.9B", mod:"RNAi / siRNA therapeutics",
+   data:"The deepest siRNA sequence–chemistry–activity dataset in existence — but at $43B it is a large-cap commercial pharma, not a feasible data acquisition.",
+   d:5, a:3, f:1, fit:2.5, comp:3.13, tier:3},
+  {r:16, co:"BioNTech", tk:"NASDAQ: BNTX", mc:"$23.8B", mod:"mRNA immunotherapy",
+   data:"Large mRNA + immunology/neoantigen dataset; strong but expensive and clinically entangled.",
+   d:4.5, a:3, f:1, fit:3, comp:3.03, tier:3},
+  {r:17, co:"Zealand Pharma", tk:"CPH: ZEAL", mc:"~$3.3B", mod:"Peptide therapeutics (metabolic)",
+   data:"Peptide medicinal-chemistry dataset skewed to metabolic/obesity assets; more a clinical-asset company than a data platform. Non-US listing.",
+   d:3, a:2.5, f:3, fit:3, comp:2.88, tier:3},
+];
+
+function sc(v){
+  let bg;
+  if(v>=4.5)bg='var(--s5)';
+  else if(v>=3.75)bg='var(--s4)';
+  else if(v>=2.75)bg='var(--s3)';
+  else if(v>=1.75)bg='var(--s2)';
+  else bg='var(--s1)';
+  return `<span class="score" style="background:${bg}">${v}</span>`;
+}
+function tier(t){
+  const map={1:['t1','Tier 1'],2:['t2','Tier 2'],3:['t3','Tier 3']};
+  return `<span class="tier ${map[t][0]}">${map[t][1]}</span>`;
+}
+document.querySelector('tbody').innerHTML = rows.map(x=>`
+  <tr>
+    <td class="num rank">${x.r}</td>
+    <td><div class="co">${x.co}</div><div class="tk">${x.tk}</div></td>
+    <td class="num">${x.mc}</td>
+    <td class="mod">${x.mod}</td>
+    <td class="data">${x.data}</td>
+    <td class="num">${sc(x.d)}</td>
+    <td class="num">${sc(x.a)}</td>
+    <td class="num">${sc(x.f)}</td>
+    <td class="num">${sc(x.fit)}</td>
+    <td class="num"><span class="comp">${x.comp.toFixed(2)}</span></td>
+    <td class="num">${tier(x.tier)}</td>
+  </tr>`).join('');
+</script>
+</body>
+</html>
