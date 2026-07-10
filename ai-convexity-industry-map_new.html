@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Convexity — Industry Map (T · E · I)</title>
+<style>
+  :root{
+    --ink:#15171c; --ink-soft:#3d434e; --paper:#fbfbf8; --panel:#ffffff;
+    --rule:#dadbe1; --rule-soft:#ececef;
+    --hi:#0e6b62; --hi-bg:#dcece9;
+    --mid:#5a6472; --mid-bg:#e8eaef;
+    --lo:#a8492e; --lo-bg:#f4e2d9;
+    --link:#155e8c;
+    /* tier band colours */
+    --b-unc:#0e6b62;  --b-unc-bg:#dcece9;
+    --b-cor:#6a3fa0;  --b-cor-bg:#e9e2f3;
+    --b-ena:#2e5f8f;  --b-ena-bg:#e0e9f2;
+    --b-brg:#5a6472;  --b-brg-bg:#e8eaef;
+    --b-cap:#a8722e;  --b-cap-bg:#f3e8d6;
+    --b-inv:#a5342f;  --b-inv-bg:#f4dcd9;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:13px;line-height:1.42;-webkit-font-smoothing:antialiased}
+  .num{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-variant-numeric:tabular-nums}
+  a{color:var(--link);text-decoration:none;border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:var(--link)}
+  .wrap{max-width:1440px;margin:0 auto;padding:34px 22px 80px}
+
+  .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);
+    display:flex;gap:10px;align-items:center;margin-bottom:14px}
+  .eyebrow::before,.eyebrow::after{content:"";height:1px;background:var(--rule);flex:0 0 26px}
+  .eyebrow::after{flex:1}
+  h1{font-family:Georgia,"Times New Roman",serif;font-weight:600;font-size:34px;line-height:1.05;margin:0 0 6px;letter-spacing:-.01em}
+  .sub{font-family:Georgia,serif;font-style:italic;color:var(--ink-soft);font-size:16px;margin:0 0 22px}
+
+  .lede{max-width:860px;margin:0 0 20px;color:var(--ink-soft);font-size:13.5px;line-height:1.6}
+  .lede b{color:var(--ink)}
+
+  .axes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 12px}
+  @media(max-width:840px){.axes{grid-template-columns:1fr}}
+  .axis{border:1px solid var(--rule);background:var(--panel);border-radius:7px;padding:12px 14px}
+  .axis .k{font-weight:700;font-size:12px;display:flex;align-items:center;gap:8px;margin-bottom:5px}
+  .axis .wt{margin-left:auto;font-family:ui-monospace,monospace;font-size:10px;font-weight:700;color:var(--hi);background:var(--hi-bg);padding:1px 7px;border-radius:4px;letter-spacing:.02em}
+  .axis .badge{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:5px;
+    font-family:ui-monospace,monospace;font-weight:700;font-size:12px;color:#fff}
+  .axis p{margin:0;font-size:11.8px;color:var(--ink-soft);line-height:1.5}
+  .bT{background:#3a6ea5}.bE{background:#0e6b62}.bI{background:#7a4fa3}
+  .axis em{font-style:normal;font-weight:600;color:var(--ink)}
+
+  .legend{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:11px;color:var(--ink-soft);margin:4px 0 24px}
+  .lg{display:inline-flex;align-items:center;gap:6px}
+  .lg i{width:20px;height:12px;border-radius:3px;display:inline-block;border:1px solid rgba(0,0,0,.08)}
+
+  .scrollnote{font-size:11px;color:var(--ink-soft);margin:0 0 8px}
+  .tblbox{overflow-x:auto;border:1px solid var(--rule);border-radius:8px;background:var(--panel);box-shadow:0 1px 0 rgba(0,0,0,.03)}
+  table{border-collapse:separate;border-spacing:0;width:100%;min-width:1760px}
+  thead th{position:sticky;top:0;z-index:5;background:#f2f2ee;text-align:left;
+    font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft);
+    font-weight:700;padding:9px 11px;border-bottom:1px solid var(--rule);vertical-align:bottom}
+  thead th .grp{display:block;font-size:9px;color:#9498a3;letter-spacing:.1em;margin-bottom:2px}
+  td{padding:11px;border-bottom:1px solid var(--rule-soft);vertical-align:top;font-size:12px}
+  tbody tr:hover td{background:#faf9f4}
+
+  .cpin{position:sticky;left:0;z-index:4;background:var(--panel);min-width:184px;max-width:184px;
+    border-right:1px solid var(--rule);box-shadow:2px 0 0 rgba(0,0,0,.02)}
+  thead th.cpin{z-index:6;background:#f2f2ee}
+  tbody tr:hover .cpin{background:#faf9f4}
+  .ind{font-weight:700;font-size:12.5px;line-height:1.2}
+  .arch{font-size:10px;color:var(--ink-soft);display:block;margin-top:3px;font-style:italic}
+
+  .sect td{background:#16181c;color:#f4f2ea;font-family:Georgia,serif;font-weight:600;font-size:13px;padding:8px 12px;position:sticky;left:0}
+  .sect .tag{font-family:ui-monospace,monospace;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#b7c9c4;margin-right:9px}
+  .sect .note{font-family:Georgia,serif;font-style:italic;font-weight:400;font-size:12px;color:#c9c6bc;margin-left:6px}
+
+  .chip{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:6px;
+    font-family:ui-monospace,monospace;font-weight:700;font-size:13px}
+  .chiplab{font-size:9px;font-weight:700;color:#9498a3;letter-spacing:.06em;margin-bottom:3px}
+  .cellnote{font-size:10.6px;color:var(--ink-soft);line-height:1.4;margin-top:5px;max-width:150px}
+
+  .cvx{max-width:250px}
+  .band{display:inline-block;font-family:ui-monospace,monospace;font-size:10px;font-weight:700;
+    letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:4px;margin-bottom:5px}
+  .shape{font-size:10.5px;font-style:italic;color:var(--ink-soft);margin-bottom:4px}
+  .cvx p{margin:0;font-size:11.5px;line-height:1.46}
+
+  .edge{max-width:172px;font-size:11.2px;line-height:1.44;color:var(--ink-soft)}
+  .edge b{color:var(--ink)}
+  .expo{max-width:158px;font-size:11px;line-height:1.5}
+  .expo code{font-family:ui-monospace,monospace;font-size:10.5px;background:#eef0f3;padding:0 3px;border-radius:3px}
+  .etfcell{max-width:168px}
+  .swing{max-width:178px;font-size:11.2px;line-height:1.44;color:var(--ink-soft)}
+
+  .foot{max-width:860px;margin:26px 0 0;font-size:11.6px;color:var(--ink-soft);line-height:1.6}
+  .foot h3{font-family:Georgia,serif;font-size:15px;color:var(--ink);margin:20px 0 6px}
+  .foot b{color:var(--ink)}
+  .disc{margin-top:22px;padding:12px 14px;border:1px solid var(--rule);border-radius:7px;background:#f7f6f1;font-size:11.5px;color:var(--ink-soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Convexity map · industries before names</div>
+  <h1>The AI Convexity Map</h1>
+  <p class="sub">Every industry scored on the three axes — so the shape of the prize is visible before any ticker is.</p>
+
+  <p class="lede">This is the layer above the stock screen. Each industry is scored on <b>T</b>, <b>E</b>, and <b>I</b>, and sorted into convexity bands. The organizing idea: <b>E and I set how large the prize can get</b> (uncapped output × value that scales with intelligence); <b>T is orthogonal</b> — it decides whether that prize actually reaches the institution, and in what <em>shape</em>. A high-T industry with low E/I is not convex; it's a one-time margin event. The hunting grounds are the cells that are high on E and I but <b>not yet crowded</b>.</p>
+
+  <div class="axes">
+    <div class="axis">
+      <div class="k"><span class="badge bE">E</span>End-market convexity <span class="wt">weight 0.50</span></div>
+      <p>Is demand/output saturated or theoretically unbounded? High = the industry can keep expanding what it makes. <em>Upside axis #1 — the heaviest weight.</em></p>
+    </div>
+    <div class="axis">
+      <div class="k"><span class="badge bI">I</span>Intelligence-level convexity <span class="wt">weight 0.30</span></div>
+      <p>Does the core asset get more valuable as AI gets smarter? The Reddit-vs-Nature axis. <em>Upside axis #2 — sets terminal value.</em></p>
+    </div>
+    <div class="axis">
+      <div class="k"><span class="badge bT">T</span>Translatability <span class="wt">weight 0.20</span></div>
+      <p>How short is the bridge from individual to <em>institutional</em> productivity? High = simple model, thin coordination, few products. <em>Modifier, not upside — the lightest weight.</em></p>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span>Chip colour = score band:</span>
+    <span class="lg"><i style="background:var(--hi-bg);border-color:var(--hi)"></i> 8–10 high / convex</span>
+    <span class="lg"><i style="background:var(--mid-bg);border-color:var(--mid)"></i> 5–7 middling</span>
+    <span class="lg"><i style="background:var(--lo-bg);border-color:var(--lo)"></i> 1–4 capped / low</span>
+  </div>
+
+  <p class="scrollnote">Scroll sideways — the Industry column stays pinned. Scores 1–10 are framework judgments, not data. <b>Factor</b> = 0.5·E + 0.3·I + 0.2·T; <b>Cheapness</b> = 11 − a 1–10 valuation score bucketed from the current <b>Price/Sales</b> of each row's representative ETF (the same way EV/Sales is bucketed in the name-level screen; banks &amp; miners use P/E where P/S isn't meaningful); <b>Combined</b> = 0.7·Factor + 0.3·Cheapness — the same methodology as the name-level screen. Rows are sorted by Combined within each tier, highest first.</p>
+
+  <div class="tblbox">
+  <table>
+    <thead>
+      <tr>
+        <th class="cpin">Industry</th>
+        <th><span class="grp">Factor</span>T · translate</th>
+        <th><span class="grp">Factor</span>E · end-market</th>
+        <th><span class="grp">Factor</span>I · intelligence</th>
+        <th><span class="grp">Aggregate</span>Factor</th>
+        <th><span class="grp">Valuation</span>Cheapness</th>
+        <th><span class="grp">FP × value</span>Combined</th>
+        <th><span class="grp">Verdict</span>Convexity & shape</th>
+        <th><span class="grp">Where's the edge</span>Crowding</th>
+        <th><span class="grp">Illustrative</span>Public exposure</th>
+        <th><span class="grp">Basket proxy</span>Relevant ETFs</th>
+        <th><span class="grp">The one thing</span>Swing factor</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+  </div>
+
+  <div class="foot">
+    <h3>Reading the map</h3>
+    <p>Four things fall out of the scoring. <b>(1) The richest cells are bio-adjacent</b> — drug discovery, materials/chemistry, and precision diagnostics all pin both upside axes, which is why the framework predicts a sector-wide mania there. <b>(2) The best risk-adjusted edge is in the <em>under-crowded</em> uncapped cells</b> — materials & chemistry discovery, mineral exploration, cybersecurity insurgents, and agtech score like biotech on E/I but carry a fraction of the attention. <b>(3) The corpus tier is a bet on a legal question</b> — its I is genuine, but whether owners can charge AI tolls (vs being disintermediated) is unresolved copyright, so it's an event-driven convexity, not a compounding one. <b>(4) The clearest shorts aren't the capped tier — they're the inverse tier</b>: capped industries still get a real one-time margin lift, but IT-services/BPO literally <em>sell the labor AI replaces</em>, so the gains accrue to their customers.</p>
+
+    <h3>The aggregate read (Combined)</h3>
+    <p>With the valuation nudge now grounded in real ETF <b>Price/Sales</b> rather than a subjective crowding call, the ranking sharpens. Ranked by Combined, the leaders are <b>Materials &amp; specialty chemistry (~7.8, XLB ~3.4× sales)</b>, <b>Agtech (~7.6, MOO ~1.6×)</b>, and <b>Mineral exploration (~7.5, GDXJ)</b> — the cheap, un-hyped uncapped cells. Watch what the actual multiples do to the consensus themes: <b>Drug discovery falls to ~7.0</b> (XBI ~12× sales), <b>Cybersecurity drops to ~6.3</b> (CIBR ~17×), and semiconductor <b>design/EDA and manufacturing sink to ~6.3 / ~5.2</b> (SOXX/SMH ~17–18×) — high Factors, but you are paying up for them. The capped and inverse tiers stay pinned at the bottom (Horizontal SaaS ~3.1 despite being cheap-adjacent only in pockets — IGV itself is ~17×; BPO ~4.2 even though it's genuinely cheap) because Factor is 70% of the weight and cheapness cannot rescue a flat E/I shape. Factor alone would top-rank Drug discovery and Precision diagnostics; it is the 30% Cheapness term — now real valuation — that surfaces the genuinely under-owned convexity, which is the whole point of the exercise.</p>
+
+    <h3>The T trap</h3>
+    <p>The seductive error is to reward high T. Lead-gen, horizontal SaaS, and IT services all restructure fast — but fast restructuring of a <b>capped</b> or <b>inverse</b> business just pulls forward a bounded (or negative) outcome. T only becomes an <em>upside</em> multiplier when it sits on top of high E and I. Read T last, not first.</p>
+
+    <h3>Where this goes next</h3>
+    <p>The natural drill-downs are the three high-E/I, low-crowding cells: <b>materials & specialty chemistry</b> (thinnest public pure-play coverage — worth a proper hunt), <b>cybersecurity</b> (incumbent-vs-AI-native capture question), and <b>mineral exploration</b> (best T of any uncapped cell). The corpus tier is worth a screen framed entirely around <em>toll-ability</em> rather than growth.</p>
+
+    <div class="disc">
+      <b>Method.</b> Industries are scored 1–10 on each axis as qualitative applications of the framework in the attached note. The <b>Cheapness</b> column is the one data-driven element: it buckets each row's representative-ETF <b>Price/Sales</b> (mid-2026) into a 1–10 valuation score, mirroring how EV/Sales is bucketed in the name-level screen. These ETF P/S figures are <em>holdings-weighted estimates</em> computed from current constituents (fund providers don't publish an aggregate portfolio P/S), and banks/miners fall back to P/E where P/S isn't meaningful — treat them as directional, not exact. Bands are derived primarily from E and I, with T read as a separate realization/shape modifier. "Public exposure" names and the ETF column are illustrative anchors, not recommendations; most listed ETFs are <em>impure</em> proxies for the row, and where the cell says "none," no clean vehicle exists &mdash; an absence that is itself crowding information. ETF tickers verified live as of Jul 6 2026. This is an analytical map, not investment advice; I'm not a financial adviser.
+    </div>
+  </div>
+</div>
+
+<script>
+const band = s => s>=8 ? ['var(--hi)','var(--hi-bg)'] : s>=5 ? ['var(--mid)','var(--mid-bg)'] : ['var(--lo)','var(--lo-bg)'];
+function chip(s){const[c,bg]=band(s);return `<span class="chip" style="color:${c};background:${bg};border:1px solid ${c}22">${s}</span>`;}
+function fp(lab,v){return `<div class="chiplab">${lab}</div>${chip(v[0])}<div class="cellnote">${v[1]}</div>`;}
+const BANDS={
+ unc:['Uncapped','var(--b-unc)','var(--b-unc-bg)'],
+ cor:['Corpus-I','var(--b-cor)','var(--b-cor-bg)'],
+ ena:['Enabling','var(--b-ena)','var(--b-ena-bg)'],
+ brg:['Bridge','var(--b-brg)','var(--b-brg-bg)'],
+ cap:['Capped','var(--b-cap)','var(--b-cap-bg)'],
+ inv:['Inverse','var(--b-inv)','var(--b-inv-bg)'],
+};
+function cvx(bk,shape,txt){const[l,c,bg]=BANDS[bk];
+  return `<span class="band" style="color:${c};background:${bg}">${l}</span><div class="shape">${shape}</div><p>${txt}</p>`;}
+const S=(tag,title,note)=>({sect:true,tag,title,note});
+
+const rows=[
+ S('Tier 1','Uncapped output · E-driven convexity','the prize has no theoretical ceiling'),
+ {ind:'Drug discovery / novel therapeutics',arch:'the archetype',
+  T:[5,'Clinical + regulatory throughput is the industry\'s hard bottleneck'],
+  E:[10,'No saturation of targets or molecules — literally unbounded'],
+  I:[9,'Fundamental biology compounds with intelligence'],
+  cvx:['unc','terminal-convex · slow-realizing','The purest convexity on the board, but the payoff is gated by wet-lab and trial duration, so it long-outlasts market patience.'],
+  edge:['<b>Rising toward mania</b> — the framework\'s explicit prediction. Broadly understood, so edge is in <em>which</em> layer, not <em>whether</em>.'],
+  expo:'<code>SDGR</code> <code>RXRX</code> <code>TEM</code> platforms; large-cap pharma as call-options',
+  etf:'<code>XBI</code> <code>IBB</code> <code>ARKG</code> &mdash; no AI-native drug-discovery vehicle yet',
+  swing:'First end-to-end AI-designed drug approval; trial-throughput compression.'},
+ {ind:'Materials science & specialty chemistry',arch:'the under-owned twin',
+  T:[5,'Discovery-to-scale-up handoff is slow and capital-heavy'],
+  E:[9,'Chemical/material space is vast and unexplored'],
+  I:[9,'First-principles simulation scales directly with intelligence'],
+  cvx:['unc','terminal-convex · thin coverage','Same E/I shape as biotech with a fraction of the attention — the single most under-exposed uncapped cell.'],
+  edge:['<b>Low crowding, few pure plays.</b> The real edge is that public expression is hard, which keeps it un-hyped.'],
+  expo:'mostly via tools/simulation and R&D-heavy chemical majors; few pure plays',
+  etf:'<code>XLB</code> broad only &mdash; no pure-play ETF; the gap <em>is</em> the point',
+  swing:'Whether AI-found materials translate to commercial-scale manufacture.'},
+ {ind:'Semiconductor design / EDA',arch:'infinite design space',
+  T:[6,'Software franchise; pricing shifting to agents/compute'],
+  E:[9,'Silicon design space is unbounded; AI demands more custom chips'],
+  I:[8,'Design quality compounds with model capability'],
+  cvx:['unc','high · commercial today','The rare uncapped cell already monetizing — and the seat→agent pricing shift converts productivity into revenue instead of deflating it.'],
+  edge:['<b>Elevated</b> — duopoly well-owned. Edge is in the pricing-model transition, not the theme.'],
+  expo:'<code>SNPS</code> <code>CDNS</code> duopoly',
+  etf:'<code>SMH</code> <code>SOXX</code> &mdash; mfg-weighted; the EDA duopoly is a small slice',
+  swing:'Adoption of agent/compute-based pricing over seats.'},
+ {ind:'Cybersecurity',arch:'the adversarial one',
+  T:[6,'Product-led; moderate institutional lift'],
+  E:[9,'Threat surface expands as AI arms attackers — genuinely open-ended'],
+  I:[8,'An intelligence arms race that scales both offense and defense'],
+  cvx:['unc','structurally growing · two-sided','Uniquely, worse AI outcomes (more capable attacks) grow the market. Demand is convex to the danger itself.'],
+  edge:['<b>Moderate.</b> Real edge is the incumbent-vs-AI-native capture question — that\'s where mispricing sits.'],
+  expo:'incumbents (platform vendors) vs AI-native insurgents',
+  etf:'<code>CIBR</code> <code>HACK</code> <code>BUG</code>',
+  swing:'Whether incumbents or AI-native challengers capture the new attack surface.'},
+ {ind:'Precision diagnostics / molecular data',arch:'E meets I',
+  T:[6,'Two engines (assay + data) to reform'],
+  E:[8,'Expanding indications and testing volume'],
+  I:[9,'Multimodal clinical+genomic corpora scale with intelligence'],
+  cvx:['unc','high · data-moat dependent','Scores on both upside axes; the durability of the proprietary data layer is what separates winners.'],
+  edge:['<b>Moderate-high.</b> Data-moat quality is the differentiator markets under-price.'],
+  expo:'<code>TEM</code> and precision-medicine data owners',
+  etf:'<code>ARKG</code> <code>GNOM</code> <code>IDNA</code>',
+  swing:'Reimbursement + whether the data moat resists replication.'},
+ {ind:'Industrial robotics / embodied AI',arch:'automating atoms',
+  T:[5,'Physical integration and capex slow the bridge'],
+  E:[9,'Embodiment expands the universe of automatable physical work — enormous'],
+  I:[8,'Real-world capability scales with model quality'],
+  cvx:['unc','high · long-dated','Vast E, but realization is bounded by hardware cost curves and physical reliability, so it\'s the slowest of the uncapped cells.'],
+  edge:['<b>Rising.</b> Hype concentrated in a few names; the supply chain is less crowded.'],
+  expo:'automation majors; humanoid/robotics pure plays; components',
+  etf:'<code>BOTZ</code> <code>ROBO</code> <code>ARKQ</code> <code>IRBO</code>',
+  swing:'Hardware cost declines + real-world reliability thresholds.'},
+ {ind:'Mineral exploration / resource discovery',arch:'best-T uncapped cell',
+  T:[8,'Simple orgs, thin coordination — a genuinely short bridge'],
+  E:[8,'Undiscovered deposits = an unbounded search problem'],
+  I:[7,'Geophysical inference improves with better models'],
+  cvx:['unc','high · under-owned + short bridge','The uncapped cell with the shortest translation path and least attention. AI on an inference problem, in small institutions.'],
+  edge:['<b>Low crowding.</b> The framework\'s cleanest non-obvious fit — high E with high T.'],
+  expo:'<code>IE</code> and AI-geophysics explorers',
+  etf:'<code>GDXJ</code> <code>SILJ</code> <code>REMX</code> &mdash; commodity juniors; no AI-exploration vehicle',
+  swing:'Exploration outcomes are binary; capital access.'},
+ {ind:'Aerospace / defense tech (autonomy, sim)',arch:'slow but real',
+  T:[5,'Program-based, regulated, procurement-bound'],
+  E:[7,'Autonomy and simulation expand the mission set'],
+  I:[8,'Autonomy value scales with intelligence'],
+  cvx:['unc','elevated · slow-realizing','High-I on autonomy and simulation, but government procurement caps the translation speed.'],
+  edge:['<b>Moderate.</b> Defense-tech insurgents less crowded than primes.'],
+  expo:'autonomy/defense-tech insurgents; sim providers',
+  etf:'<code>SHLD</code> <code>ITA</code> <code>XAR</code> <code>ARKX</code> &mdash; SHLD closest to the insurgents',
+  swing:'Procurement reform; operational autonomy adoption.'},
+ {ind:'Agtech / crop & synthetic biology',arch:'quiet uncapped',
+  T:[5,'Regulatory and field-cycle constraints'],
+  E:[8,'Novel genetics and molecules — open-ended output'],
+  I:[8,'Trait/molecule design scales with intelligence'],
+  cvx:['unc','elevated · few pure plays','Bio-like E/I in a sleepy sector; the constraint is monetization and public expression, not the science.'],
+  edge:['<b>Low.</b> Under-followed; the challenge is finding clean exposure.'],
+  expo:'ag-biotech and synthetic-biology names',
+  etf:'<code>KROP</code> <code>MOO</code>; synbio overlap via <code>ARKG</code>',
+  swing:'Regulatory path; scarcity of investable pure plays.'},
+
+ S('Tier 2','Intelligence-convex corpora · I-driven','value scales toward superintelligence — if you can charge the toll'),
+ {ind:'Scientific / technical / medical publishing',arch:'the Nature end',
+  T:[6,'Stable publisher operations'],
+  E:[6,'Research output grows; AI licensing is a new market'],
+  I:[10,'Peak terminal-I — the corpus superintelligence most needs'],
+  cvx:['cor','high terminal-I · capped E','Highest-I asset on the board. The bet is that owners toll access rather than get disintermediated.'],
+  edge:['<b>Rising</b> — the note\'s own WLY/RELX thesis. Edge remains because the toll question is unresolved.'],
+  expo:'<code>WLY</code> <code>RELX</code> <code>WTKWY</code>',
+  etf:'None clean &mdash; hold <code>WLY</code> <code>RELX</code> directly',
+  swing:'Copyright / toll-ability vs disintermediation; open-access erosion.'},
+ {ind:'Legal information & research',arch:'elastic demand',
+  T:[6,'Embedded workflow franchises'],
+  E:[7,'Legal demand is elastic — cheaper law means more law'],
+  I:[8,'Case-law corpus with low hallucination tolerance'],
+  cvx:['cor','elevated · elastic-E','The one corpus where the end-market itself expands with AI, not just the data value.'],
+  edge:['<b>Moderate.</b> Insurgent-vs-incumbent (Harvey/Legora vs Westlaw) is the live question.'],
+  expo:'<code>TRI</code> and legal-workflow owners',
+  etf:'None clean &mdash; <code>TRI</code> direct; buried in broad indices',
+  swing:'Whether agents erode seat pricing faster than volume grows.'},
+ {ind:'Professional info / risk / tax / compliance',arch:'regulatory moats',
+  T:[6,'Sticky workflow embedding'],
+  E:[6,'Bounded but durable regulated demand'],
+  I:[8,'Proprietary regulatory corpora'],
+  cvx:['cor','elevated · durable','Lower-variance corpus play — durable moats, modest E, genuine I.'],
+  edge:['<b>Moderate.</b> Quality-compounder pricing; edge is durability, not deep value.'],
+  expo:'risk/compliance and tax-information owners',
+  etf:'None clean &mdash; direct names only',
+  swing:'Depth of workflow embedding vs point-solution AI.'},
+ {ind:'Financial data / indices / ratings',arch:'I high, E zero-sum',
+  T:[6,'Data-licensing businesses already'],
+  E:[5,'Finance is closer to zero-sum — smarter AI redistributes, not expands'],
+  I:[8,'Deep proprietary datasets'],
+  cvx:['cor','moderate · zero-sum ceiling','High-I data, but because finance is near zero-sum, superintelligence reading it reshuffles value rather than creating unbounded new output.'],
+  edge:['<b>High crowding.</b> Well-understood quality names; little discrepancy.'],
+  expo:'index/ratings/data majors',
+  etf:'None pure &mdash; <code>XLF</code> holds SPGI/MCO/MSCI but dilutes heavily',
+  swing:'Ability to charge AI-training tolls on top of existing licensing.'},
+
+ S('Tier 3','Enabling layer · picks-and-shovels','convex to the winners\' output, without picking the winner'),
+ {ind:'Life-science tools & instruments',arch:'the toll road',
+  T:[6,'Mature but scalable'],
+  E:[8,'Volume rides the discovery explosion regardless of platform'],
+  I:[6,'Serves intelligence rather than embodying it'],
+  cvx:['ena','elevated · lower-variance','Owns the bio-convexity theme without single-platform science risk. The framework\'s under-rated implication.'],
+  edge:['<b>Moderate.</b> Cyclically de-rated on destock; the theme is intact.'],
+  expo:'<code>ILMN</code> <code>TWST</code> <code>DHR</code> <code>TMO</code>',
+  etf:'None clean &mdash; <code>XLV</code> dilutes; direct names',
+  swing:'R&D budgets; consumables destock cycle.'},
+ {ind:'CROs / clinical trial services',arch:'the ambiguous one',
+  T:[6,'Scaled service operators'],
+  E:[6,'Two-sided: more candidates to test vs AI-cheaper trials'],
+  I:[5,'Operational data, not a scaling corpus'],
+  cvx:['ena','moderate · genuinely ambiguous','The bio-convexity bottleneck, but AI compresses the billable labor too — the net is a real coin-flip.'],
+  edge:['<b>Low-moderate.</b> Cheapest CROs price the compression fear; that\'s the debate.'],
+  expo:'<code>MEDP</code> <code>ICLR</code> <code>CRL</code>',
+  etf:'None &mdash; direct names only',
+  swing:'Does trial-volume growth out-run per-trial cost deflation.'},
+ {ind:'Semiconductor manufacturing & equipment',arch:'bracketed infra',
+  T:[5,'Physics- and capex-bound'],
+  E:[8,'Compute demand is enormous'],
+  I:[5,'Enables intelligence; doesn\'t capture its convexity'],
+  cvx:['ena','demand-convex · infra layer','The note explicitly brackets "compute and infra." Huge demand, but it\'s the arms dealer, not the convex operator.'],
+  edge:['<b>Very high crowding.</b> The most consensus AI trade there is.'],
+  expo:'foundries; equipment; memory',
+  etf:'<code>SMH</code> <code>SOXX</code> <code>XSD</code> &mdash; XSD equal-weight',
+  swing:'Capex cycle; overbuild risk.'},
+ {ind:'Cloud / data-center / compute',arch:'commoditizing arms dealer',
+  T:[5,'Capex- and power-bound'],
+  E:[8,'Demand vast, but capacity is increasingly fungible'],
+  I:[5,'Rents intelligence; capacity is a commodity'],
+  cvx:['ena','demand-convex · commoditizing','Capacity is becoming a sold commodity — Meta and SpaceX now renting out excess compute is the tell that the layer is capped for operators.'],
+  edge:['<b>Extreme crowding.</b> And structurally becoming a rate business.'],
+  expo:'hyperscalers; neoclouds',
+  etf:'<code>SKYY</code> <code>CLOU</code> <code>WCLD</code>; infra via <code>SRVR</code> <code>DTCR</code>',
+  swing:'Overbuild; capacity-selling compresses the whole layer\'s economics.'},
+
+ S('Tier 4','Short bridge & mild convexity · T-driven','fast to realize — but check E and I before rewarding the speed'),
+ {ind:'Specialty / P&C insurance underwriting',arch:'the subtle add',
+  T:[8,'Centralized, model-driven decisions — very short bridge'],
+  E:[6,'Better models make previously-unwritable risks writable'],
+  I:[6,'Underwriting edge compounds with data + intelligence'],
+  cvx:['brg','moderate · genuinely additive','The rare high-T cell where AI <em>expands</em> the market (more insurable risk) rather than only cutting cost.'],
+  edge:['<b>Low.</b> Under-appreciated as an AI-expansion (not just efficiency) story.'],
+  expo:'<code>KNSL</code> <code>PGR</code> and E&S underwriters',
+  etf:'<code>KIE</code> <code>IAK</code> &mdash; broad insurance; no E&amp;S-only vehicle',
+  swing:'Pricing cycle; who wins the data flywheel.'},
+ {ind:'Lead-gen / simple digital marketplaces',arch:'the $ANGI shape',
+  T:[9,'Thin orgs; AI compresses nearly the entire cost line'],
+  E:[5,'Bounded end-markets'],
+  I:[4,'Optimization data; dumb-AI convex'],
+  cvx:['brg','fast · one-time margin','The purest short-bridge shape — but capped E means it\'s a rapid margin re-rate, not compounding convexity.'],
+  edge:['<b>Low.</b> Cheap; the option on fast restructuring is nearly free.'],
+  expo:'<code>ANGI</code> <code>EVER</code> <code>QNST</code>',
+  etf:'None &mdash; <code>ONLN</code> <code>EBIZ</code> tangential at best',
+  swing:'Management execution (the note\'s own caveat).'},
+ {ind:'Online travel / booking',arch:'matching, but bounded',
+  T:[8,'Marketplace matching restructures easily'],
+  E:[5,'Travel demand is bounded'],
+  I:[4,'Low terminal data value'],
+  cvx:['brg','fast · disintermediation-exposed','Short bridge, but AI agents booking directly cut both ways — margin up, or the aggregator gets bypassed.'],
+  edge:['<b>Moderate.</b> The agent-disintermediation debate is the whole story.'],
+  expo:'online-travel aggregators',
+  etf:'<code>AWAY</code> <code>PEJ</code>',
+  swing:'Do AI agents route through the aggregator or around it.'},
+ {ind:'Payments / fintech infrastructure',arch:'efficiency, mild volume',
+  T:[6,'Rails businesses; moderate reform'],
+  E:[5,'Volume tied to commerce; some AI-commerce upside'],
+  I:[5,'Transaction data, weak scaling'],
+  cvx:['brg','moderate · efficiency-led','Mostly a cost/efficiency story with a mild call-option on AI-driven transaction volume.'],
+  edge:['<b>Moderate.</b> New AI-commerce rails are the only convex angle.'],
+  expo:'payment networks and processors',
+  etf:'<code>IPAY</code> <code>FINX</code> <code>ARKF</code>',
+  swing:'Whether agentic commerce expands transaction volume.'},
+ {ind:'Asset management / active investing',arch:'the paradox',
+  T:[8,'Small teams adopt AI instantly'],
+  E:[4,'Industry AUM is ~zero-sum / GDP-capped'],
+  I:[8,'Alpha scales with intelligence — but gets competed away'],
+  cvx:['brg','paradoxical · redistributive','High individual-I, but because alpha is zero-sum, the intelligence advantage redistributes returns rather than growing the industry.'],
+  edge:['<b>High.</b> Everyone knows; the edge decays as it spreads.'],
+  expo:'active managers; quant shops',
+  etf:'<code>IAI</code> <code>KCE</code> &mdash; capital-markets baskets incl. exchanges',
+  swing:'Fee compression vs durability of any AI-alpha edge.'},
+
+ S('Tier 5','Capped · one-time margin story','real cash from layoffs, bounded terminal value'),
+ {ind:'Horizontal SaaS (collab, CRM, HR)',arch:'the note\'s example',
+  T:[8,'Easy to cut cost; simple to re-shape'],
+  E:[2,'Needs are met; seat count is the ceiling'],
+  I:[3,'No scaling corpus; commodity workflow'],
+  cvx:['cap','capped · seat-deflation risk','Even the winners are capped — and the seat is exactly what AI deflates, so "winning" can still shrink revenue.'],
+  edge:['<b>High crowding.</b> The seat-deflation risk is now well understood.'],
+  expo:'<code>CRM</code> <code>ZM</code> <code>HUBS</code> <code>DOCU</code>',
+  etf:'<code>IGV</code> <code>XSW</code> <code>WCLD</code> &mdash; long vehicles only; the thesis here is short',
+  swing:'Consumption pricing scaling faster than seats erode.'},
+ {ind:'Vertical SaaS',arch:'slightly better ceiling',
+  T:[8,'Simple to restructure'],
+  E:[3,'Workflow-specific; modest expansion'],
+  I:[3,'Some proprietary workflow data'],
+  cvx:['cap','capped · lock-in helps a bit','Workflow lock-in softens the seat problem, but the terminal ceiling is still low.'],
+  edge:['<b>Moderate.</b> Usage-pricing transitions are the only re-rate path.'],
+  expo:'vertical software niche leaders',
+  etf:'<code>IGV</code> <code>XSW</code> &mdash; vertical names diluted inside',
+  swing:'Shift to usage-based pricing.'},
+ {ind:'Consumer social / attention platforms',arch:'META-core / RDDT-terminal',
+  T:[8,'Simple ad model'],
+  E:[2,'Attention- and ad-budget-capped'],
+  I:[2,'UGC of low terminal-intelligence value'],
+  cvx:['cap','capped · leakage risk','Individual productivity can\'t translate to unbounded ad revenue — the note\'s exact diagnosis of Meta\'s core and Reddit\'s terminal value.'],
+  edge:['<b>High.</b> Well-understood; AI-search traffic leakage is the swing.'],
+  expo:'<code>PINS</code> <code>SNAP</code> <code>RDDT</code>; Meta\'s core',
+  etf:'<code>SOCL</code> <code>XLC</code>',
+  swing:'AI-search / answer-engine leakage of top-of-funnel.'},
+ {ind:'Advertising / marketing services',arch:'disintermediation-exposed',
+  T:[7,'Agency models restructure fast'],
+  E:[3,'Budget-capped'],
+  I:[3,'Low terminal data value'],
+  cvx:['cap','capped · in-housing risk','AI lets clients in-house the work agencies sell — capped and eroding at once.'],
+  edge:['<b>Moderate.</b> The in-housing threat is the whole thesis.'],
+  expo:'ad-holding companies; martech',
+  etf:'None pure &mdash; <code>XLC</code> partial',
+  swing:'Client in-housing via AI vs agency AI-repositioning.'},
+ {ind:'Banks / traditional lending',arch:'efficiency only',
+  T:[5,'Regulated, large, slow orgs'],
+  E:[4,'GDP-capped balance sheets'],
+  I:[5,'Risk data, moderate value'],
+  cvx:['cap','capped · cost-income story','A cost-to-income improvement, not a growth story — the balance sheet doesn\'t become convex.'],
+  edge:['<b>Moderate.</b> Efficiency gains are real but bounded and shared.'],
+  expo:'money-center and regional banks',
+  etf:'<code>KBE</code> <code>KRE</code> <code>XLF</code>',
+  swing:'Cost-income ratio improvement; nothing convex.'},
+ {ind:'Retail / CPG / consumer staples',arch:'thin margin lift',
+  T:[5,'Large, physical, complex supply chains'],
+  E:[3,'Mature demand'],
+  I:[2,'Low data convexity'],
+  cvx:['cap','capped · modest efficiency','Supply-chain and marketing efficiency; a rounding error against the enterprise, not a re-rate.'],
+  edge:['<b>Low interest.</b> Not really an AI story.'],
+  expo:'retailers; branded CPG',
+  etf:'<code>XLP</code> <code>XRT</code> <code>VDC</code>',
+  swing:'Marketing/supply-chain efficiency at the margin.'},
+ {ind:'Physical services / hospitality / restaurants',arch:'hardest bridge',
+  T:[4,'Physical, labor-heavy, fragmented'],
+  E:[3,'Local, bounded demand'],
+  I:[2,'Minimal data convexity'],
+  cvx:['cap','low · slow to translate','The individual→institutional bridge barely exists where the work is physical and distributed.'],
+  edge:['<b>Low.</b> Slow, incremental labor automation only.'],
+  expo:'restaurant and hospitality operators',
+  etf:'<code>PEJ</code> <code>XLY</code> &mdash; loose proxies',
+  swing:'Pace of physical-labor automation.'},
+ {ind:'Telecom / utilities / real estate',arch:'capped, one tailwind',
+  T:[4,'Capital-heavy, regulated'],
+  E:[3,'Capped operators — though utilities see AI <em>power</em> demand'],
+  I:[2,'Low data convexity'],
+  cvx:['cap','low · utilities have a demand tailwind','Mostly capped; utilities are the exception — but as capped <em>suppliers</em> of power to AI, not convex operators of it.'],
+  edge:['<b>Rising for power.</b> The AI-electricity-demand trade is increasingly consensus.'],
+  expo:'power utilities (demand); telecom/REITs (capped)',
+  etf:'<code>XLU</code> <code>VNQ</code> <code>VOX</code>; AI-power angle via <code>GRID</code>',
+  swing:'AI data-center power demand (utilities only).'},
+
+ S('Tier 6','Inverse · anti-convex','the product is the labor AI replaces — gains accrue to the customer'),
+ {ind:'IT services / consulting / SI',arch:'the clearest short',
+  T:[7,'Could restructure — but toward a smaller self'],
+  E:[2,'Sells the billable hours AI substitutes'],
+  I:[2,'No owned corpus; client captures the value'],
+  cvx:['inv','inverse · value accrues to customers','High T here is a trap: restructuring a labor-arbitrage business around AI shrinks the very thing being sold.'],
+  edge:['<b>Rising awareness.</b> Cheap for a reason; the discount is the thesis.'],
+  expo:'<code>CTSH</code> <code>ACN</code> and offshore IT majors',
+  etf:'None &mdash; no shortable ETF; single names',
+  swing:'Can they flip to outcome/AI-delivery pricing before hours erode.'},
+ {ind:'BPO / outsourcing / staffing',arch:'existential',
+  T:[7,'Fast to restructure — into a much smaller business'],
+  E:[1,'The product <em>is</em> human labor'],
+  I:[1,'Clients capture 100% of the gains'],
+  cvx:['inv','deeply inverse · existential','The sharpest anti-convex shape on the board — AI directly substitutes the sole product.'],
+  edge:['<b>Rising.</b> Market is beginning to price the substitution.'],
+  expo:'<code>G</code> and BPO / staffing firms',
+  etf:'None &mdash; single names (the short side of the board)',
+  swing:'Whether repositioning outruns the substitution (existential).'},
+];
+
+// ---- Valuation layer: crowding score (1-10, higher = richer) bucketed from each row's
+//      representative-ETF Price/Sales (mid-2026), same buckets the name-level screen uses on
+//      EV/Sales. Banks & miners use P/E where P/S is not meaningful. [crowd, 'PROXY · multiple'] ----
+const CROWD={
+ 'Drug discovery / novel therapeutics':[8,'XBI · P/S ~11.8×'],
+ 'Materials science & specialty chemistry':[4,'XLB · P/S ~3.4×'],
+ 'Semiconductor design / EDA':[9,'SOXX · P/S ~17.6×'],
+ 'Cybersecurity':[9,'CIBR · P/S ~16.6×'],
+ 'Precision diagnostics / molecular data':[8,'GNOM · P/S ~11.5×'],
+ 'Industrial robotics / embodied AI':[7,'BOTZ · P/S ~8× (est)'],
+ 'Mineral exploration / resource discovery':[4,'GDXJ · P/E ~15×'],
+ 'Aerospace / defense tech (autonomy, sim)':[7,'ITA · P/S ~8.1×'],
+ 'Agtech / crop & synthetic biology':[3,'MOO · P/S ~1.6×'],
+ 'Scientific / technical / medical publishing':[4,'WLY/RELX · P/S ~3.5×'],
+ 'Legal information & research':[5,'TRI · P/S ~5.3×'],
+ 'Professional info / risk / tax / compliance':[5,'RELX · P/S ~4.5×'],
+ 'Financial data / indices / ratings':[7,'SPGI · P/S ~8.4×'],
+ 'Life-science tools & instruments':[5,'TMO · P/S ~4.3×'],
+ 'CROs / clinical trial services':[3,'ICLR · P/S ~1.6×'],
+ 'Semiconductor manufacturing & equipment':[9,'SMH · P/S ~17×'],
+ 'Cloud / data-center / compute':[7,'SKYY · P/S ~9× (est)'],
+ 'Specialty / P&C insurance underwriting':[3,'KIE · P/S ~1.5×'],
+ 'Lead-gen / simple digital marketplaces':[2,'EVER · P/S ~1.3×'],
+ 'Online travel / booking':[5,'AWAY · P/S ~4×'],
+ 'Payments / fintech infrastructure':[5,'IPAY · P/S ~5.3×'],
+ 'Asset management / active investing':[6,'IAI · P/S ~7.3×'],
+ 'Horizontal SaaS (collab, CRM, HR)':[9,'IGV · P/S ~17×'],
+ 'Vertical SaaS':[4,'XSW · P/S ~3.5×'],
+ 'Consumer social / attention platforms':[5,'SOCL · P/S ~5.1×'],
+ 'Advertising / marketing services':[4,'XLC · P/S ~2.8×'],
+ 'Banks / traditional lending':[3,'KBE · P/E ~13×'],
+ 'Retail / CPG / consumer staples':[3,'XLP · P/S ~2.1×'],
+ 'Physical services / hospitality / restaurants':[2,'PEJ · P/S ~1.4×'],
+ 'Telecom / utilities / real estate':[4,'XLU · P/S ~3.9×'],
+ 'IT services / consulting / SI':[2,'ACN · P/S ~1.2×'],
+ 'BPO / outsourcing / staffing':[2,'G · P/S ~1.0×'],
+};
+const fpv  = r => 0.5*r.E[0] + 0.3*r.I[0] + 0.2*r.T[0];        // Factor
+const cwd  = r => (CROWD[r.ind]||[6,''])[0];                    // crowding 1-10
+const chp  = r => 11 - cwd(r);                                 // Cheapness
+const comb = r => 0.7*fpv(r) + 0.3*chp(r);                     // Combined
+function chipN(v){const[c,bg]=band(Math.round(v));return `<span class="chip" style="color:${c};background:${bg};border:1px solid ${c}22;font-size:12px">${v.toFixed(1)}</span>`;}
+function valcell(r){const note=(CROWD[r.ind]||[6,''])[1];return `<div class="chiplab">CHEAPNESS</div>${chipN(chp(r))}<div class="cellnote">${note}</div>`;}
+
+const tb=document.getElementById('tbody');
+let html='';let group=[];
+function flush(){
+  group.sort((a,b)=>comb(b)-comb(a));
+  for(const r of group){
+    html+=`<tr>
+      <td class="cpin"><div class="ind">${r.ind}</div><span class="arch">${r.arch}</span></td>
+      <td>${fp('T',r.T)}</td>
+      <td>${fp('E',r.E)}</td>
+      <td>${fp('I',r.I)}</td>
+      <td><div class="chiplab">FACTOR</div>${chipN(fpv(r))}</td>
+      <td class="valcell">${valcell(r)}</td>
+      <td><div class="chiplab">COMBINED</div>${chipN(comb(r))}</td>
+      <td class="cvx">${cvx(r.cvx[0],r.cvx[1],r.cvx[2])}</td>
+      <td><div class="edge">${r.edge[0]}</div></td>
+      <td><div class="expo">${r.expo}</div></td>
+      <td><div class="expo etfcell">${r.etf}</div></td>
+      <td><div class="swing">${r.swing}</div></td>
+    </tr>`;
+  }
+  group=[];
+}
+for(const r of rows){
+  if(r.sect){ flush(); html+=`<tr class="sect"><td colspan="12"><span class="tag">${r.tag}</span>${r.title}<span class="note">${r.note}</span></td></tr>`; continue; }
+  group.push(r);
+}
+flush();
+tb.innerHTML=html;
+</script>
+</body>
+</html>
