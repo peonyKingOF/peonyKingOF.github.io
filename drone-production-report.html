@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drone Production &amp; the Investment Landscape — July 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1b222b;
+    --ink-soft: #4a545f;
+    --paper: #f6f7f5;
+    --card: #ffffff;
+    --steel: #2c5a84;
+    --steel-soft: #e3ecf3;
+    --amber: #b97417;
+    --amber-soft: #f7ecdb;
+    --line: #d9ddd8;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.65;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 28px 96px; }
+
+  header { padding: 72px 0 40px; border-bottom: 2px solid var(--ink); }
+  .kicker {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--steel); margin-bottom: 18px;
+  }
+  h1 {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 600;
+    font-size: clamp(30px, 5vw, 46px); line-height: 1.12; letter-spacing: -0.015em;
+    max-width: 15em;
+  }
+  .standfirst {
+    margin-top: 22px; max-width: 42em; color: var(--ink-soft);
+    font-size: 18px;
+  }
+  .meta {
+    margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px 28px;
+    font-family: var(--mono); font-size: 12.5px; color: var(--ink-soft);
+  }
+  .meta span b { color: var(--ink); font-weight: 500; }
+
+  section { padding-top: 56px; }
+  .sec-label {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--steel); margin-bottom: 10px;
+  }
+  h2 {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 600;
+    font-size: 27px; letter-spacing: -0.01em; margin-bottom: 16px; line-height: 1.2;
+  }
+  h3 {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 500;
+    font-size: 18px; margin: 26px 0 8px;
+  }
+  p { max-width: 46em; margin-bottom: 14px; }
+  p.note { font-size: 14.5px; color: var(--ink-soft); }
+  .question {
+    font-family: 'Source Serif 4', Georgia, serif; font-style: italic;
+    font-size: 18px; color: var(--ink-soft);
+    border-left: 3px solid var(--steel); padding: 4px 0 4px 18px; margin: 6px 0 22px;
+    max-width: 44em;
+  }
+
+  /* Confidence tags — the report's grading system */
+  .tag {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 2px 7px; border-radius: 3px;
+    white-space: nowrap; display: inline-block;
+  }
+  .tag.sourced   { background: var(--steel-soft); color: var(--steel); }
+  .tag.estimated { background: var(--amber-soft); color: var(--amber); }
+  .tag.opaque    { background: #ebebe8; color: var(--ink-soft); }
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+    font-size: 13.5px; color: var(--ink-soft); margin: 4px 0 18px;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* Tables */
+  .table-card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+    overflow-x: auto; margin: 8px 0 18px;
+  }
+  .table-card.wide {
+    position: relative; left: 50%; transform: translateX(-50%);
+    width: min(1500px, calc(100vw - 40px));
+  }
+  .table-card.wide table { min-width: 1160px; }
+  .table-card.wide tbody td { padding: 9px 14px; font-size: 14px; line-height: 1.45; }
+  .table-card.wide td.notes { min-width: 420px; }
+  .table-card.wide td.num { font-size: 13px; }
+  table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 14.5px; }
+  thead th {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 12.5px;
+    letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-soft);
+    text-align: left; padding: 13px 16px; border-bottom: 1.5px solid var(--ink);
+    background: var(--card); white-space: nowrap;
+  }
+  tbody td { padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  td.num { font-family: var(--mono); font-size: 13.5px; white-space: nowrap; }
+  td.name { font-weight: 600; font-family: 'Space Grotesk', sans-serif; font-size: 14.5px; white-space: nowrap; }
+  .class-row td {
+    background: var(--ink); color: var(--paper);
+    font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 13.5px;
+    letter-spacing: 0.03em; padding: 9px 16px;
+  }
+  .class-row .sub { color: #aeb6bf; font-weight: 400; font-size: 12.5px; margin-left: 8px; }
+  .group-row td {
+    background: #eef0ed; font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500; font-size: 12.5px; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--ink-soft); padding: 8px 16px;
+  }
+
+  /* Log-scale range bars */
+  .bar-wrap { position: relative; height: 10px; width: 150px; background: #eef0ed; border-radius: 5px; margin-top: 5px; }
+  .bar { position: absolute; top: 0; height: 10px; border-radius: 5px; background: var(--steel); min-width: 6px; }
+  .bar.est { background: var(--amber); }
+  .axis-note { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); }
+
+  .callout {
+    background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--amber);
+    border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; max-width: 46em;
+    font-size: 15.5px;
+  }
+  .callout b { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14px; }
+
+  .verdict {
+    background: var(--ink); color: var(--paper); border-radius: 10px;
+    padding: 22px 26px; margin: 24px 0; max-width: 46em; font-size: 16.5px;
+  }
+  .verdict b { color: #9dc3e4; font-family: 'Space Grotesk', sans-serif; }
+
+  footer {
+    margin-top: 72px; padding-top: 24px; border-top: 2px solid var(--ink);
+    font-size: 13.5px; color: var(--ink-soft);
+  }
+  footer p { margin-bottom: 8px; max-width: none; }
+  strong { font-weight: 600; }
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 18px 64px; }
+    header { padding: 48px 0 32px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">Analytical briefing · Compiled with Claude</div>
+  <h1>Drone production and the investment landscape</h1>
+  <p class="standfirst">Who builds drones at what rate, why raw output hasn't decided the drone war, why human pilots persist in the age of AI — and where the public markets offer exposure to the components underneath it all.</p>
+  <div class="meta">
+    <span>Date <b>July 12, 2026</b></span>
+    <span>Market data <b>as of July 10, 2026 close</b></span>
+    <span>Sections <b>4</b></span>
+  </div>
+</header>
+
+<!-- ============ SECTION 1 ============ -->
+<section id="production">
+  <div class="sec-label">Section 1 — Production</div>
+  <h2>Estimated daily drone output, by class and country</h2>
+  <p>Ordered by output within each class. Figures are current run-rates, not announced future capacity. Every number carries a confidence grade — much of this data comes from belligerents with incentives to inflate or conceal.</p>
+  <div class="legend">
+    <span class="tag sourced">Sourced</span><span>official statements or sustained observable rates</span>
+    <span class="tag estimated">Rough est.</span><span>inferred, wide error bars</span>
+    <span class="tag opaque">Opaque</span><span>no reliable figure</span>
+  </div>
+
+  <div class="table-card wide">
+    <table>
+      <thead>
+        <tr>
+          <th>Country</th>
+          <th>Est. daily output</th>
+          <th>Range (log scale, 1 → 30,000)</th>
+          <th style="width: 45%">Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="class-row"><td colspan="4">Small FPV / tactical attack <span class="sub">~$500–$3K, expendable</span></td></tr>
+        <tr>
+          <td class="name">Russia</td>
+          <td class="num">10,000–15,000 <span class="tag sourced">Sourced</span></td>
+          <td><div class="bar-wrap"><div class="bar" style="left:87%; width:6%"></div></div></td>
+          <td>Claimed capacity of 15,000/day; plans for 7.3M FPV drones in 2026 (~20,000/day). The bulk of Russia's numbers.</td>
+        </tr>
+        <tr>
+          <td class="name">Ukraine</td>
+          <td class="num">3,300–4,000 <span class="tag sourced">Sourced</span></td>
+          <td><div class="bar-wrap"><div class="bar" style="left:76%; width:4%"></div></div></td>
+          <td>~100,000–120,000/month, including radio-controlled and fiber-optic versions. The bulk of Ukraine's output.</td>
+        </tr>
+        <tr>
+          <td class="name">United States</td>
+          <td class="num">165–300 <span class="tag sourced">Sourced</span></td>
+          <td><div class="bar-wrap"><div class="bar" style="left:48%; width:7%"></div></div></td>
+          <td>Drone Dominance gauntlet: 30,000 one-way attack drones Feb–July 2026 at ~$5,000/unit, scaling toward 300,000+ next year.</td>
+        </tr>
+
+        <tr class="class-row"><td colspan="4">Long-range strike / one-way attack <span class="sub">Shahed-type, ~$20K–$70K</span></td></tr>
+        <tr>
+          <td class="name">Russia</td>
+          <td class="num">300–450 <span class="tag sourced">Sourced</span></td>
+          <td><div class="bar-wrap"><div class="bar" style="left:54%; width:4%"></div></div></td>
+          <td>~404/day per Ukraine's commander-in-chief; Ukrainian intelligence projects ~110,000 in 2026 (~55% strike drones, rest decoys like Gerbera).</td>
+        </tr>
+        <tr>
+          <td class="name">Ukraine</td>
+          <td class="num">~50–150 <span class="tag estimated">Rough est.</span></td>
+          <td><div class="bar-wrap"><div class="bar est" style="left:38%; width:10%"></div></div></td>
+          <td>Deep-strike drones (Liutyi, etc.) are a growing share of output, but no reliable public daily figure — inferred from launch tempo against Russia.</td>
+        </tr>
+        <tr>
+          <td class="name">Iran</td>
+          <td class="num">7–17 <span class="tag sourced">Sourced</span></td>
+          <td><div class="bar-wrap"><div class="bar" style="left:18%; width:9%"></div></div></td>
+          <td>Consensus 150–250 Shahed-131/136/238 per month domestically; unverified claims up to 400/day. Other drone types produced but no reliable totals.</td>
+        </tr>
+
+        <tr class="class-row"><td colspan="4">Interceptor drones <span class="sub">anti-Shahed</span></td></tr>
+        <tr>
+          <td class="name">Ukraine</td>
+          <td class="num">several hundred+ <span class="tag estimated">Rough est.</span></td>
+          <td><div class="bar-wrap"><div class="bar est" style="left:52%; width:8%"></div></div></td>
+          <td>Fast-growing category; interceptors accounted for 40%+ of Shaheds downed in some large May 2026 attacks. No published production rate — a record 33,000 Russian UAVs downed in March implies large volumes.</td>
+        </tr>
+
+        <tr class="class-row"><td colspan="4">Commercial / consumer <span class="sub">camera quadcopters, agricultural, delivery</span></td></tr>
+        <tr>
+          <td class="name">China</td>
+          <td class="num">8,000–25,000 <span class="tag estimated">Rough est.</span></td>
+          <td><div class="bar-wrap"><div class="bar est" style="left:84%; width:11%"></div></div></td>
+          <td>Nearly all of China's volume. Domestic market ~2.4M units in 2024, ~3M forecast for 2025; DJI alone makes millions/year at ~70% global share. No authoritative national total exists.</td>
+        </tr>
+        <tr>
+          <td class="name">Taiwan</td>
+          <td class="num">300–400 <span class="tag sourced">Sourced</span></td>
+          <td><div class="bar-wrap"><div class="bar" style="left:54%; width:3%"></div></div></td>
+          <td>Mostly small "China-free" UAVs; ~123,000 exported in 2025, largely ending up in Ukraine. Output grew 12x from 2024 to 2025.</td>
+        </tr>
+        <tr>
+          <td class="name">United States</td>
+          <td class="num">150–250 <span class="tag sourced">Sourced</span></td>
+          <td><div class="bar-wrap"><div class="bar" style="left:47%; width:6%"></div></div></td>
+          <td>Most of the ~100,000/year built collectively by ~500 US manufacturers (Skydio et al.), typically pricier than Chinese equivalents.</td>
+        </tr>
+
+        <tr class="class-row"><td colspan="4">Mid-size military UAV <span class="sub">Bayraktar TB2, Lancet, Wing Loong, Mojave-class</span></td></tr>
+        <tr>
+          <td class="name">Turkey</td>
+          <td class="num">1–3 <span class="tag sourced">Sourced</span></td>
+          <td><div class="bar-wrap"><div class="bar" style="left:2%; width:9%"></div></div></td>
+          <td>Baykar and TAI produce hundreds per year of TB2/Akinci-class aircraft.</td>
+        </tr>
+        <tr>
+          <td class="name">China, Israel, Iran, US</td>
+          <td class="num">low single digits <span class="tag estimated">Rough est.</span></td>
+          <td><div class="bar-wrap"><div class="bar est" style="left:1%; width:10%"></div></div></td>
+          <td>Wing Loong/CH-series, Heron, Mohajer, Gray Eagle — all produced in the hundreds per year or less.</td>
+        </tr>
+        <tr>
+          <td class="name">Russia</td>
+          <td class="num">— <span class="tag opaque">Opaque</span></td>
+          <td><div class="bar-wrap"></div></td>
+          <td>Lancet loitering-munition line is significant but output isn't public — possibly the highest in this class by unit count, but unverifiable, so listed after the sourced entries.</td>
+        </tr>
+
+        <tr class="class-row"><td colspan="4">High-end / jet-powered <span class="sub">MQ-9 Reaper, CCA "loyal wingman"</span></td></tr>
+        <tr>
+          <td class="name">United States</td>
+          <td class="num">&lt;1 <span class="tag sourced">Sourced</span></td>
+          <td><div class="bar-wrap"><div class="bar" style="left:0%; width:4%"></div></div></td>
+          <td>Anduril's Fury began production in Ohio in March 2026; Reapers built in small annual batches. Units per month, not per day.</td>
+        </tr>
+        <tr>
+          <td class="name">China</td>
+          <td class="num">&lt;1 <span class="tag estimated">Rough est.</span></td>
+          <td><div class="bar-wrap"><div class="bar est" style="left:0%; width:4%"></div></div></td>
+          <td>Advanced military UAVs (GJ-11, WZ-8) in limited serial production; no public rates.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note axis-note">Range bars are positioned on a logarithmic scale from 1 to 30,000 drones per day. Blue = sourced; amber = rough estimate.</p>
+
+  <div class="callout">
+    <b>Two caveats.</b> Class boundaries blur — Russia's Gerbera decoys count in the Shahed line but cost far less, and "commercial" Chinese drones are weaponized as FPVs by both sides in Ukraine. And these aren't apples-to-apples: Russia, Ukraine, and Iran's numbers are dominated by cheap expendable combat drones; China's are mostly commercial; the US and Taiwan mix both.
+  </div>
+</section>
+
+<!-- ============ SECTION 2 ============ -->
+<section id="qa-ukraine">
+  <div class="sec-label">Section 2 — Analysis</div>
+  <h2>Is Ukraine winning the drone war despite being out-produced?</h2>
+  <p class="question">"Based on the media I thought Ukraine was basically winning in drone combat — with more casualties inflicted. Am I wrong, and how does this jive with Russia greatly outstripping Ukraine in production?"</p>
+
+  <p>The two facts are less contradictory than they look. <strong>Ukraine really is winning the casualty exchange.</strong> Per CSIS, the Russia–Ukraine casualty ratio ran between 2:1 and 3:1 for much of the war but has likely risen to nearly 8:1 in the first half of 2026, largely due to Ukraine's drones — including AI-enabled ones. Ukrainian officials claim drones caused 96% of Russia's ~34,000 casualties in March, and that Russia suffered 316 casualties per square kilometer captured in early 2026, up from 120 the year before. (Many of these are Ukrainian government figures, though independent analysts broadly agree on direction and rough scale.)</p>
+
+  <h3>The production totals count different things</h3>
+  <p>A large share of Russia's output is Shahed/Geran long-range drones and cheap Gerbera decoys aimed at Ukrainian cities and power grids — terror and infrastructure weapons, not frontline killers. They barely register in the military casualty ratio. Strip those out and the frontline picture is much closer; a Ukrainian presidential official claimed Ukraine has actually achieved a 1.3:1 advantage in FPV drones <em>at the front</em>, whatever the aggregate national numbers say.</p>
+
+  <h3>Effectiveness per drone matters more than raw count</h3>
+  <p>Independent analysis holds that Ukraine's data integration and AI-assisted targeting extract more effect per drone deployed than Russian equivalents. Ukraine pioneered the confirmed-strike incentive system, fiber-optic FPVs, and AI terminal guidance that defeats jamming. Volume is Russia's answer to a quality gap.</p>
+
+  <h3>The tactical situation is asymmetric</h3>
+  <p>Russia is the attacker. Its infantry must cross open ground in view of Ukrainian drones, while defenders stay dispersed and dug in. Drones punish movement above all — Russian military bloggers have estimated frontline life expectancy in some sectors at 20–35 minutes. If the roles flipped, Russian drones would impose the same tax on Ukrainian attackers.</p>
+
+  <h3>Defense also counts</h3>
+  <p>Ukrainian interceptor drones downed a reported 33,000 Russian UAVs in March alone — a meaningful slice of Russia's production advantage erased in the air before it does anything.</p>
+
+  <div class="verdict"><b>Synthesis:</b> Ukraine is winning the drone <em>effectiveness</em> war decisively; Russia is winning the drone <em>production</em> war and betting it can eventually convert mass into results — through Shahed saturation of cities and by closing the innovation gap. The casualty ratio shows Ukraine's approach working today; the production trend is why analysts still describe the overall picture as a strategic stalemate with Ukraine holding tactical innovation leadership, rather than a Ukrainian victory in progress.</div>
+</section>
+
+<!-- ============ SECTION 3 ============ -->
+<section id="qa-fpv">
+  <div class="sec-label">Section 3 — Analysis</div>
+  <h2>Why hasn't AI completely supplanted the human FPV pilot?</h2>
+  <p class="question">"How is it that FPV has not been completely supplanted by AI by now?"</p>
+
+  <p>Mostly economics and the messiness of real battlefields — not because the AI is impossible.</p>
+
+  <h3>Cost per unit is the tyranny of the whole system</h3>
+  <p>The FPV model works because the drones are $500–$2,000 and expendable — both sides burn through hundreds of thousands per month. Full onboard autonomy means a real compute module, better (often thermal) cameras, and more power, which can double or triple unit cost. At these volumes, that's the difference between fielding 100,000 drones a month and 40,000. When your doctrine is saturation, a cheaper dumb drone plus a trained human often beats a smarter, scarcer one. The AI chips are also exactly the components hardest to source at millions-of-units scale.</p>
+
+  <h3>AI has taken over — but only the last kilometer</h3>
+  <p>What's widespread is terminal guidance: the pilot flies the approach and designates the target; the AI locks on and completes the strike even if jamming severs the link. Systems like Ukraine's Hornet go further — onboard AI that identifies targets and distinguishes decoys by geometry and thermal signature without a satellite link. But that's autonomy for the final phase, not the mission. The hard parts — searching a treeline, deciding a tarp-covered lump is a howitzer and not a decoy, prioritizing among targets, aborting because friendlies moved, threading a flight through a dugout entrance — are still done better and more <em>adaptably</em> by humans. Retraining a pilot takes a conversation; retraining a vision model takes data collection, validation, and a fleet-wide firmware push.</p>
+
+  <h3>Fiber optics relieved the pressure</h3>
+  <p>The strongest argument for full autonomy was electronic warfare — if jamming cuts the radio link, the drone must think for itself. The fiber-optic FPV solved jamming a different way: an unjammable physical cable with a human brain on the other end. Both sides got a cheap path to keeping humans in the loop precisely when autonomy advocates expected EW to force them out.</p>
+
+  <h3>Trust and waste</h3>
+  <p>An AI drone that misclassifies burns the airframe, reveals the launch position, and possibly hits the wrong thing. Pilots provide real-time verification, battle damage assessment, and mid-flight re-tasking that current autonomy handles poorly. And the human infrastructure is enormous: Ukraine flies on the order of 11,000 drone sorties a day, with schools, unit tactics, and trained operators that carry their own momentum.</p>
+
+  <div class="verdict"><b>Trajectory:</b> More autonomy is clearly coming — AI interceptors, swarm coordination — but as a gradient (assistance → terminal lock-on → autonomous search in defined kill boxes) rather than a switch flip. The human FPV pilot persists for the same reason infantry does: cheap, adaptable general intelligence is still hard to beat at $2,000 a round.</div>
+</section>
+
+<!-- ============ SECTION 4 ============ -->
+<section id="equities">
+  <div class="sec-label">Section 4 — Public-market exposure</div>
+  <h2>Companies exposed to drone AI components and enabling tech</h2>
+  <p>Organized by layer of the stack: compute, optics, navigation, integrated platforms, and upstream materials. Market caps as of the July 10, 2026 close; EV/Sales is trailing twelve months.</p>
+
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Company (ticker)</th>
+          <th>Market cap</th>
+          <th>EV / Sales</th>
+          <th>Exposure</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="group-row"><td colspan="4">Edge AI compute — the "brain"</td></tr>
+        <tr><td class="name">Nvidia (NVDA)</td><td class="num">$5.11T</td><td class="num">20.2x</td><td>Jetson modules are the de facto standard for drone autonomy; drone exposure is a rounding error vs. datacenter, though.</td></tr>
+        <tr><td class="name">AMD (AMD)</td><td class="num">$910B</td><td class="num">24.2x</td><td>Xilinx FPGAs handle real-time signal processing in military UAVs.</td></tr>
+        <tr><td class="name">Arm (ARM)</td><td class="num">$344B</td><td class="num">69.5x</td><td>Royalty on nearly every edge AI chip — Jetson, Dragonwing, NXP S32, and Ambarella CVflow all use Arm cores.</td></tr>
+        <tr><td class="name">Qualcomm (QCOM)</td><td class="num">$199B</td><td class="num">4.7x</td><td>Flight/Dragonwing platforms; the power-efficient alternative to Jetson. Cheapest valuation in the compute group.</td></tr>
+        <tr><td class="name">NXP (NXPI)</td><td class="num">$74B</td><td class="num">6.5x</td><td>Flight controllers and sensor-fusion chips; Nvidia Holoscan collaboration.</td></tr>
+        <tr><td class="name">Lattice (LSCC)</td><td class="num">$18.8B</td><td class="num">32.6x</td><td>Low-power FPGAs for defense/aerospace signal processing.</td></tr>
+        <tr><td class="name">Ambarella (AMBA)</td><td class="num">$3.4B</td><td class="num">8.1x</td><td>Computer-vision SoCs built for extreme neural-network efficiency per watt — the profile small drones need. One of the purest plays here.</td></tr>
+        <tr><td class="name">Ceva (CEVA)</td><td class="num">$1.3B</td><td class="num">11.2x</td><td>Licenses sensor-processing and AI-engine IP. Currently unprofitable.</td></tr>
+        <tr><td class="name">Lantronix (LTRX)</td><td class="num">$0.25B</td><td class="num">2.1x</td><td>NDAA-compliant drone AI reference platform. Micro-cap, unprofitable.</td></tr>
+
+        <tr class="group-row"><td colspan="4">Optics &amp; imaging — the "eyes"</td></tr>
+        <tr><td class="name">Sony (SONY)</td><td class="num">$122B</td><td class="num">1.5x</td><td>Dominant CMOS image-sensor supplier for camera drones. Lowest multiple on the list — you're buying games, music, and movies too.</td></tr>
+        <tr><td class="name">onsemi (ON)</td><td class="num">$37B</td><td class="num">6.3x</td><td>Image sensors and power management for industrial/auto vision.</td></tr>
+        <tr><td class="name">Teledyne (TDY)</td><td class="num">$29B</td><td class="num">5.0x</td><td>FLIR thermal — the standard drone payload; recent Army contracts for autonomous hazard-mapping drones and AI counter-UAS software.</td></tr>
+        <tr><td class="name">Ouster (OUST)</td><td class="num">$2.8B</td><td class="num">14.5x</td><td>Lidar for autonomous navigation. Unprofitable.</td></tr>
+
+        <tr class="group-row"><td colspan="4">Connectivity &amp; navigation</td></tr>
+        <tr><td class="name">Analog Devices (ADI)</td><td class="num">$193B</td><td class="num">15.6x</td><td>IMUs and precision sensors for GPS-denied navigation.</td></tr>
+        <tr><td class="name">Corning (GLW)</td><td class="num">$164B</td><td class="num">10.5x</td><td>Optical fiber (fiber-optic FPV cable is a tiny sliver; the multiple reflects its AI datacenter fiber story).</td></tr>
+        <tr><td class="name">Safran (SAF.PA)</td><td class="num">€140B</td><td class="num">4.4x</td><td>Navigation-grade inertial systems.</td></tr>
+        <tr><td class="name">Honeywell (HON)</td><td class="num">$72B</td><td class="num">2.6x</td><td>Aerospace nav sensors; post-breakup entity.</td></tr>
+
+        <tr class="group-row"><td colspan="4">Integrated AI-drone makers</td></tr>
+        <tr><td class="name">Kratos (KTOS)</td><td class="num">$9.0B</td><td class="num">5.5x</td><td>Valkyrie jet drones, CCA-adjacent programs.</td></tr>
+        <tr><td class="name">AeroVironment (AVAV)</td><td class="num">$7.3B</td><td class="num">3.9x</td><td>Largest US pure-play; Switchblade loitering munitions. Currently loss-making on acquisition costs.</td></tr>
+        <tr><td class="name">Ondas (ONDS)</td><td class="num">$3.8B</td><td class="num">28.8x</td><td>Drone platforms + counter-UAS. Narrative-priced.</td></tr>
+        <tr><td class="name">Red Cat (RCAT)</td><td class="num">$0.95B</td><td class="num">15.7x</td><td>Army SRR program drones. Unprofitable, high burn.</td></tr>
+        <tr><td class="name">Unusual Machines (UMAC)</td><td class="num">$0.63B</td><td class="num">24.0x</td><td>NDAA-compliant FPV components. ~$17M in revenue supporting that multiple.</td></tr>
+        <tr><td class="name">Draganfly (DPRO)</td><td class="num">$0.11B</td><td class="num">0.5x</td><td>EV near zero because cash roughly equals market cap; sub-$10M revenue. Not a bargain signal.</td></tr>
+
+        <tr class="group-row"><td colspan="4">Upstream materials</td></tr>
+        <tr><td class="name">MP Materials (MP)</td><td class="num">$9.3B</td><td class="num">27.2x</td><td>Rare-earth magnets — the China choke point (~90% of sintered magnets). Multiple reflects strategic scarcity, not current earnings.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The numbers make a few things obvious. The market has already found this theme: the small-cap drone names (ONDS, UMAC, RCAT) and MP trade at 15–29x sales while mostly losing money — the Pentagon procurement story is priced up front. The cheapest exposure is where drones are buried inside something bigger: Sony at 1.5x, Lantronix at 2.1x, Honeywell at 2.6x, AeroVironment at 3.9x, Qualcomm at 4.7x. Teledyne at 5.0x is arguably the best balance of direct exposure and sane valuation.</p>
+
+  <div class="callout">
+    <b>Structural caveats.</b> The most interesting AI-drone companies — Anduril, Skydio, Shield AI, Neros — are private, so public exposure to the pure thesis is mostly indirect through suppliers. For the mega-caps, drones are a sliver of revenue: you're buying the whole company, not the drone story. EV/Sales comparisons across profitable mega-caps and pre-profit micro-caps say more about risk appetite than relative value.
+  </div>
+</section>
+
+<footer>
+  <p><strong>Sources &amp; methods.</strong> Production estimates compiled July 2026 from Ukrainian General Staff and HUR statements, Russian government statements (Manturov, via Kommersant), CSIS, the Institute for Science and International Security, Defense Express, DefenseScoop, US Army/DoD releases, and press reporting (Reuters, Bloomberg, Al Jazeera, The Moscow Times). Confidence grades reflect sourcing quality, not precision. Market data via Financial Modeling Prep, July 10, 2026 close.</p>
+  <p><strong>Disclaimer.</strong> This report is for informational purposes only and is not investment advice or a recommendation to buy or sell any security. Wartime production figures originate largely from belligerent governments and should be treated as claims, not verified facts.</p>
+</footer>
+
+</div>
+</body>
+</html>
