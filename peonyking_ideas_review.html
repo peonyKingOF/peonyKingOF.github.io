@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stock Ideas Review — @peonyKingOF, 30 Days</title>
+<style>
+  :root{
+    --bg:#fbfaf8; --panel:#ffffff; --ink:#1a1a1a; --muted:#5f6470; --line:#e3e1dc;
+    --accent:#2f5d8a; --bull:#1d6b4f; --bull-bg:#e6f2ec; --bear:#9b2c2c; --bear-bg:#fbeaea;
+    --neut:#6b6560; --neut-bg:#efece8; --warn:#8a6d1f; --warn-bg:#f7f0dc; --code:#f3f1ed;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#15171a; --panel:#1c1f23; --ink:#e8e6e3; --muted:#9aa0a8; --line:#2e3238;
+      --accent:#7fb0dd; --bull:#5fc79b; --bull-bg:#16302690; --bear:#e08585; --bear-bg:#3a1e1e90;
+      --neut:#a5a09a; --neut-bg:#2a2926; --warn:#d9bd6b; --warn-bg:#332c1490; --code:#24272b;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#15171a; --panel:#1c1f23; --ink:#e8e6e3; --muted:#9aa0a8; --line:#2e3238;
+    --accent:#7fb0dd; --bull:#5fc79b; --bull-bg:#16302690; --bear:#e08585; --bear-bg:#3a1e1e90;
+    --neut:#a5a09a; --neut-bg:#2a2926; --warn:#d9bd6b; --warn-bg:#332c1490; --code:#24272b;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  .wrap{max-width:1500px;margin:0 auto;padding:32px 20px 80px}
+  header{border-bottom:2px solid var(--line);padding-bottom:20px;margin-bottom:8px}
+  h1{font-size:26px;margin:0 0 6px;letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:14px}
+  .meta{
+    display:flex;flex-wrap:wrap;gap:10px 26px;margin:18px 0 26px;
+    font-size:13px;color:var(--muted)
+  }
+  .meta b{color:var(--ink);font-weight:600}
+  .note{
+    background:var(--warn-bg);border-left:3px solid var(--warn);
+    padding:12px 16px;margin:22px 0;font-size:13.5px;border-radius:0 4px 4px 0
+  }
+  .note b{color:var(--ink)}
+  h2{
+    font-size:17px;margin:38px 0 4px;letter-spacing:-.01em;
+    display:flex;align-items:baseline;gap:10px
+  }
+  h2 .count{font-size:12px;font-weight:500;color:var(--muted)}
+  .h2sub{color:var(--muted);font-size:13px;margin:0 0 14px}
+  .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+  table{border-collapse:collapse;width:100%;min-width:1180px;font-size:13.5px}
+  th{
+    text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.06em;
+    color:var(--muted);font-weight:600;padding:11px 12px;border-bottom:1px solid var(--line);
+    background:var(--panel);white-space:nowrap
+  }
+  td{padding:14px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  .tk{font-weight:700;font-size:15px;white-space:nowrap}
+  .tk small{display:block;font-weight:400;font-size:11px;color:var(--muted);margin-top:2px;letter-spacing:0}
+  .num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .nm{color:var(--muted);font-style:italic;font-size:12px}
+  ul{margin:0;padding-left:16px}
+  li{margin-bottom:5px}
+  li:last-child{margin-bottom:0}
+  .badge{
+    display:inline-block;padding:3px 9px;border-radius:11px;font-size:11px;
+    font-weight:700;letter-spacing:.03em;white-space:nowrap
+  }
+  .b2{background:var(--bull-bg);color:var(--bull)}
+  .b1{background:var(--bull-bg);color:var(--bull);opacity:.85}
+  .n0{background:var(--neut-bg);color:var(--neut)}
+  .s1{background:var(--bear-bg);color:var(--bear);opacity:.85}
+  .s2{background:var(--bear-bg);color:var(--bear)}
+  .why{display:block;margin-top:6px;font-size:12px;color:var(--muted);font-weight:400;letter-spacing:0}
+  .crit strong{color:var(--accent)}
+  .flag{color:var(--bear);font-weight:600}
+  .ok{color:var(--bull);font-weight:600}
+  footer{
+    margin-top:48px;padding-top:18px;border-top:1px solid var(--line);
+    font-size:12px;color:var(--muted)
+  }
+  code{background:var(--code);padding:1px 5px;border-radius:3px;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Stock Ideas Review — public posts from @peonyKingOF</h1>
+  <div class="sub">Trailing 30 days · securities-level summary, conviction read, and independent critique</div>
+</header>
+
+<div class="meta">
+  <span>Window <b>12 Jul – 10 Aug 2026</b></span>
+  <span>Posts analysed <b>551</b></span>
+  <span>Tickers covered <b>34</b></span>
+  <span>Carrying a directional view <b>31</b></span>
+  <span>Prices &amp; multiples <b>FMP, 10 Aug 2026</b></span>
+  <span>Estimates &amp; ratings <b>FactSet, 10 Aug 2026</b></span>
+</div>
+
+<div class="note">
+  <b>Coverage.</b> Complete — all 551 non-retweet posts across the window were retrieved, with no gap.
+  Roughly 45 are link-only and a large share are non-market conversation; the table below rests on
+  the ~135 posts carrying an actual security view.
+  <b>EV/Sales is trailing-twelve-month</b> and is marked <span class="nm">n/m</span> where the company is
+  pre-revenue or the figure is not meaningful — note this makes several multiples below look
+  deceptively benign relative to forward numbers, which are given in the critique column where they matter.
+</div>
+
+<h2>Core positions <span class="count">5+ posts · sustained argument</span></h2>
+<p class="h2sub">Names the author built an actual case for, rather than remarked on.</p>
+<div class="scroll">
+<table>
+<thead><tr>
+  <th>Ticker</th><th class="num">Mkt cap</th><th class="num">EV/Sales</th><th class="num">Price</th>
+  <th style="min-width:300px">The idea</th><th>Conviction</th><th style="min-width:330px">Critique</th>
+</tr></thead>
+<tbody>
+
+<tr>
+  <td class="tk">CCXI<small>Churchill Capital XI</small></td>
+  <td class="num">$696M</td><td class="num nm">n/m</td><td class="num">$16.62</td>
+  <td><ul>
+    <li>SPAC merging with <b>Agility Robotics</b>; the single cleanest way to own humanoid robotics.</li>
+    <li>Deployment is the moat — Digit bots already earning revenue in warehouses years ahead of peers.</li>
+    <li>22-hour runtime vs ~5 for competitors; leads the ISO cooperative-safety working group (cage-free = larger TAM).</li>
+    <li>Foxconn led the PIPE; sole humanoid partner for NVIDIA Halo.</li>
+    <li>Deal struck six weeks early — "could have demanded 2–3x the valuation today."</li>
+    <li>Expects index/ETF inclusion (BOTZ) on merge to lock up ~10% of the company.</li>
+    <li>Positioned as a <b>task specialist</b> — distinct from $TSLA's "industrial bi-ped, the most crowded category" and Figure's dexterity focus.</li>
+    <li>Relative-value anchor (14 Jul): Figure at ~$40B valuation versus CCXI at ~$3B.</li>
+  </ul></td>
+  <td><span class="badge b2">Strongly Bullish</span>
+    <span class="why">Largest and most-repeated position; "so net long it can only be expressed in poetry."</span></td>
+  <td class="crit"><strong>The deployment claim contradicts his own earlier post.</strong> On 14 Jul he
+    states CCXI has <b>~100 units deployed</b> and "ranks just below" $TSLA and Figure at ~300 each.
+    By 20 Jul–4 Aug this has become "the first humanoid robotics company in the world to have their
+    bots out there," "truly in a league of its own in terms of deployment," and "the cheese stands
+    alone." <span class="flag">Those cannot both be true</span> — and the earlier, more specific
+    figure is the one with numbers attached.
+    <strong>The market-cap framing also shifts to suit the comparison.</strong> Against Figure he uses
+    ~$3B (the pro-forma valuation); against $VPG on 4 Aug he uses the ~$860M pre-merge cap to argue
+    CCXI is overlooked. The $2.5B NAV valuation he cites himself is the right figure for both, and it
+    erases most of the claimed VPG discrepancy.
+    <span class="flag">No revenue, no consensus estimates, no analyst coverage</span> — none of the
+    runtime, safety or partnership claims can be corroborated in FactSet or FMP. At $16.62 the stock
+    trades 66% above the ~$10 trust value, so much of "break 20" is priced; redemption and PIPE
+    dynamics, not robot capability, drive the next move.</td>
+</tr>
+
+<tr>
+  <td class="tk">GSM<small>Ferroglobe</small></td>
+  <td class="num">$846M</td><td class="num">0.71×</td><td class="num">$4.49</td>
+  <td><ul>
+    <li>Cleanest pure-play on the <b>US polysilicon price floor</b>; other affected names carry too many offsetting problems.</li>
+    <li>Protectionism tailwind extends past silicon metal into <b>ferrosilicon</b> (steel, iron foundries).</li>
+    <li>"Direct candidacy for the MP treatment" — management openly campaigning, and per the latest call
+        "actively engaged in discussions with governments and strategic stakeholders."</li>
+    <li>Balance sheet cleaned up — nearly all debt cut, float kept tight — versus REE peers diluting at 20–30× sales.</li>
+    <li>Bull case pegged at ~$11/share; options carry "incredible torque."</li>
+  </ul></td>
+  <td><span class="badge b2">Strongly Bullish</span>
+    <span class="why">"One of my favorite trades right now"; framed as inning 1 of a multi-leg story.</span></td>
+  <td class="crit"><span class="ok">The balance-sheet claim checks out</span> — EV of $976M against an
+    $846M cap implies only ~$130M net debt. FactSet has FY26 sales at $1,506M rising to $1,819M in FY27
+    (+20.8%), consistent with his direction.
+    <strong>But the earnings base is currently near zero</strong>: EV/EBITDA of 172× and ROE of −5.6%
+    mean the entire thesis is a margin-recovery call dressed as a valuation call.
+    <span class="flag">Coverage is two analysts</span>, with one up and one down revision and a $202M
+    standard deviation on FY27 — effectively no institutional conviction either way. The $11 target
+    implies ~$2.1B cap, or ~1.2× FY27 sales; defensible <em>if</em> margins normalise, which no
+    published estimate yet assumes.</td>
+</tr>
+
+<tr>
+  <td class="tk">BABA<small>Alibaba</small></td>
+  <td class="num">$307.8B</td><td class="num">2.12×</td><td class="num">$128.41</td>
+  <td><ul>
+    <li>Trading at ~2× sales while Chinese neocloud comparables sit at 50×.</li>
+    <li>Owns a 30% stake in Moonshot plus a competitive in-house model.</li>
+    <li>Rev-share structure on Chinese LLMs is designed to drive compute onto Alibaba's own datacentres.</li>
+    <li>Dec-2027 $100 LEAPS at ~$34 called "incredibly mis-priced."</li>
+    <li>Framing: China gets a full AI revolution regardless of how technology crosses borders.</li>
+  </ul></td>
+  <td><span class="badge b2">Strongly Bullish</span>
+    <span class="why">"Likely straight up from here," expressed through long-dated calls.</span></td>
+  <td class="crit">The multiple is right (2.12× EV/Sales, so "less than 2×" is marginally generous) and
+    the street agrees on direction — <span class="ok">42 buys against 1 sell</span> of 52 ratings.
+    <strong>What the thesis omits is the revision trend and the cash cost.</strong> FY26 consensus
+    carries <span class="flag">8 downward revisions against 2 up</span>; the stock is cheap on sales
+    partly because forward numbers are being cut. More pointedly, free cash flow yield is
+    <span class="flag">−2.5%</span> with capex at 12.6% of revenue and 1.67× operating cash flow —
+    the datacentre buildout he is bullish about is precisely what is consuming all the cash.
+    The equity story requires that spend to convert; nothing in the current numbers demonstrates it yet.</td>
+</tr>
+
+<tr>
+  <td class="tk">PESI<small>Perma-Fix Environmental</small></td>
+  <td class="num">$383M</td><td class="num">6.47×</td><td class="num">$18.08</td>
+  <td><ul>
+    <li>Direct analogue to <b>$LEU</b>: dirt cheap, unglamorous, yet one of very few viable candidates for an essential supply-chain role.</li>
+    <li>Even on conservative weightings with long-tail outcomes zeroed, "should be priced well into the 20s."</li>
+    <li>Concedes the company is not attractive — "their history is frankly ugly" — and frames the opportunity as the gap between past and future.</li>
+    <li>Reads $LCID strength as confirmation traders will hold names uncorrelated to AI beta.</li>
+  </ul></td>
+  <td><span class="badge b1">Bullish</span>
+    <span class="why">High conviction on the setup, explicitly hedged on company quality.</span></td>
+  <td class="crit"><strong>Largely played out already.</strong> Posted from 15 Jul when the stock was
+    materially lower; at $18.08 it sits at its 52-week high of $18.40, up 125% from the $8.02 low —
+    the move into "the 20s" is mostly complete.
+    FactSet shows FY26 sales of $63.5M doubling to $127.9M in FY27, which would take EV/Sales from
+    6.5× to ~3.0× — but <span class="flag">both figures come from a single analyst</span>, so there
+    is no corroboration for the most load-bearing number in the case. EBITDA is negative and ROE is
+    −34%. The <b>$LEU</b> analogy also cuts against him: see the LEU row below.</td>
+</tr>
+
+</tbody></table>
+</div>
+
+<h2>Active calls <span class="count">2–4 posts · reasoned but lighter</span></h2>
+<p class="h2sub">Real arguments, less developed than the core book.</p>
+<div class="scroll">
+<table>
+<thead><tr>
+  <th>Ticker</th><th class="num">Mkt cap</th><th class="num">EV/Sales</th><th class="num">Price</th>
+  <th style="min-width:280px">The idea</th><th>Conviction</th><th style="min-width:320px">Critique</th>
+</tr></thead>
+<tbody>
+
+<tr>
+  <td class="tk">SPCX<small>SpaceX</small></td>
+  <td class="num">$1.74T</td><td class="num nm">n/c</td><td class="num">$133.11</td>
+  <td><ul>
+    <li>A "flagrantly mis-priced" mega cap — rare, because shorting small caps risks a 2–10× move against you while a mega cap's downside is estimable.</li>
+    <li>The listing is read as a failure despite every structural advantage: Musk's reach, aggressive float constraints, penalties on retail selling.</li>
+    <li>Draws a negative read-through for a prospective Anthropic IPO.</li>
+  </ul></td>
+  <td><span class="badge s1">Bearish</span>
+    <span class="why">Short-curious rather than committed; framed as bounded-loss.</span></td>
+  <td class="crit"><strong>The bounded-loss premise took a hit the same day.</strong> SPCX rose
+    <span class="flag">+15.8% on 242M shares</span> in the session this table was built — the exact
+    convexity-against-you he says mega caps protect from.
+    Down 41% from the $225.64 high, so the mispricing call has partly worked, but
+    <span class="flag">no consensus estimates or ratings exist</span> for a listing this recent —
+    there is no earnings base to anchor "mis-priced" to. His argument is market-structure
+    observation (float, lockups, retail penalties), not valuation, and those are different trades.</td>
+</tr>
+
+<tr>
+  <td class="tk">GXO<small>GXO Logistics</small></td>
+  <td class="num">$5.55B</td><td class="num">0.80×</td><td class="num">$48.23</td>
+  <td><ul>
+    <li>Fits the "$OII / $LASR pattern": dull business, cheap multiple, wrapped around an unappreciated transformative technology story that is core rather than optional.</li>
+    <li>A second way to own the CCXI/Agility robotics story with different short-term trading behaviour.</li>
+    <li>Latest call transcript read as confirmation — CEO led with automation/autonomy/robotics.</li>
+    <li>Reads $AMZN developments as incrementally positive.</li>
+  </ul></td>
+  <td><span class="badge b1">Bullish</span>
+    <span class="why">Explicitly a diversifier on the humanoid thesis, not a standalone.</span></td>
+  <td class="crit">Street agrees on direction — <span class="ok">16 buys of 19</span> — and 0.80× sales
+    is genuinely undemanding.
+    <strong>The leverage is the problem the thesis never mentions.</strong> EV of $10.9B against a
+    $5.55B cap means <span class="flag">half the enterprise is debt, at 6.9× net debt/EBITDA</span>.
+    The equity is therefore a levered call, and consensus growth of just
+    <b>+5.5%</b> (FY26 $13.99B → FY27 $14.76B) gives that leverage little to work against.
+    A robotics option attached to a 5.5% grower carrying 6.9× leverage is a much narrower proposition
+    than "cheap stock with a free call attached."</td>
+</tr>
+
+<tr>
+  <td class="tk">OUST<small>Ouster</small></td>
+  <td class="num">$2.76B</td><td class="num">13.12×</td><td class="num">$43.40</td>
+  <td><ul>
+    <li>Openly dislikes the valuation, but reads the FCC ban on Chinese advanced robotics as strongly bullish.</li>
+    <li>Relative-value case: if $AMBA's $100 target implies ~10× revenue, OUST at ~12× with twice the growth is reasonable.</li>
+    <li>The $AMBA offer plus a recent raise should establish a floor near the current price.</li>
+  </ul></td>
+  <td><span class="badge b1">Bullish</span>
+    <span class="why">Valuation-reluctant; leaning on catalyst and floor rather than price.</span></td>
+  <td class="crit"><span class="ok">The comp arithmetic holds and is if anything conservative.</span>
+    FactSet has AMBA growing 12.9% (FY26 $441M → FY27 $498M) against OUST at
+    <b>34%</b> ($221M → $297M) — 2.6× the growth, not the 2× he claimed. Consensus is Overweight
+    (5 buys of 8). On FY27 numbers the 13.1× trailing multiple compresses to ~9.0×.
+    <span class="flag">The risk is the entry point, not the logic</span>: the stock has already run
+    165% off its $16.40 low, ROE is −18%, and free cash flow is negative — so the "floor" rests on a
+    corporate action rather than on cash generation.</td>
+</tr>
+
+<tr>
+  <td class="tk">RKLB<small>Rocket Lab</small></td>
+  <td class="num">$47.9B</td><td class="num">68.99×</td><td class="num">$82.83</td>
+  <td><ul>
+    <li>Regrets exiting mid-last-year — the stock is at similar levels despite a historic year for the space sector.</li>
+    <li>"You just ain't gonna find companies like this at these levels in our lifetimes."</li>
+    <li>Concedes $40B is rich, but argues the only comps are $SPCX or China.</li>
+  </ul></td>
+  <td><span class="badge b1">Bullish</span>
+    <span class="why">Regret-framed rather than modelled; no position stated.</span></td>
+  <td class="crit"><strong>This is the least analytically defensible call in the set.</strong>
+    69× trailing sales, and still <span class="flag">~36× on FY27 consensus</span> of $1,315M, with
+    free cash flow to equity at <span class="flag">−$400M</span>.
+    Consensus is Overweight with 43% growth (FY26 $918M → FY27 $1,315M), so the operating story is
+    real — but "never at these levels again" is a claim about price, and the price already
+    discounts several years of that growth. The comp set he offers makes it worse: anchoring to
+    SPCX (a $1.74T recent listing with no estimates) and to non-investable Chinese assets is not a
+    valuation argument.</td>
+</tr>
+
+<tr>
+  <td class="tk">LEU<small>Centrus Energy</small></td>
+  <td class="num">$3.63B</td><td class="num">6.20×</td><td class="num">$191.37</td>
+  <td><ul>
+    <li>Invoked as the successful template for $PESI: cheap, boring, structurally essential.</li>
+    <li>Notes the option chain was inert before the move, then became liquid after it — and that liquidity itself helped the trade.</li>
+  </ul></td>
+  <td><span class="badge n0">Reference</span>
+    <span class="why">Used as precedent, not as a live recommendation.</span></td>
+  <td class="crit"><strong>The template has since broken, which weakens the PESI case that leans on it.</strong>
+    LEU is <span class="flag">59% below its $464 high</span>, and FactSet shows revenue essentially
+    flat — FY26 $466M to FY27 $471M, +1.1% — with
+    <span class="flag">7 downward revisions against 4 up</span>.
+    Citing LEU's ascent while omitting its subsequent de-rating is survivorship framing: the
+    full LEU round-trip is at least as instructive for PESI as the leg he references.</td>
+</tr>
+
+<tr>
+  <td class="tk">LTRX<small>Lantronix</small></td>
+  <td class="num">$266M</td><td class="num">2.19×</td><td class="num">$5.97</td>
+  <td><ul>
+    <li>Long-undervalued player in drones, against "countless massively inflated" peers growing by acquisition.</li>
+    <li>Holds substantial partnerships with most of those inflated competitors.</li>
+    <li>Puts fair value at $12.01.</li>
+  </ul></td>
+  <td><span class="badge b1">Bullish</span>
+    <span class="why">Specific price target, relative-value framing.</span></td>
+  <td class="crit"><span class="ok">Best street corroboration in the whole set</span> — 6 of 6
+    analysts at Buy, unanimous, with FY26 $120.5M growing 16.2% to $140.0M in FY27.
+    His $12.01 implies roughly a $535M cap, or ~3.8× FY27 sales, which is not indefensible for a
+    16% grower with positive free cash flow (3.2% yield).
+    The caveat is scale: at a $266M cap with 30.7× EV/FCF, this is a liquidity-constrained
+    micro cap, and his own $LEU observation about inert option chains applies here too.</td>
+</tr>
+
+<tr>
+  <td class="tk">SOLS<small>Solstice Advanced Materials</small></td>
+  <td class="num">$9.68B</td><td class="num">2.77×</td><td class="num">$60.96</td>
+  <td><ul>
+    <li>"An outstanding company that is reasonably priced" — repeated twice within the window.</li>
+    <li>Noted as having come back to a reasonable price after a decline.</li>
+  </ul></td>
+  <td><span class="badge b1">Bullish</span>
+    <span class="why">Confident but undefended — quality assertion with no mechanism.</span></td>
+  <td class="crit">Quality holds up: ROE 10.9%, EV/EBITDA 12.7×, positive FCF, and
+    <span class="ok">consensus Buy with all 6 estimates revised up</span> for both FY26 and FY27.
+    <strong>"Reasonably priced" is doing more work than "outstanding," though.</strong>
+    Consensus growth is <b>+5.8%</b> ($4,177M → $4,418M) — 12.7× EBITDA for a mid-single-digit
+    grower is fair value, not a bargain. The stock is 33% off its $90.80 high, so the
+    de-rating has already happened; from here the return is roughly the earnings growth.</td>
+</tr>
+
+<tr>
+  <td class="tk">AMBA<small>Ambarella</small></td>
+  <td class="num">$3.81B</td><td class="num">9.15×</td><td class="num">$86.78</td>
+  <td><ul>
+    <li>Referenced primarily as the valuation anchor for $OUST — a $100 target implies roughly 10× revenue.</li>
+    <li>Treats the pending offer as establishing a sector floor.</li>
+  </ul></td>
+  <td><span class="badge n0">Neutral / anchor</span>
+    <span class="why">Used to price another name rather than recommended itself.</span></td>
+  <td class="crit"><span class="ok">The arithmetic is sound</span> — $100 × ~43.9M shares ≈ $4.4B
+    against FY26 sales of $441M is ~10×, as claimed. Consensus is Overweight (8 buys of 13).
+    Worth noting for the OUST comparison that AMBA's own growth is decelerating —
+    <span class="flag">FY26 carries 1 down revision and 0 up</span> — and ROE is −11.8%.
+    Using a decelerating 12.9% grower as the benchmark makes OUST look better than an
+    absolute-value test would.</td>
+</tr>
+
+<tr>
+  <td class="tk">RELL<small>Richardson Electronics</small></td>
+  <td class="num">$302M</td><td class="num">1.19×</td><td class="num">$20.66</td>
+  <td><ul>
+    <li>"One of the most under-rated trades this year" — grinding steadily upward, free of hype, through the biggest unwind in years.</li>
+    <li>Credited to another account's January mention; presented as a pattern he trades repeatedly.</li>
+    <li>Separately: "a little guidance would go a long way."</li>
+  </ul></td>
+  <td><span class="badge b1">Bullish</span>
+    <span class="why">Retrospective validation more than forward call.</span></td>
+  <td class="crit">The call has worked — up 120% from the $9.37 low — and 1.19× sales remains modest
+    with FY26 $245M growing 9.2% to $268M.
+    <span class="flag">Coverage is a single analyst</span>, so "under-rated" is close to tautological:
+    there is almost no rating to be under. Free cash flow is negative and inventory sits at 239 days,
+    which is where his own request for guidance bites. A 9% grower at 1.2× sales is cheap for a
+    reason, not despite one.</td>
+</tr>
+
+<tr>
+  <td class="tk">TE<small>T1 Energy</small></td>
+  <td class="num">$1.63B</td><td class="num">2.35×</td><td class="num">$5.85</td>
+  <td><ul>
+    <li>Forward dilution seen as "trivial compared to the market cap" — roughly 10%.</li>
+    <li>Already 50% off the highs, which is treated as cushioning that dilution.</li>
+    <li>Elsewhere grouped with names picked for volatility rather than quality.</li>
+  </ul></td>
+  <td><span class="badge n0">Constructive</span>
+    <span class="why">Dismissive of the main bear point rather than making a bull case.</span></td>
+  <td class="crit"><strong>The dilution point understates the funding need.</strong> Free cash flow to
+    equity is <span class="flag">−$182M against a $1.63B cap</span>, with ROE at −146% — so
+    dilution is not a one-off 10% event but an ongoing requirement unless cash generation inflects.
+    Consensus does show 44% growth (FY26 $937M → FY27 $1,352M) and 6 of 7 at Buy, but the
+    <span class="flag">$142M standard deviation across 7 estimates</span> is the widest dispersion
+    in this table — the analysts covering it do not agree on the revenue base, let alone the funding gap.</td>
+</tr>
+
+<tr>
+  <td class="tk">LCID<small>Lucid Group</small></td>
+  <td class="num">$2.24B</td><td class="num">3.15×</td><td class="num">$7.04</td>
+  <td><ul>
+    <li>"Going 'bankrupt' [is] the best thing to happen to $LCID."</li>
+    <li>Read as evidence traders will stay with names demonstrating low correlation to AI beta — used as a supporting read-through for $PESI.</li>
+  </ul></td>
+  <td><span class="badge n0">Constructive</span>
+    <span class="why">A market-behaviour observation, not a company view.</span></td>
+  <td class="crit">This is a sentiment read, and should be graded as one — there is no claim here
+    about the business to test.
+    On the underlying: <span class="flag">free cash flow to equity of −$5.38B against a $2.24B market
+    cap</span> and ROE of −255%, with consensus at Hold and
+    <span class="flag">6 downward FY26 revisions and 7 for FY27</span>.
+    The read-through he draws for PESI — that traders reward uncorrelated names — may hold as a
+    behavioural point while telling you nothing about either company's economics.</td>
+</tr>
+
+<tr>
+  <td class="tk">FCEL<small>FuelCell Energy</small></td>
+  <td class="num">$1.38B</td><td class="num">6.96×</td><td class="num">$20.43</td>
+  <td><ul>
+    <li>Should rally on the scandium controversy — "nearly equivalent tech with little rare-earth dependency at 1/60th the valuation" of $BE.</li>
+    <li>"Mixed feelings" overall: even after dilution it is ~$1.7B market cap, with a conceivable 2–3× long-run upside if things go well.</li>
+    <li>Being "flush with cash" treated as a support.</li>
+    <li>Held up during a weak AI tape — read as possible active accumulation.</li>
+  </ul></td>
+  <td><span class="badge n0">Constructive</span>
+    <span class="why">Self-described mixed feelings; relative-value case stated more firmly than the outright one.</span></td>
+  <td class="crit"><span class="ok">The relative-value comparison broadly holds</span> — FCEL at $1.38B
+    against BE's $64.6B is about 1/47th, close to the 1/60th claimed, and the low-rare-earth
+    argument is legitimate.
+    <strong>Both figures he cites are wrong, in opposite directions.</strong> Market cap is
+    <span class="flag">$1.38B, not ~$1.7B</span>, and enterprise value is
+    <span class="flag">$1.17B, not the "500–600m" he guesses</span> — roughly double. That matters,
+    because the 2–3× upside case is being sized off an EV he has understated by half.
+    Consensus is Hold with <span class="flag">5 downward FY26 revisions against 1 up</span>, ROE
+    −31.7% and FCF yield −8.9%. Net cash is real but modest at ~$213M.</td>
+</tr>
+
+</tbody></table>
+</div>
+
+<h2>Passing calls <span class="count">1–2 posts · directional but undeveloped</span></h2>
+<p class="h2sub">A view was expressed and is recorded here, but the reasoning is a sentence or two at most. Weight accordingly.</p>
+<div class="scroll">
+<table>
+<thead><tr>
+  <th>Ticker</th><th class="num">Mkt cap</th><th class="num">EV/Sales</th><th class="num">Price</th>
+  <th style="min-width:250px">The idea</th><th>Conviction</th><th style="min-width:300px">Critique</th>
+</tr></thead>
+<tbody>
+
+<tr>
+  <td class="tk">CACI<small>CACI International</small></td>
+  <td class="num">$14.2B</td><td class="num">2.03×</td><td class="num">$644.43</td>
+  <td><ul><li>"Markets waking up to the $CACI story."</li></ul></td>
+  <td><span class="badge b1">Bullish</span></td>
+  <td class="crit"><span class="ok">Best-supported of the passing calls.</span> Consensus Overweight
+    (12 buys of 18), FY27 $10.75B growing 6.7% to $11.47B, with
+    <span class="ok">6 upward revisions against 1 down</span>, a 9.0% FCF yield and 12.7% ROE at just
+    2.03× sales. The stock is near its 52-week high having risen from $434.70 — so the "waking up"
+    is well advanced, but nothing in the data contradicts him.</td>
+</tr>
+
+<tr>
+  <td class="tk">GTM<small>ZoomInfo</small></td>
+  <td class="num">$1.23B</td><td class="num">2.07×</td><td class="num">$4.18</td>
+  <td><ul>
+    <li>Roughly a dollar of annual earnings against a $4 share price; should trade at twice the level.</li>
+    <li>Concedes the discount likely exists because "no one understands the business, myself included."</li>
+  </ul></td>
+  <td><span class="badge b1">Bullish</span></td>
+  <td class="crit"><span class="ok">The cash-flow observation is correct</span> — 36.4% FCF yield and
+    5.8× EV/FCF are genuinely striking.
+    <strong>The market's answer is in the revenue line he did not check:</strong> consensus has sales
+    <span class="flag">declining</span>, FY26 $1,212M to FY27 $1,183M, with
+    <span class="flag">6 sell ratings and 12 holds against 3 buys</span>. A melting asset at 5.8× FCF
+    can still be correctly priced. His stated uncertainty is the most warranted admission in the corpus.</td>
+</tr>
+
+<tr>
+  <td class="tk">TRIP<small>Tripadvisor</small></td>
+  <td class="num">$1.25B</td><td class="num">0.72×</td><td class="num">$10.78</td>
+  <td><ul><li>Every travel name popped off earnings; $TRIP "hasn't budged off any of it."</li></ul></td>
+  <td><span class="badge n0">Constructive</span></td>
+  <td class="crit">Cheap on cash — 18.7% FCF yield, 5.5× EV/FCF, 0.72× sales.
+    <strong>The non-participation has a cause:</strong> consensus is flat (FY26 $1,728M → FY27 $1,745M,
+    +0.9%) with <span class="flag">7 downward revisions and zero upward in both years</span>, and
+    the rating is Hold with 4 sells. It did not join the rally because its own estimates are moving
+    the other way — an observation of divergence, not evidence of mispricing.</td>
+</tr>
+
+<tr>
+  <td class="tk">BRKR<small>Bruker</small></td>
+  <td class="num">$8.13B</td><td class="num">2.82×</td><td class="num">$53.41</td>
+  <td><ul>
+    <li>A 20% drop on an unremarkable quarter implies outrageous expectations going in; expects roughly half the loss recovered quickly.</li>
+    <li>"The tech is incredible, but management…"</li>
+  </ul></td>
+  <td><span class="badge b1">Bullish</span></td>
+  <td class="crit">Partly vindicated already — the stock rose 4.2% on the session this was built.
+    <strong>The mean-reversion case ignores the direction of estimates</strong>, though:
+    <span class="flag">4 downward FY26 revisions and 6 for FY27</span> with growth of only 4.1%,
+    against <span class="flag">7.0× net debt/EBITDA</span> and negative ROE. A de-rating driven by
+    cut numbers and leverage does not usually round-trip on sentiment.</td>
+</tr>
+
+<tr>
+  <td class="tk">VPG<small>Vishay Precision Group</small></td>
+  <td class="num">$914M</td><td class="num">2.12×</td><td class="num">$68.59</td>
+  <td><ul>
+    <li>Cited as the archetype of froth: from ~$400M to ~$2B "almost entirely on enthusiasm on ~1% of their revenues being humanoid robotics related."</li>
+    <li>Used to argue how crowded legitimate robotics exposure could get.</li>
+  </ul></td>
+  <td><span class="badge s1">Bearish (illustrative)</span></td>
+  <td class="crit"><span class="ok">This call has already been proven right.</span> VPG now carries a
+    $914M cap against the ~$2B he cited — a <span class="ok">55% de-rating from the $151.78 high</span>,
+    round-tripping most of the move he called unjustified.
+    Consensus growth is 7.7% with 2 downward FY26 revisions. The irony worth flagging: the same
+    "1% of revenue" critique is a live risk for the CCXI thesis, where the entire valuation rests on
+    a pre-revenue deployment story.</td>
+</tr>
+
+<tr>
+  <td class="tk">TWST<small>Twist Bioscience</small></td>
+  <td class="num">$7.20B</td><td class="num">16.63×</td><td class="num">$115.67</td>
+  <td><ul><li>Rising 10% on a $300M offering while already at ~15× sales was "not what I expected."</li></ul></td>
+  <td><span class="badge s1">Skeptical</span></td>
+  <td class="crit">The valuation surprise is fair — 16.6× trailing sales is rich.
+    <strong>The market's willingness is explained by revision momentum he did not weigh:</strong>
+    <span class="ok">all 9 estimates revised up for both FY26 and FY27</span>, with growth of 19.3%
+    ($456M → $544M) and a Buy consensus. The stock is at its 52-week high after a 396% run from
+    $23.30. Being surprised by strength is not the same as identifying an error — though ROE of
+    −29.9% means his instinct on the risk is not misplaced.</td>
+</tr>
+
+<tr>
+  <td class="tk">GME<small>GameStop</small></td>
+  <td class="num">$8.60B</td><td class="num">1.48×</td><td class="num">$19.16</td>
+  <td><ul>
+    <li>"A remarkable achievement, as long as you omit the only thing that ultimately matters to shareholders. Namely, the pps."</li>
+    <li>A five-year dog, achieved by heavy dilution and alienating the investor base.</li>
+  </ul></td>
+  <td><span class="badge s1">Bearish</span></td>
+  <td class="crit"><span class="ok">The share-price and dilution critique is factually correct.</span>
+    <strong>The business critique is weaker than stated:</strong> EV of $5.54B against an $8.60B cap
+    implies <span class="ok">$3.06B of net cash</span>, with a 12.4× current ratio, 8.6% FCF yield
+    and 14.0% ROE — an unusually solid balance sheet for a "dog." The dilution he condemns is
+    precisely what funded it. <span class="flag">One analyst estimate and no ratings at all</span>,
+    so there is no consensus to argue against either way.</td>
+</tr>
+
+<tr>
+  <td class="tk">OKTA<small>Okta</small></td>
+  <td class="num">$24.6B</td><td class="num">8.11×</td><td class="num">$148.32</td>
+  <td><ul>
+    <li>Agentic traffic is widely misread: what scales is the <em>number of requests</em>, and agents fetch few-byte files while humans pull HD video.</li>
+    <li>That translates favourably to identity names like $OKTA and $SAIL, and far less to bandwidth-levered ones.</li>
+  </ul></td>
+  <td><span class="badge b1">Bullish</span></td>
+  <td class="crit"><strong>The most genuinely differentiated insight in the corpus</strong> — separating
+    request-count growth from bandwidth growth is a real distinction, and identity/authorisation is
+    correctly positioned on the request side. Consensus is Overweight (27 buys of 46).
+    <span class="flag">The valuation does not leave room for it</span>: 8.11× sales against consensus
+    growth of just 9.5% (FY26 $3,199M → FY27 $3,503M) with zero revisions in either direction. The
+    thesis is right and already priced.</td>
+</tr>
+
+<tr>
+  <td class="tk">SAIL<small>SailPoint</small></td>
+  <td class="num">$10.6B</td><td class="num">9.10×</td><td class="num">$18.66</td>
+  <td><ul><li>Same agentic-identity argument as $OKTA — beneficiary of request-count growth rather than bandwidth.</li></ul></td>
+  <td><span class="badge b1">Bullish</span></td>
+  <td class="crit"><span class="ok">The better expression of his own thesis.</span> SAIL grows
+    <b>18.6%</b> (FY26 $1,270M → FY27 $1,506M) against OKTA's 9.5%, with 6 upward FY27 revisions
+    and an Overweight consensus — roughly twice the growth for a similar 9.1× multiple.
+    Caveats: EV/EBITDA of 810× means there is essentially no earnings base yet, ROE is −2.3%, and
+    intangibles are 86% of assets. If the thesis is right, this is where it pays; it is also where
+    it hurts if wrong.</td>
+</tr>
+
+<tr>
+  <td class="tk">JKS<small>JinkoSolar</small></td>
+  <td class="num">$223M<small>ADR</small></td><td class="num">0.66×</td><td class="num">$17.01</td>
+  <td><ul>
+    <li>Superficially the polysilicon floor should hurt Chinese solar, and it does ding JKS's workarounds into US markets.</li>
+    <li>But the "Anti-Involution" story has outshone the US floor.</li>
+  </ul></td>
+  <td><span class="badge n0">Nuanced</span></td>
+  <td class="crit">Appropriately hedged, and the hedging is warranted — consensus is Hold, split
+    2 buys against 2 sells, with 17.1% growth.
+    <strong>The structural point neither post raises:</strong> enterprise value is
+    <span class="flag">$31.8B against roughly $1.5B of equity value</span> — over 20× — so the ADR
+    is a deeply levered option on Chinese solar policy, and modest changes in enterprise value swing
+    the equity violently in either direction.</td>
+</tr>
+
+<tr>
+  <td class="tk">EDIT<small>Editas Medicine</small></td>
+  <td class="num">$442M</td><td class="num">5.86×</td><td class="num">$2.88</td>
+  <td><ul><li>"$edit looks cheap."</li></ul></td>
+  <td><span class="badge b1">Bullish</span></td>
+  <td class="crit">Four words, and the data does not support the adjective.
+    Net cash is $166M against <span class="flag">annual cash burn of $144M</span> — barely over a
+    year of runway — and consensus has revenue <span class="flag">falling</span> from $24.6M in FY26
+    to $19.4M in FY27, with estimates ranging from $2M to $39M. ROE is −197%.
+    A clinical-stage biotech priced against optionality is not "cheap" in any multiple sense; the
+    word is being applied to a binary.</td>
+</tr>
+
+<tr>
+  <td class="tk">STIM<small>Neuronetics</small></td>
+  <td class="num">$166M</td><td class="num">1.57×</td><td class="num">$2.38</td>
+  <td><ul>
+    <li>More interesting now that $ATAI is off the market.</li>
+    <li>Explicitly "not a huge position at the moment."</li>
+  </ul></td>
+  <td><span class="badge n0">Constructive</span></td>
+  <td class="crit">Reasonable and honestly sized. <span class="ok">Consensus is unanimous Buy (4 of 4)</span>
+    with 10.0% growth (FY26 $161M → FY27 $177M) at 1.57× sales.
+    The competitive-vacuum logic is sound as far as it goes, but ROE of −165% and negative free cash
+    flow mean the company needs the vacuum to convert to volume quickly. His own position sizing
+    already reflects that.</td>
+</tr>
+
+<tr>
+  <td class="tk">MATW<small>Matthews International</small></td>
+  <td class="num">$739M</td><td class="num">1.20×</td><td class="num">$23.70</td>
+  <td><ul><li>Wants the memorial-services segment split off entirely — "what a fucking abomination."</li></ul></td>
+  <td><span class="badge s1">Negative on structure</span></td>
+  <td class="crit"><span class="ok">The frustration is well-founded.</span> Consensus has revenue
+    <span class="flag">declining</span> from $1,052M in FY26 to $1,036M in FY27, against
+    <span class="flag">6.1× net debt/EBITDA</span>, negative ROE and negative free cash flow. The
+    stock fell 14.3% on the session this was built.
+    The break-up case is directionally right, but with leverage at 6× the debt has first claim on
+    any separation proceeds — a split would likely deleverage the balance sheet rather than release
+    value to equity.</td>
+</tr>
+
+<tr>
+  <td class="tk">FIVE<small>Five Below</small></td>
+  <td class="num">$13.5B</td><td class="num">2.93×</td><td class="num">$244.37</td>
+  <td><ul>
+    <li><b>Formally withdrew his bull thesis</b> after visiting a store.</li>
+    <li>Praised the format — "unmatched in terms of trendy items per square inch," a unique aesthetic experience.</li>
+    <li>Still finds the company interesting, but concedes "it's more complex than I initially thought."</li>
+  </ul></td>
+  <td><span class="badge n0">Withdrawn</span>
+    <span class="why">Explicit reversal — the only one in the window.</span></td>
+  <td class="crit"><strong>The withdrawal looks like the costliest call in the set.</strong> Since
+    12 Jul the numbers have moved decisively the other way:
+    <span class="ok">19 of 22 estimates revised up for FY26 and 19 up against 1 down for FY27</span>,
+    consensus Overweight, 21.1% ROE, and the stock at $244.37 within 3% of its 52-week high after an
+    86% run from $131.40 — including +5.7% on the session this was built.
+    A qualitative store visit was allowed to override a strengthening quantitative signal, and the
+    signal won. Worth noting to his credit that the reversal was stated plainly and on the record,
+    which is more than most of the positions here offer.</td>
+</tr>
+
+<tr>
+  <td class="tk">FRVO<small>Fervo Energy</small></td>
+  <td class="num">$7.42B</td><td class="num nm">n/m</td><td class="num">$25.85</td>
+  <td><ul><li>"Down bad since IPO, yet valuation still remains goofy."</li></ul></td>
+  <td><span class="badge s1">Bearish</span></td>
+  <td class="crit"><span class="ok">Comfortably the best-supported bearish call in the corpus.</span>
+    FactSet has FY26 revenue at just <b>$6.4M</b> against a $7.42B market cap — roughly
+    <span class="flag">1,160× forward sales</span> — and even FY27's $79.0M leaves it at ~94×.
+    Free cash flow to equity is −$362M. "Goofy" is, if anything, understated.
+    The tension worth naming: consensus is <span class="flag">Buy, 8 of 12</span>, so the street
+    disagrees outright — and the stock rose 12.4% on the session this was built, down 39% from its
+    $42.65 high. Being right on valuation has not yet been the same as being paid.</td>
+</tr>
+
+<tr>
+  <td class="tk">BE<small>Bloom Energy</small></td>
+  <td class="num">$64.6B</td><td class="num">20.80×</td><td class="num">$219.34</td>
+  <td><ul>
+    <li>Both things can be true: the short report was "an opportunistic hit job during very weak tape for AI infra," <em>and</em> the scandium dependency is a genuine risk.</li>
+    <li>China controls ~70–90% of global scandium supply, on a market of only 30–40 tons a year.</li>
+  </ul></td>
+  <td><span class="badge n0">Balanced</span></td>
+  <td class="crit"><strong>The most intellectually honest post in the window</strong> — holding a
+    short thesis and its rebuttal simultaneously, rather than picking the convenient one.
+    The supply concentration point is real and under-discussed.
+    What the balance omits is how much the price already assumes:
+    <span class="flag">20.8× trailing sales</span>, with consensus at
+    <span class="ok">27 of 30 estimates revised up</span> for FY26 and 64.9% growth into FY27
+    ($4,069M → $6,710M). At that multiple the scandium risk he correctly identifies is not priced in
+    any meaningful way — which makes it the more actionable half of his own argument.</td>
+</tr>
+
+<tr>
+  <td class="tk">XPEV<small>XPeng</small></td>
+  <td class="num">$11.5B<small>ADR</small></td><td class="num">1.34×</td><td class="num">$12.13</td>
+  <td><ul>
+    <li>"A tough nut to crack" — on paper some of the best specs for a humanoid robot.</li>
+    <li>But company data and demos are limited, and being funded inside a larger auto business removes any pressure to disclose.</li>
+    <li>Later: "china bot story intensifies."</li>
+  </ul></td>
+  <td><span class="badge n0">Uncertain</span></td>
+  <td class="crit"><span class="ok">The epistemic caution is warranted and well-reasoned</span> — the
+    disclosure-incentive point is a genuinely good observation about why the robotics asset is hard
+    to value from outside.
+    <strong>The comfort he draws from the auto parent is weakening, though.</strong> FY26 consensus
+    carries <span class="flag">15 downward revisions against 8 up</span>, and the ADR sits at
+    $12.13 against a 52-week low of $11.54, down 57% from the high. The robotics optionality is
+    attached to a decelerating core — which is precisely the structure he criticises in $VPG,
+    reached from the opposite direction.</td>
+</tr>
+
+<tr>
+  <td class="tk">TSLA<small>Tesla</small></td>
+  <td class="num">$1.30T</td><td class="num nm">—</td><td class="num">$328.58</td>
+  <td><ul>
+    <li>Referenced only as a humanoid comparator: "an industrial bi-ped, the most crowded category."</li>
+    <li>Credited with ~300 units deployed, alongside Figure.</li>
+  </ul></td>
+  <td><span class="badge n0">Reference</span></td>
+  <td class="crit">No directional view is expressed, so nothing here is rated. Listed because the
+    deployment figure he attributes to TSLA is the same post that
+    <strong>undercuts his headline CCXI deployment claim</strong> — see the CCXI row. For context the
+    stock is 34% below its $498.83 high at $328.58.</td>
+</tr>
+
+</tbody></table>
+</div>
+
+<footer>
+  <p><b>Method.</b> Public posts retrieved read-only via the X API full-archive search
+  (<code>from:peonyKingOF -is:retweet</code>), 30-day window, and used solely to identify which
+  securities were discussed and what argument was made. Conviction rates the view as expressed in
+  the posts, not the author. Market cap, EV/Sales (TTM) and price from Financial Modeling Prep;
+  consensus estimates, revision counts and ratings from FactSet. Both as of 10 August 2026.</p>
+  <p><b>Not investment advice.</b> The critique column is an independent assessment of whether each
+  stated argument survives contact with reported fundamentals and consensus data. It is not a
+  recommendation, and no position in any security named here is implied.</p>
+</footer>
+
+</div>
+</body>
+</html>
